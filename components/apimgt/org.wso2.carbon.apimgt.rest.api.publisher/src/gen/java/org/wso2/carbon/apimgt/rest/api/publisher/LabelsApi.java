@@ -38,7 +38,7 @@ import javax.ws.rs.core.Response;
     immediate = true
 )
 @Path("/api/am/publisher/v1.[\\d]+/labels")
-@Consumes({ "application/json" })
+@Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
 @Produces({ "application/json" })
 @ApplicationPath("/labels")
 @io.swagger.annotations.Api(description = "the labels API")
@@ -48,7 +48,7 @@ public class LabelsApi implements Microservice  {
     @OPTIONS
     @GET
     
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get all labels", notes = "This operation can be used to retrieve the list of labels available. ", response = LabelListDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {

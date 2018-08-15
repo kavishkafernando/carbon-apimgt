@@ -39,7 +39,7 @@ import javax.ws.rs.core.Response;
     immediate = true
 )
 @Path("/api/am/publisher/v1.[\\d]+/endpoints")
-@Consumes({ "application/json" })
+@Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
 @Produces({ "application/json" })
 @ApplicationPath("/endpoints")
 @io.swagger.annotations.Api(description = "the endpoints API")
@@ -49,7 +49,7 @@ public class EndpointsApi implements Microservice  {
     @OPTIONS
     @DELETE
     @Path("/{endpointId}")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Delete an endpoint", notes = "This operation can be used to delete an existing Endpoint proving the Id of the Endpoint. ", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -75,7 +75,7 @@ public class EndpointsApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{endpointId}")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get specific endpoints", notes = "This operation can be used to retrieve endpoint specific details. ", response = EndPointDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -99,7 +99,7 @@ public class EndpointsApi implements Microservice  {
     @OPTIONS
     @PUT
     @Path("/{endpointId}")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Update a Tier", notes = "This operation can be used to update an existing endpoint. `PUT https://127.0.0.1:9443/api/am/publisher/v1.0/endpoints/api/Low` ", response = EndPointDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -126,7 +126,7 @@ public class EndpointsApi implements Microservice  {
     @OPTIONS
     @GET
     
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get all endpoints", notes = "This operation can be used to retrieve the list of endpoints available. ", response = EndPointListDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -149,7 +149,7 @@ public class EndpointsApi implements Microservice  {
     @OPTIONS
     @HEAD
     
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Check given Endpoint is already exist ", notes = "Using this operation, you can check a given Endpoint name is already used. You need to provide the name you want to check. ", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -174,7 +174,7 @@ public class EndpointsApi implements Microservice  {
     @OPTIONS
     @POST
     
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Add a new endpoint", notes = "This operation can be used to add a new endpoint. ", response = EndPointDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {

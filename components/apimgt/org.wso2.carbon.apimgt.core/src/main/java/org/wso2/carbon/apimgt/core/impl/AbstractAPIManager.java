@@ -42,6 +42,7 @@ import org.wso2.carbon.apimgt.core.dao.TagDAO;
 import org.wso2.carbon.apimgt.core.dao.ThreatProtectionDAO;
 import org.wso2.carbon.apimgt.core.dao.WorkflowDAO;
 import org.wso2.carbon.apimgt.core.dao.impl.DAOFactory;
+import org.wso2.carbon.apimgt.core.dao.*;
 import org.wso2.carbon.apimgt.core.exception.APIManagementException;
 import org.wso2.carbon.apimgt.core.exception.APIMgtDAOException;
 import org.wso2.carbon.apimgt.core.exception.APIMgtResourceAlreadyExistsException;
@@ -54,6 +55,7 @@ import org.wso2.carbon.apimgt.core.models.DocumentContent;
 import org.wso2.carbon.apimgt.core.models.DocumentInfo;
 import org.wso2.carbon.apimgt.core.models.Label;
 import org.wso2.carbon.apimgt.core.models.Subscription;
+import org.wso2.carbon.apimgt.core.streams.EventStream;
 import org.wso2.carbon.apimgt.core.util.APIUtils;
 import org.wso2.carbon.apimgt.core.workflow.Workflow;
 
@@ -78,10 +80,11 @@ public abstract class AbstractAPIManager implements APIManager {
     protected APIDefinition apiDefinitionFromSwagger20 = new APIDefinitionFromSwagger20();
     protected APIMConfigurations config;
     private DAOFactory daoFactory;
+    private StreamDAO streamDAO;
 
     public AbstractAPIManager(String username, IdentityProvider idp, KeyManager keyManager, DAOFactory daoFactory,
                               APILifecycleManager apiLifecycleManager, GatewaySourceGenerator gatewaySourceGenerator,
-                              APIGateway apiGatewayPublisher) {
+                              APIGateway apiGatewayPublisher, StreamDAO streamDAO) {
 
         this.daoFactory = daoFactory;
         this.username = username;
@@ -90,6 +93,7 @@ public abstract class AbstractAPIManager implements APIManager {
         this.gatewaySourceGenerator = gatewaySourceGenerator;
         this.apiGatewayPublisher = apiGatewayPublisher;
         this.apiLifecycleManager = apiLifecycleManager;
+        this.streamDAO = streamDAO;
         this.config = ServiceReferenceHolder.getInstance().getAPIMConfiguration();
     }
 
@@ -97,7 +101,13 @@ public abstract class AbstractAPIManager implements APIManager {
                               APILifecycleManager apiLifecycleManager) {
 
         this(username, idp, keyManager, daoFactory, apiLifecycleManager, new GatewaySourceGeneratorImpl()
-                , new APIGatewayPublisherImpl());
+                , new APIGatewayPublisherImpl(),null);
+    }
+
+    public  AbstractAPIManager(String username, StreamDAO streamDAO){
+        this.username = username;
+        this.streamDAO = streamDAO;
+
     }
 
     /**
@@ -558,6 +568,10 @@ public abstract class AbstractAPIManager implements APIManager {
         return daoFactory.getApplicationDAO();
     }
 
+    protected StreamDAO getStreamDAO() {
+        return streamDAO;
+    }
+
     protected APISubscriptionDAO getAPISubscriptionDAO() throws APIMgtDAOException {
         return daoFactory.getAPISubscriptionDAO();
     }
@@ -685,5 +699,33 @@ public abstract class AbstractAPIManager implements APIManager {
 
     public ThreatProtectionDAO getThreatProtectionDAO() {
         return daoFactory.getThreatProtectionDAO();
+    }
+
+    /**
+     * Returns details of a Stream.
+     *
+     * @param uuid UUID of the Stream's registry artifact
+     * @return A Stream object related to the given artifact id or null
+     * @throws APIManagementException if failed get Stream from String
+     */
+    @Override
+    public EventStream getStreambyUUID(String uuid) throws APIManagementException {
+        try {
+            return streamDAO.getEventStream(uuid);
+        } catch (APIMgtDAOException e) {
+            String errorMsg = "Error occurred while retrieving Stream with id " + uuid;
+            log.error(errorMsg, e);
+            throw new APIManagementException(errorMsg, e, e.getErrorHandler());
+        }
+    }
+
+    public boolean isStreamExists(String streamId) throws APIManagementException {
+        try {
+            return getStreamDAO().isStreamExists(streamId);
+        } catch (APIMgtDAOException e) {
+            String errorMsg = "Error while checking if Stream " + streamId + " exists";
+            log.error(errorMsg, e);
+            throw new APIManagementException(errorMsg, e, e.getErrorHandler());
+        }
     }
 }

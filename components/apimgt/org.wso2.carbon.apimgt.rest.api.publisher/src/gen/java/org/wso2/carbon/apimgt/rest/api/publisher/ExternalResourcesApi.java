@@ -38,7 +38,7 @@ import javax.ws.rs.core.Response;
     immediate = true
 )
 @Path("/api/am/publisher/v1.[\\d]+/external-resources")
-@Consumes({ "application/json" })
+@Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
 @Produces({ "application/json" })
 @ApplicationPath("/external-resources")
 @io.swagger.annotations.Api(description = "the external-resources API")
@@ -48,7 +48,7 @@ public class ExternalResourcesApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/services")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get all service endpoints after service discovery", notes = "This operation can be used to retrieve the list of service endpoints available in the cluster after a process of service discovery. ", response = EndPointListDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {

@@ -30,6 +30,7 @@ import org.wso2.carbon.apimgt.core.models.RegistrationSummary;
 import org.wso2.carbon.apimgt.core.models.SubscriptionValidationData;
 import org.wso2.carbon.apimgt.core.models.UriTemplate;
 import org.wso2.carbon.apimgt.core.models.policy.ThreatProtectionPolicy;
+import org.wso2.carbon.apimgt.core.streams.EventStream;
 import org.wso2.carbon.apimgt.core.util.APIMgtConstants;
 import org.wso2.carbon.apimgt.core.util.APIUtils;
 import org.wso2.carbon.apimgt.rest.api.core.dto.APIInfoDTO;
@@ -369,4 +370,6 @@ public class MappingUtil {
         dto.setPolicy(policy.getPolicy());
         return dto;
     }
+
+
 }

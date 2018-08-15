@@ -35,6 +35,7 @@ import org.wso2.carbon.apimgt.core.models.Subscription;
 import org.wso2.carbon.apimgt.core.models.WSDLArchiveInfo;
 import org.wso2.carbon.apimgt.core.models.policy.Policy;
 import org.wso2.carbon.apimgt.core.models.policy.ThreatProtectionPolicy;
+import org.wso2.carbon.apimgt.core.streams.EventStream;
 import org.wso2.carbon.apimgt.core.util.APIMgtConstants;
 import org.wso2.carbon.lcm.core.impl.LifecycleState;
 import org.wso2.carbon.lcm.sql.beans.LifecycleHistoryBean;
@@ -659,4 +660,22 @@ public interface APIPublisher extends APIManager {
      * @throws APIManagementException If an error occurred while deleting scope
      */
     void deleteScopeFromApi(String apiId, String scopeName) throws APIManagementException;
+
+    /**
+     * Adds a new Stream to the Store
+     *
+     * @param streamBuilder EventStream
+     * @return Details of the added Stream.
+     * @throws APIManagementException if failed to add Stream
+     */
+    String addEventStream(EventStream.StreamBuilder streamBuilder) throws APIManagementException;
+
+    /**
+     * @param limit  Number of search results returned
+     * @param offset Starting index of the search results
+     * @param query  Search query
+     * @return List of Streams
+     * @throws APIManagementException If failed to search for apis with given query.
+     */
+    List<EventStream> searchStreams(Integer limit, Integer offset, String query) throws APIManagementException;
 }

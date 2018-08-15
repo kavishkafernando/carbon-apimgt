@@ -38,7 +38,7 @@ import javax.ws.rs.core.Response;
     immediate = true
 )
 @Path("/api/am/publisher/v1.[\\d]+/threat-protection-policies")
-@Consumes({ "application/json" })
+@Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
 @Produces({ "application/json" })
 @ApplicationPath("/threat-protection-policies")
 @io.swagger.annotations.Api(description = "the threat-protection-policies API")
@@ -48,7 +48,7 @@ public class ThreatProtectionPoliciesApi implements Microservice  {
     @OPTIONS
     @GET
     
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get All Threat Protection Policies", notes = "This can be used to get all defined threat protection policies", response = ThreatProtectionPolicyListDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -65,7 +65,7 @@ public class ThreatProtectionPoliciesApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{policyId}")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get a threat protection policy", notes = "", response = ThreatProtectionPolicyDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {

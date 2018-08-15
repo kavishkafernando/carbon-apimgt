@@ -42,6 +42,7 @@ import org.wso2.carbon.apimgt.core.models.policy.APIPolicy;
 import org.wso2.carbon.apimgt.core.models.policy.Policy;
 import org.wso2.carbon.apimgt.core.models.policy.SubscriptionPolicy;
 import org.wso2.carbon.apimgt.core.models.policy.ThreatProtectionPolicy;
+import org.wso2.carbon.apimgt.core.streams.EventStream;
 import org.wso2.carbon.apimgt.core.util.APIMgtConstants;
 import org.wso2.carbon.apimgt.core.util.APIUtils;
 import org.wso2.carbon.apimgt.rest.api.publisher.dto.APIDTO;
@@ -74,6 +75,7 @@ import org.wso2.carbon.apimgt.rest.api.publisher.dto.SubscriptionDTO;
 import org.wso2.carbon.apimgt.rest.api.publisher.dto.SubscriptionListDTO;
 import org.wso2.carbon.apimgt.rest.api.publisher.dto.ThreatProtectionPolicyDTO;
 import org.wso2.carbon.apimgt.rest.api.publisher.dto.WorkflowResponseDTO;
+import org.wso2.carbon.apimgt.rest.api.publisher.dto.*;
 import org.wso2.carbon.apimgt.rest.api.publisher.dto.WorkflowResponseDTO.WorkflowStatusEnum;
 
 import java.util.ArrayList;
@@ -715,5 +717,70 @@ public class MappingUtil {
         }
         return dedicatedGateway;
 
+    }
+
+    /**
+     * This method converts to Stream model object.
+     *
+     * @param stream EventStream object with Stream data
+     * @return StreamBuilder object
+     */
+    public static EventStream.StreamBuilder toEventStream(EventStream stream){
+        EventStream.StreamBuilder streamBuilder = new EventStream.StreamBuilder(stream.getId(),
+                stream.getName(), stream.getProvider(), stream.getVersion()).
+                description(stream.getDescription()).
+                lifeCycleStatus(stream.getLifeCycleStatus()).
+                endpoint(stream.getEndpoint()).
+                streamType(stream.getStreamType()).
+                streamAuthorization(stream.getStreamAuthorization()).
+                visibility(stream.getVisibility()).
+                isProducable(stream.isProducable()).
+                canProducerAccessDirectly(stream.isCanProducerAccessDirectly()).
+                canProducerAccessViaGateway(stream.isCanProducerAccessViaGateway()).
+                producerAuthorization(stream.getProducerAuthorization()).
+                producerTransport(stream.getProducerTransport()).
+                producerMessageType(stream.getProducerMessageType()).
+                isConsumable(stream.isConsumable()).
+                canConsumerAccessDirectly(stream.isCanConsumerAccessDirectly()).
+                canConsumerAccessViaGateway(stream.isCanConsumerAccessViaGateway()).
+                consumerAuthorization(stream.getConsumerAuthorization()).
+                consumerTransport(stream.getConsumerTransport()).
+                consumerDisplay(stream.getConsumerDisplay());
+
+        return streamBuilder;
+    }
+
+    /**
+     * Converts Stream list to StreamListDTO list.
+     *
+     * @param streamResult List of APIs
+     * @return StreamListDTO object
+     */
+    public static StreamListDTO toStreamListDTO(List<EventStream> streamResult) {
+        StreamListDTO streamListDTO = new StreamListDTO();
+        streamListDTO.setCount(streamResult.size());
+        streamListDTO.setList(toStreamInfo(streamResult));
+        return streamListDTO;
+    }
+
+    /**
+     * Converts {@link EventStream} List to an {@link StreamInfoDTO} List.
+     *
+     * @param streamSummaryList
+     * @return
+     */
+    private static List<StreamInfoDTO> toStreamInfo(List<EventStream> streamSummaryList) {
+        List<StreamInfoDTO> streamInfoList = new ArrayList<StreamInfoDTO>();
+        for (EventStream streamSummary : streamSummaryList) {
+            StreamInfoDTO streamInfo = new StreamInfoDTO();
+            streamInfo.setId(streamSummary.getId());
+            streamInfo.setDescription(streamSummary.getDescription());
+            streamInfo.setName(streamSummary.getName());
+            streamInfo.setProvider(streamSummary.getProvider());
+            streamInfo.setLifeCycleStatus(streamSummary.getLifeCycleStatus());
+            streamInfo.setVersion(streamSummary.getVersion());
+            streamInfoList.add(streamInfo);
+        }
+        return streamInfoList;
     }
 }

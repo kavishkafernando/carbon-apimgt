@@ -22,18 +22,7 @@ package org.wso2.carbon.apimgt.core.dao.impl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.wso2.carbon.apimgt.core.dao.APISubscriptionDAO;
-import org.wso2.carbon.apimgt.core.dao.AnalyticsDAO;
-import org.wso2.carbon.apimgt.core.dao.ApiDAO;
-import org.wso2.carbon.apimgt.core.dao.ApplicationDAO;
-import org.wso2.carbon.apimgt.core.dao.FunctionDAO;
-import org.wso2.carbon.apimgt.core.dao.LabelDAO;
-import org.wso2.carbon.apimgt.core.dao.PolicyDAO;
-import org.wso2.carbon.apimgt.core.dao.SystemApplicationDao;
-import org.wso2.carbon.apimgt.core.dao.TagDAO;
-import org.wso2.carbon.apimgt.core.dao.ThreatProtectionDAO;
-import org.wso2.carbon.apimgt.core.dao.UserMappingDAO;
-import org.wso2.carbon.apimgt.core.dao.WorkflowDAO;
+import org.wso2.carbon.apimgt.core.dao.*;
 import org.wso2.carbon.apimgt.core.exception.APIMgtDAOException;
 import org.wso2.carbon.apimgt.core.exception.ExceptionCodes;
 import org.wso2.carbon.apimgt.core.internal.ServiceReferenceHolder;
@@ -386,4 +375,46 @@ public class DAOFactory {
         return new UserMappingDAOImpl();
     }
 
+    public static StreamDAO getStreamDAO() throws APIMgtDAOException {
+
+        StreamDAO streamDAO = null;
+        String filePath;
+        if (System.getProperty(EDITOR_MODE) != null) {
+            if ((filePath = System.getProperty(EDITOR_SAVE_PATH)) != null) {
+                streamDAO = new StreamFileDAO(filePath);
+                return streamDAO;
+
+            } else {
+                throw new APIMgtDAOException("Editor archive storage path not provided",
+                        ExceptionCodes.STREAM_DAO_EXCEPTION);
+            }
+        }
+
+        try (Connection connection = DAOUtil.getConnection()) {
+
+            String driverName = connection.getMetaData().getDriverName();
+
+            if (driverName.contains(MYSQL)){
+                streamDAO = new StreamDAOImpl(new MysqlSQLStatements());
+            } else if (driverName.contains(H2)){
+                streamDAO = new StreamDAOImpl(new H2SQLStatements());
+            } else if (driverName.contains(DB2)){
+
+            } else if (driverName.contains(MS_SQL) || driverName.contains(MICROSOFT)) {
+                streamDAO = new StreamDAOImpl(new MssqlSQLStatements());
+            } else if (driverName.contains(POSTGRE)) {
+                streamDAO = new StreamDAOImpl(new PostgresSQLStatements());
+            } else if (driverName.contains(ORACLE)) {
+                streamDAO = new StreamDAOImpl(new OracleSQLStatements());
+            } else {
+                throw new APIMgtDAOException("Unhandled DB driver: " + driverName + " detected",
+                        ExceptionCodes.STREAM_DAO_EXCEPTION);
+            }
+
+        } catch (SQLException e) {
+            throw new APIMgtDAOException(DAOUtil.DAO_ERROR_PREFIX + "getting streamDAO", e);
+        }
+
+        return streamDAO;
+    }
 }

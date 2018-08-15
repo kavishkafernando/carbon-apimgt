@@ -1,0 +1,66 @@
+package org.wso2.carbon.apimgt.core.dao;
+
+import org.wso2.carbon.apimgt.core.exception.APIMgtDAOException;
+import org.wso2.carbon.apimgt.core.streams.EventStream;
+
+import java.util.List;
+
+public interface StreamDAO {
+    /**
+     * Check if an Stream exists for a given streamID
+     * @param streamID The UUID that uniquely identifies an Stream
+     * @return true if Stream exists else false
+     * @throws APIMgtDAOException if error occurs while accessing data layer
+     */
+    boolean isStreamExists(String streamID) throws APIMgtDAOException;
+
+    /**
+     * Retrieve a given instance of an Stream
+     *
+     * @param streamID The UUID that uniquely identifies an Stream
+     * @return valid {@link EventStream} object or throws APIMgtDAOException
+     * @throws APIMgtDAOException if error occurs while accessing data layer
+     *
+     */
+    EventStream getStream(String streamID) throws APIMgtDAOException;
+
+    /**
+     * Checks if a given API which is uniquely identified by the Provider, API Name and Version combination already
+     * exists
+     *
+     * @param streamName Name of Stream
+     * @param providerName Provider of the Stream.
+     * @return true if providerName, apiName, version combination already exists else false
+     * @throws APIMgtDAOException if error occurs while accessing data layer
+     */
+    boolean isStreamNameExists(String streamName, String providerName) throws APIMgtDAOException;
+
+    /**
+     * Add a new instance of an API
+     *
+     * @param stream The {@link EventStream} object to be added
+     * @throws APIMgtDAOException if error occurs while accessing data layer
+     *
+     */
+    void addStream(EventStream stream) throws APIMgtDAOException;
+
+    /**
+     * Retrieve a given instance of an Stream
+     *
+     * @param streamID The UUID that uniquely identifies an Stream
+     * @return valid {@link EventStream} object or throws APIMgtDAOException
+     * @throws APIMgtDAOException if error occurs while accessing data layer
+     *
+     */
+    EventStream getEventStream(String streamID) throws APIMgtDAOException;
+
+    /**
+     * Retrieves summary data of all available Streams.
+     *
+     * @param user The userName of the current user
+     * @return {@code List<EventStream>} matching results
+     * @throws APIMgtDAOException if error occurs while accessing data layer
+     *
+     */
+    List<EventStream> getStreams(String user) throws APIMgtDAOException;
+}

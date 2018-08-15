@@ -28,6 +28,7 @@ import org.wso2.carbon.apimgt.core.models.DocumentContent;
 import org.wso2.carbon.apimgt.core.models.DocumentInfo;
 import org.wso2.carbon.apimgt.core.models.Label;
 import org.wso2.carbon.apimgt.core.models.Subscription;
+import org.wso2.carbon.apimgt.core.streams.EventStream;
 import org.wso2.carbon.apimgt.core.workflow.Workflow;
 
 import java.io.InputStream;
@@ -325,4 +326,22 @@ public interface APIManager {
      *
      */
     DedicatedGateway getDedicatedGateway(String apiId) throws APIManagementException;
+
+    /**
+     * Returns details of an Stream
+     *
+     * @param uuid UUID of the Stream's registry artifact
+     * @return An EventStream object related to the given artifact id or null
+     * @throws APIManagementException if failed get Stream from String
+     */
+    EventStream getStreambyUUID(String uuid) throws APIManagementException;
+
+    /**
+     * Checks if a given API exists
+     *
+     * @param streamId UUID of the Stream
+     * @return boolean result
+     * @throws APIManagementException If failed to check ia Stream exist.
+     */
+    boolean isStreamExists(String streamId) throws APIManagementException;
 }

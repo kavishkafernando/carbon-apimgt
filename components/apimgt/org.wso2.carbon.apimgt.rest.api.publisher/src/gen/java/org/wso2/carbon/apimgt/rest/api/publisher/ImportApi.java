@@ -39,7 +39,7 @@ import javax.ws.rs.core.Response;
     immediate = true
 )
 @Path("/api/am/publisher/v1.[\\d]+/import")
-@Consumes({ "application/json" })
+@Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
 @Produces({ "application/json" })
 @ApplicationPath("/import")
 @io.swagger.annotations.Api(description = "the import API")

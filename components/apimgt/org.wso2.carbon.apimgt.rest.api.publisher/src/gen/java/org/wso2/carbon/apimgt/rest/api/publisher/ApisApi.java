@@ -49,7 +49,7 @@ import javax.ws.rs.core.Response;
     immediate = true
 )
 @Path("/api/am/publisher/v1.[\\d]+/apis")
-@Consumes({ "application/json" })
+@Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
 @Produces({ "application/json" })
 @ApplicationPath("/apis")
 @io.swagger.annotations.Api(description = "the apis API")
@@ -59,7 +59,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{apiId}/dedicated-gateway")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get enability of dedicatedGateway", notes = "This operation can be used to retrieve whether the dedicated gateway is enabled in a certain API. ", response = DedicatedGatewayDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -85,7 +85,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @PUT
     @Path("/{apiId}/dedicated-gateway")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Update enabling of dedicated Gateway of API", notes = "This operation can be used to update metadata of an API's dedicatedGateway. ", response = DedicatedGatewayDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -112,7 +112,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @DELETE
     @Path("/{apiId}")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Delete an API", notes = "This operation can be used to delete an existing API proving the Id of the API. ", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -138,7 +138,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{apiId}/documents/{documentId}/content")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/octet-stream" })
     @io.swagger.annotations.ApiOperation(value = "Get the content of an API document", notes = "This operation can be used to retrive the content of an API's document.  The document can be of 3 types. In each cases responses are different.  1. **Inline type**:    The content of the document will be retrieved in `text/plain` content type 2. **FILE type**:    The file will be downloaded with the related content type (eg. `application/pdf`) 3. **URL type**:     The client will recieve the URL of the document as the Location header with the response with - `303 See Other` ", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -198,7 +198,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @DELETE
     @Path("/{apiId}/documents/{documentId}")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Delete a document of an API", notes = "This operation can be used to delete a document associated with an API. ", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -223,7 +223,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{apiId}/documents/{documentId}")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get a document of an API", notes = "This operation can be used to retrieve a particular document's metadata associated with an API. ", response = DocumentDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -250,7 +250,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @PUT
     @Path("/{apiId}/documents/{documentId}")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Update a document of an API", notes = "This operation can be used to update metadata of an API's document. ", response = DocumentDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -278,7 +278,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{apiId}/documents")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get a list of documents of an API", notes = "This operation can be used to retrieve a list of documents belonging to an API by providing the id of the API. ", response = DocumentListDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -307,7 +307,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @POST
     @Path("/{apiId}/documents")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Add a new document to an API", notes = "This operation can be used to add a new documentation to an API. This operation only adds the metadata of a document. To add the actual content we need to use **Upload the content of an API document ** API once we obtain a document Id by this operation. ", response = DocumentDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -332,7 +332,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{apiId}/gateway-config")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get gateway definition", notes = "This operation can be used to retrieve the gateway configuration of an API. ", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -387,7 +387,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{apiId}")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get details of an API", notes = "Using this operation, you can retrieve complete details of a single API. You need to provide the Id of the API to retrive it. ", response = APIDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -413,7 +413,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{apiId}/lifecycle")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get Lifecycle state data of the API.", notes = "This operation can be used to retrieve Lifecycle state data of the API. ", response = LifecycleStateDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -439,7 +439,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{apiId}/lifecycle-history")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get Lifecycle state change history of the API.", notes = "This operation can be used to retrieve Lifecycle state change history of the API. ", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -465,7 +465,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @DELETE
     @Path("/{apiId}/lifecycle/lifecycle-pending-task")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Delete pending lifecycle state change tasks.", notes = "This operation can be used to remove pending lifecycle state change requests that are in pending state ", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -487,7 +487,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @PUT
     @Path("/{apiId}")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Update an API", notes = "This operation can be used to update an existing API. But the properties `name`, `version`, `context`, `provider`, `state` will not be changed by this operation. ", response = APIDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -516,7 +516,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{apiId}/scopes")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get a list of scopes of an API", notes = "This operation can be used to retrieve a list of scopes belonging to an API by providing the id of the API. ", response = ScopeListDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -541,7 +541,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @DELETE
     @Path("/{apiId}/scopes/{name}")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Delete a scope of an API", notes = "This operation can be used to delete a scope associated with an API. ", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -566,7 +566,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{apiId}/scopes/{name}")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get a scope of an API", notes = "This operation can be used to retrieve a particular scope's metadata associated with an API. ", response = ScopeDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -593,7 +593,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @PUT
     @Path("/{apiId}/scopes/{name}")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Update a Scope of an API", notes = "This operation can be used to update scope of an API ", response = ScopeDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -621,7 +621,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @POST
     @Path("/{apiId}/scopes")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Add a new scope to an API", notes = "This operation can be used to add a new scope to an API. ", response = ScopeDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -646,7 +646,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{apiId}/swagger")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get swagger definition", notes = "This operation can be used to retrieve the swagger definition of an API. ", response = String.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -701,7 +701,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @DELETE
     @Path("/{apiId}/threat-protection-policies")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Delete a threat protection policy from an API", notes = "", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -724,7 +724,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{apiId}/threat-protection-policies")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get all threat protection policies associated with an API", notes = "", response = String.class, responseContainer = "List", authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -746,7 +746,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @POST
     @Path("/{apiId}/threat-protection-policies")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Add a threat protection policy to an API", notes = "", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -769,7 +769,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{apiId}/thumbnail")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Get thumbnail image", notes = "This operation can be used to download a thumbnail image of an API. ", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -824,7 +824,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/{apiId}/wsdl")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/octet-stream" })
     @io.swagger.annotations.ApiOperation(value = "Get swagger definition", notes = "This operation can be used to retrieve the swagger definition of an API. ", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -881,7 +881,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @POST
     @Path("/change-lifecycle")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Change API Status", notes = "This operation is used to change the lifecycle of an API. Eg: Publish an API which is in `CREATED` state. In order to change the lifecycle, we need to provide the lifecycle `action` as a query parameter.  For example, to Publish an API, `action` should be `Publish`.  Some actions supports providing additional paramters which should be provided as `lifecycleChecklist` parameter. Please see parameters table for more information. ", response = WorkflowResponseDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -913,7 +913,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @POST
     @Path("/copy-api")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Create a new API version", notes = "This operation can be used to create a new version of an existing API. The new version is specified as `newVersion` query parameter. New API will be in `CREATED` state. ", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -936,7 +936,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @GET
     
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Retrieve/Search APIs ", notes = "This operation provides you a list of available APIs qualifying under a given search condition.  Each retrieved API is represented with a minimal amount of attributes. If you want to get complete details of an API, you need to use **Get details of an API** operation. ", response = APIListDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -963,7 +963,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @HEAD
     
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Check given API attibute name is already exist ", notes = "Using this operation, you can check a given API context is already used. You need to provide the context name you want to check. ", response = void.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
@@ -1020,7 +1020,7 @@ public class ApisApi implements Microservice  {
     @OPTIONS
     @POST
     
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/json" })
     @io.swagger.annotations.ApiOperation(value = "Create a new API", notes = "This operation can be used to create a new API specifying the details of the API in the payload. The new API will be in `CREATED` state.  There is a special capability for a user who has `APIM Admin` permission such that he can create APIs on behalf of other users. For that he can to specify `\"provider\" : \"some_other_user\"` in the payload so that the API's creator will be shown as `some_other_user` in the UI. ", response = APIDTO.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {

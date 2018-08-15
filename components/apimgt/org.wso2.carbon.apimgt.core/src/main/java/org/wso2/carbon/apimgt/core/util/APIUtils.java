@@ -34,6 +34,7 @@ import org.wso2.carbon.apimgt.core.models.CompositeAPI;
 import org.wso2.carbon.apimgt.core.models.UriTemplate;
 import org.wso2.carbon.apimgt.core.models.policy.APIPolicy;
 import org.wso2.carbon.apimgt.core.models.policy.Policy;
+import org.wso2.carbon.apimgt.core.streams.EventStream;
 import org.wso2.carbon.lcm.core.impl.LifecycleState;
 import org.yaml.snakeyaml.Yaml;
 
@@ -558,5 +559,22 @@ public class APIUtils {
      */
     public static Instant getCurrentUTCTime() {
         return Instant.now();
+    }
+
+    /**
+     * Validate the Stream object
+     * @param stream Stream object
+     * @throws APIManagementException if mandatory field is not set
+     */
+    public static void validateStream(EventStream stream) throws APIManagementException {
+        if (StringUtils.isEmpty(stream.getId())) {
+            throw new APIManagementException("Couldn't find UUID of Stream");
+        }
+        if (StringUtils.isEmpty(stream.getName())) {
+            throw new APIManagementException("Couldn't find Name of Stream ");
+        }
+        if (StringUtils.isEmpty(stream.getVersion())) {
+            throw new APIManagementException("Couldn't find Version of Stream ");
+        }
     }
 }

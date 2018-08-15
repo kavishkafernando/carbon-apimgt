@@ -46,6 +46,7 @@ import org.wso2.carbon.apimgt.core.configuration.models.ServiceDiscoveryImplConf
 import org.wso2.carbon.apimgt.core.dao.SearchType;
 import org.wso2.carbon.apimgt.core.dao.ThreatProtectionDAO;
 import org.wso2.carbon.apimgt.core.dao.impl.DAOFactory;
+import org.wso2.carbon.apimgt.core.dao.*;
 import org.wso2.carbon.apimgt.core.exception.APIManagementException;
 import org.wso2.carbon.apimgt.core.exception.APIMgtDAOException;
 import org.wso2.carbon.apimgt.core.exception.APIMgtResourceNotFoundException;
@@ -80,6 +81,7 @@ import org.wso2.carbon.apimgt.core.models.WSDLArchiveInfo;
 import org.wso2.carbon.apimgt.core.models.WorkflowStatus;
 import org.wso2.carbon.apimgt.core.models.policy.Policy;
 import org.wso2.carbon.apimgt.core.models.policy.ThreatProtectionPolicy;
+import org.wso2.carbon.apimgt.core.streams.EventStream;
 import org.wso2.carbon.apimgt.core.template.APIConfigContext;
 import org.wso2.carbon.apimgt.core.template.APITemplateException;
 import org.wso2.carbon.apimgt.core.template.dto.NotificationDTO;
@@ -132,8 +134,9 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
 
     public APIPublisherImpl(String username, IdentityProvider idp, KeyManager keyManager, DAOFactory daoFactory,
                             APILifecycleManager apiLifecycleManager, GatewaySourceGenerator gatewaySourceGenerator,
-                            APIGateway apiGatewayPublisher) {
-        super(username, idp, keyManager, daoFactory, apiLifecycleManager, gatewaySourceGenerator, apiGatewayPublisher);
+                            APIGateway apiGatewayPublisher, StreamDAO streamDAO) {
+        super(username, idp, keyManager, daoFactory, apiLifecycleManager, gatewaySourceGenerator, apiGatewayPublisher,
+                streamDAO);
     }
 
     /**
@@ -339,6 +342,13 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
                     + apiId, e, ExceptionCodes.ERROR_WHILE_RETRIEVING_DEDICATED_CONTAINER_BASED_GATEWAY);
         }
         return dedicatedGateway;
+    }
+
+    @Override
+    public EventStream getStreambyUUID(String uuid) throws APIManagementException {
+        EventStream stream = null;
+        stream = super.getStreambyUUID(uuid);
+        return stream;
     }
 
     /**
@@ -2518,6 +2528,55 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
             throw new APIManagementException("Scope couldn't found by name: " + scopeName, ExceptionCodes
                     .SCOPE_NOT_FOUND);
         }
+    }
+
+    @Override
+    public String addEventStream(EventStream.StreamBuilder streamBuilder) throws APIManagementException {
+        EventStream createdStream;
+        APIGateway gateway = getApiGateway();
+
+        streamBuilder.provider(getUsername());
+
+        if (StringUtils.isEmpty(streamBuilder.getId())) {
+            streamBuilder.id(UUID.randomUUID().toString());
+        }
+
+        try{
+        createdStream = streamBuilder.build();
+        APIUtils.validateStream(createdStream);
+
+        getStreamDAO().addStream(createdStream);
+
+        APIUtils.logDebug("Stream " + createdStream.getName() + "-" + createdStream.getVersion() + " was created " +
+                "successfully.", log);
+
+        //Create a payload with event specific details
+        Map<String, String> eventPayload = new HashMap<>();
+        eventPayload.put(APIMgtConstants.FunctionsConstants.STREAM_ID, createdStream.getId());
+        eventPayload.put(APIMgtConstants.FunctionsConstants.STREAM_NAME, createdStream.getName());
+        eventPayload.put(APIMgtConstants.FunctionsConstants.STREAM_VERSION, createdStream.getVersion());
+        eventPayload.put(APIMgtConstants.FunctionsConstants.STREAM_DESCRIPTION, createdStream.getDescription());
+
+        // This will notify all the EventObservers(Asynchronous)
+        ObserverNotifier observerNotifier = new ObserverNotifier(Event.STREAM_CREATION, getUsername(),
+                ZonedDateTime.now(ZoneOffset.UTC), eventPayload, this);
+        ObserverNotifierThreadPool.getInstance().executeTask(observerNotifier);
+
+        } catch (APIMgtDAOException e) {
+            String errorMsg = "Error occurred while creating the Stream - " + streamBuilder.getName();
+            log.error(errorMsg);
+            throw new APIManagementException(errorMsg, e, e.getErrorHandler());
+        }
+
+        return streamBuilder.getId();
+    }
+
+    @Override
+    public List<EventStream> searchStreams(Integer limit, Integer offset, String query) throws APIManagementException {
+        List<EventStream> streamResults;
+        String username = getUsername();
+        streamResults = getStreamDAO().getStreams(username);
+        return streamResults;
     }
 
     private boolean validateScope(String swagger) throws APIManagementException {

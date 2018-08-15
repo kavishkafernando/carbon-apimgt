@@ -250,7 +250,10 @@ public enum ExceptionCodes implements ErrorHandler {
     INVALID_DEDICATED_CONTAINER_BASED_GATEWAY_LABEL(900998, "Invalid gateway label is provided", 400,
             "Invalid gateway label is provided"),
     DEDICATED_GATEWAY_DETAILS_NOT_FOUND(900999, "Dedicated gateway details not found for the API", 404, "Dedicated " +
-            "gateway details not found for the API");
+            "gateway details not found for the API"),
+    STREAM_ALREADY_EXISTS(901000, "The Stream already exists.", 409, " The Stream already exists"),
+    STREAM_DAO_EXCEPTION(901001, "Internal server error.", 500, " Error occurred while retrieving Stream data"),
+    STREAM_NOT_FOUND(901002, "Stream not found", 404, "Stream could not be found");
 
     private final long errorCode;
     private final String errorMessage;

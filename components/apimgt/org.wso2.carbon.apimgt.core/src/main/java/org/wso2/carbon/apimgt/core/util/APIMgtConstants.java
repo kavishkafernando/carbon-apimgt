@@ -395,6 +395,10 @@ public class APIMgtConstants {
         public static final String RSA_SIGNED_TOKEN = "rsaSignedToken";
         public static final String SET_COOKIE = "Set-Cookie";
         public static final String COOKIE = "Cookie";
+        public static final String STREAM_ID = "streamId";
+        public static final String STREAM_NAME = "streamName";
+        public static final String STREAM_VERSION = "streamVersion";
+        public static final String STREAM_DESCRIPTION = "streamDescription";
     }
 
     /**
@@ -553,5 +557,27 @@ public class APIMgtConstants {
     public static class EncryptionConstants {
         public static final String AES = "AES";
         public static final String ENCRYPTED_AES_KEY_FILE = "encryptedAESKeyFile";
+    }
+
+    /**
+     * Stream Exceptions related constance will be put here
+     */
+    public static class StreamExceptionsConstants {
+
+        public static final String STREAM_NAME = "STREAM_NAME";
+        public static final String STREAM_CONTEXT = "STREAM_CONTEXT";
+        public static final String STREAM_VERSION = "STREAM_VERSION";
+        public static final String APPLICATION_NAME = "APPLICATION_NAME";
+        public static final String STREAM_ID = "STREAM_ID";
+        public static final String DOC_ID = "DOC_ID";
+        public static final String TIER_LEVEL = "TIER_LEVEL";
+        public static final String ENDPOINT_ID = "ENDPOINT_ID";
+        public static final String LIFECYCLE_ID = "LIFECYCLE_ID";
+        public static final String WORKFLOW_REF_ID = "WORKFLOW_REFERENCE_ID";
+        public static final String WORKFLOW_CATEGORY = "WORKFLOW_CATEGORY";
+        public static final String COMMENT_ID = "COMMENT_ID";
+        public static final String RATING_ID = "RATING_ID";
+        public static final String USERNAME = "USERNAME";
+        public static final String SCOPE_NAME = "scope";
     }
 }

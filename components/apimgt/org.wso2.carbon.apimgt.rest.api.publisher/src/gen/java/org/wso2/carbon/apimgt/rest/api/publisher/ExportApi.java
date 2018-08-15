@@ -38,7 +38,7 @@ import javax.ws.rs.core.Response;
     immediate = true
 )
 @Path("/api/am/publisher/v1.[\\d]+/export")
-@Consumes({ "application/json" })
+@Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
 @Produces({ "application/json" })
 @ApplicationPath("/export")
 @io.swagger.annotations.Api(description = "the export API")
@@ -48,7 +48,7 @@ public class ExportApi implements Microservice  {
     @OPTIONS
     @GET
     @Path("/apis")
-    @Consumes({ "application/json" })
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
     @Produces({ "application/zip" })
     @io.swagger.annotations.ApiOperation(value = "Export information related to an API.", notes = "This operation can be used to export information related to a particular API. ", response = File.class, authorizations = {
         @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
