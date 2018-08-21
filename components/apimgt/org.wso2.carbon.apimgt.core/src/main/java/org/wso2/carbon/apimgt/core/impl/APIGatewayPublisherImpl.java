@@ -35,15 +35,10 @@ import org.wso2.carbon.apimgt.core.models.CompositeAPI;
 import org.wso2.carbon.apimgt.core.models.Endpoint;
 import org.wso2.carbon.apimgt.core.models.PolicyValidationData;
 import org.wso2.carbon.apimgt.core.models.SubscriptionValidationData;
-import org.wso2.carbon.apimgt.core.models.events.APIEvent;
-import org.wso2.carbon.apimgt.core.models.events.ApplicationEvent;
-import org.wso2.carbon.apimgt.core.models.events.BlockEvent;
-import org.wso2.carbon.apimgt.core.models.events.EndpointEvent;
-import org.wso2.carbon.apimgt.core.models.events.GatewayEvent;
-import org.wso2.carbon.apimgt.core.models.events.PolicyEvent;
-import org.wso2.carbon.apimgt.core.models.events.SubscriptionEvent;
-import org.wso2.carbon.apimgt.core.models.events.ThreatProtectionEvent;
+import org.wso2.carbon.apimgt.core.models.events.*;
 import org.wso2.carbon.apimgt.core.models.policy.ThreatProtectionPolicy;
+import org.wso2.carbon.apimgt.core.streams.EventStream;
+import org.wso2.carbon.apimgt.core.streams.StreamSummary;
 import org.wso2.carbon.apimgt.core.util.APIMgtConstants;
 import org.wso2.carbon.apimgt.core.util.APIUtils;
 import org.wso2.carbon.apimgt.core.util.BrokerUtil;
@@ -468,6 +463,17 @@ public class APIGatewayPublisherImpl implements APIGateway {
         containerBasedGatewayGenerator.removeContainerBasedGateway(label, api);
     }
 
+    @Override
+    public void addStream(EventStream stream) throws GatewayException {
+        StreamEvent streamCreateEvent = new StreamEvent(APIMgtConstants.GatewayEventTypes.STREAM_CREATE);
+        streamCreateEvent.setStreamSummary(toStreamSummary(stream));
+        publishToPublisherTopic(streamCreateEvent);
+
+        if (log.isDebugEnabled()) {
+            log.debug("Stream : " + stream.getName() + " created event has been successfully published to broker");
+        }
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -567,5 +573,18 @@ public class APIGatewayPublisherImpl implements APIGateway {
     public void setContainerBasedGatewayGenerator(ContainerBasedGatewayGenerator containerBasedGatewayGenerator) {
         this.containerBasedGatewayGenerator = containerBasedGatewayGenerator;
     }
-
+    /**
+     * Convert Stream definition into StreamSummary
+     *
+     * @param stream Stream definition
+     * @return The summary of the Stream
+     */
+    private StreamSummary toStreamSummary(EventStream stream) {
+        StreamSummary streamSummary = new StreamSummary();
+        streamSummary.setId(stream.getId());
+        streamSummary.setName(stream.getName());
+        streamSummary.setVersion(stream.getVersion());
+        streamSummary.setLifeCycleStatus(stream.getLifeCycleStatus());
+        return streamSummary;
+    }
 }

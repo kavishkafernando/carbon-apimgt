@@ -33,12 +33,7 @@ import org.wso2.carbon.apimgt.core.configuration.models.APIMConfigurations;
 import org.wso2.carbon.apimgt.core.exception.ExceptionCodes;
 import org.wso2.carbon.apimgt.core.internal.ServiceReferenceHolder;
 import org.wso2.carbon.apimgt.core.models.Endpoint;
-import org.wso2.carbon.apimgt.core.template.APIConfigContext;
-import org.wso2.carbon.apimgt.core.template.APITemplateException;
-import org.wso2.carbon.apimgt.core.template.CompositeAPIConfigContext;
-import org.wso2.carbon.apimgt.core.template.ConfigContext;
-import org.wso2.carbon.apimgt.core.template.EndpointContext;
-import org.wso2.carbon.apimgt.core.template.ResourceConfigContext;
+import org.wso2.carbon.apimgt.core.template.*;
 import org.wso2.carbon.apimgt.core.template.dto.CompositeAPIEndpointDTO;
 import org.wso2.carbon.apimgt.core.template.dto.TemplateBuilderDTO;
 
@@ -52,6 +47,7 @@ import java.util.List;
 public class GatewaySourceGeneratorImpl implements GatewaySourceGenerator {
     private static final Logger log = LoggerFactory.getLogger(GatewaySourceGeneratorImpl.class);
     private APIConfigContext apiConfigContext;
+    private StreamConfigContext streamConfigContext;
     private String packageName;
 
     public GatewaySourceGeneratorImpl() {
@@ -117,6 +113,12 @@ public class GatewaySourceGeneratorImpl implements GatewaySourceGenerator {
     public void setApiConfigContext(APIConfigContext apiConfigContext) {
         this.apiConfigContext = apiConfigContext;
     }
+
+    @Override
+    public void setStreamConfigContext(StreamConfigContext streamConfigContext) {
+        this.streamConfigContext = streamConfigContext;
+    }
+
 
     @Override
     public String getEndpointConfigStringFromTemplate(Endpoint endpoint) throws APITemplateException {

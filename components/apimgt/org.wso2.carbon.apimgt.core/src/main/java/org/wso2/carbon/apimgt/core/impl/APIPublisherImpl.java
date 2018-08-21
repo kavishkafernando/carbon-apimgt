@@ -84,6 +84,7 @@ import org.wso2.carbon.apimgt.core.models.policy.ThreatProtectionPolicy;
 import org.wso2.carbon.apimgt.core.streams.EventStream;
 import org.wso2.carbon.apimgt.core.template.APIConfigContext;
 import org.wso2.carbon.apimgt.core.template.APITemplateException;
+import org.wso2.carbon.apimgt.core.template.StreamConfigContext;
 import org.wso2.carbon.apimgt.core.template.dto.NotificationDTO;
 import org.wso2.carbon.apimgt.core.template.dto.TemplateBuilderDTO;
 import org.wso2.carbon.apimgt.core.util.APIFileUtils;
@@ -2542,8 +2543,24 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
         }
 
         try{
+
+            List<TemplateBuilderDTO> resourceList = new ArrayList<>();
+            GatewaySourceGenerator gatewaySourceGenerator = getGatewaySourceGenerator();
+            StreamConfigContext streamConfigContext = new StreamConfigContext(streamBuilder.build(), config
+                    .getGatewayPackageName());
+            gatewaySourceGenerator.setStreamConfigContext(streamConfigContext);
+            String gatewayConfig = gatewaySourceGenerator.getConfigStringFromTemplate(resourceList);
+            if (log.isDebugEnabled()) {
+                log.debug("Stream " + streamBuilder.getName() + "gateway config: " + gatewayConfig);
+            }
+
         createdStream = streamBuilder.build();
         APIUtils.validateStream(createdStream);
+
+            gateway.addStream(createdStream);
+            if (log.isDebugEnabled()) {
+                log.debug("Stream : " + streamBuilder.getName() + " has been identifier published to gateway");
+            }
 
         getStreamDAO().addStream(createdStream);
 

@@ -149,6 +149,7 @@ function retrieveResources (string apiContext, string apiVersion) {
     }
 }
 
+
 function retrieveApplications () (boolean) {
     string query = "/api/am/core/v1.0/applications";
     message request = {};
@@ -317,6 +318,15 @@ function fromJSONToAPIDTO (json api) (dto:APIDTO) {
     APIDTO.securityScheme = jsons:getInt(api, "$.securityScheme");
     return APIDTO;
 
+}
+
+function fromJSONToStreamDTO (json stream) (dto:StreamDTO) {
+    dto:StreamDTO StreamDTO = {};
+    StreamDTO.id, err = (string)stream.id;
+    StreamDTO.name, err = (string)stream.name;
+    StreamDTO.version, err = (string)stream.version;
+    StreamDTO.lifeCycleStatus, err = (string)stream.lifeCycleStatus;
+    return StreamDTO;
 }
 
 function getSystemProperty (string prop) (string) {

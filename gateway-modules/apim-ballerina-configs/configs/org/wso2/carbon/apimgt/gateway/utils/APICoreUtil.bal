@@ -181,6 +181,23 @@ function getAPIServiceConfig (string apiId) (int, string) {
     }
     return status, apiConfig;
 }
+
+function getStreamServiceConfig (string streamId) (int, string) {
+    message request = {};
+    message response = {};
+    string streamConfig;
+    int status;
+    try {
+    http:ClientConnector client = create http:ClientConnector(getAPICoreURL());
+    response = http:ClientConnector.get(client, "/api/am/core/v1.0/stream/" + streamId + "/gateway-config", request);
+    streamConfig = messages:getStringPayload(response);
+    status = http:getStatusCode(response);
+    } catch (errors:Error e) {
+    system:println("Error occurred while retrieving service configuration for Stream : " + streamId);
+    throw e;
+    }
+    return status, streamConfig;
+}
 function getEndpointConfig (string endpointId) (int, string) {
     message request = {};
     message response = {};

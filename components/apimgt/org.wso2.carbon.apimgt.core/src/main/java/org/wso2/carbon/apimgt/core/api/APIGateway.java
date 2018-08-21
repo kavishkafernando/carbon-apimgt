@@ -28,6 +28,7 @@ import org.wso2.carbon.apimgt.core.models.Endpoint;
 import org.wso2.carbon.apimgt.core.models.PolicyValidationData;
 import org.wso2.carbon.apimgt.core.models.SubscriptionValidationData;
 import org.wso2.carbon.apimgt.core.models.policy.ThreatProtectionPolicy;
+import org.wso2.carbon.apimgt.core.streams.EventStream;
 
 import java.util.List;
 
@@ -249,4 +250,11 @@ public interface APIGateway {
      */
     void removeContainerBasedGateway(String label, API api) throws ContainerBasedGatewayException;
 
+    /**
+     * Add Stream in gateway
+     *
+     * @param stream Stream artifact
+     * @throws GatewayException If there is a failure while adding API to gateway
+     */
+    void addStream(EventStream stream) throws GatewayException;
 }

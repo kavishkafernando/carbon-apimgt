@@ -466,6 +466,7 @@ public class APIMgtConstants {
         public static final String THREAT_PROTECTION_POLICY_ADD = "THREAT_PROTECTION_POLICY_ADD";
         public static final String THREAT_PROTECTION_POLICY_DELETE = "THREAT_PROTECTION_POLICY_DELETE";
         public static final String THREAT_PROTECTION_POLICY_UPDATE = "THREAT_PROTECTION_POLICY_UPDATE";
+        public static final String STREAM_CREATE = "STREAM_CREATE";
 
     }
 
