@@ -60,6 +60,9 @@ public class StreamFileDAO implements StreamDAO {
     public void addStream(EventStream stream) throws APIMgtDAOException {
         //Save Stream definition
         FileStream fileStream = new FileStream(stream);
+        String streamExportDirectory = APIFileUtils.getStreamBaseDirectory(storagePath, fileStream);
+        APIFileUtils.createDirectory(streamExportDirectory);
+        APIFileUtils.exportStreamDefinitionToFileSystem(fileStream, streamExportDirectory);
 
     }
 

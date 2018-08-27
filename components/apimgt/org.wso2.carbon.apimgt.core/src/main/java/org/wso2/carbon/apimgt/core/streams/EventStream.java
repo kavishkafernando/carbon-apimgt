@@ -307,6 +307,8 @@ public class EventStream {
         private List<Transport> consumerTransport = new ArrayList<Transport>();
         private List<Display> consumerDisplay = new ArrayList<Display>();
 
+        private String gatewayConfig;
+
         public String getId() {
             return id;
         }
@@ -805,6 +807,11 @@ public class EventStream {
          */
         public StreamBuilder consumerDisplay(List<Display> consumerDisplay) {
             this.consumerDisplay = consumerDisplay;
+            return this;
+        }
+
+        public StreamBuilder gatewayConfig(String gatewayConfig) {
+            this.gatewayConfig = gatewayConfig;
             return this;
         }
 

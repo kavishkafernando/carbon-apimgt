@@ -19,6 +19,7 @@
 package org.wso2.carbon.apimgt.core.api;
 
 import org.wso2.carbon.apimgt.core.models.Endpoint;
+import org.wso2.carbon.apimgt.core.models.StreamTemplate;
 import org.wso2.carbon.apimgt.core.template.APIConfigContext;
 import org.wso2.carbon.apimgt.core.template.APITemplateException;
 import org.wso2.carbon.apimgt.core.template.StreamConfigContext;
@@ -39,6 +40,15 @@ public interface GatewaySourceGenerator {
      * @throws APITemplateException throws if an error occurred
      */
     String getConfigStringFromTemplate(List<TemplateBuilderDTO> apiResources) throws APITemplateException;
+
+    /**
+     * Generate initial service implementation for a API
+     *
+     * @param streamResources List of api resources.
+     * @return service impl as Text
+     * @throws APITemplateException throws if an error occurred
+     */
+    String getStreamConfigStringFromTemplate(List<StreamTemplate> streamResources) throws APITemplateException;
 
     /**
      * Generate initial endpoint config
@@ -74,8 +84,8 @@ public interface GatewaySourceGenerator {
     void setApiConfigContext(APIConfigContext apiConfigContext);
 
     /**
-     * Used to set API Config context.
-     * @param streamConfigContext  APIConfigContext instance
+     * Used to set Stream Config context.
+     * @param streamConfigContext  StreamConfigContext instance
      */
     void setStreamConfigContext(StreamConfigContext streamConfigContext);
 

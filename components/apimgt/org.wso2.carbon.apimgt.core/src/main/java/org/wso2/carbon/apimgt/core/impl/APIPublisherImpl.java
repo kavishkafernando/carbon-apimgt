@@ -19,6 +19,9 @@
  */
 package org.wso2.carbon.apimgt.core.impl;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONArray;
@@ -62,23 +65,7 @@ import org.wso2.carbon.apimgt.core.exception.ServiceDiscoveryException;
 import org.wso2.carbon.apimgt.core.exception.WorkflowException;
 import org.wso2.carbon.apimgt.core.executors.NotificationExecutor;
 import org.wso2.carbon.apimgt.core.internal.ServiceReferenceHolder;
-import org.wso2.carbon.apimgt.core.models.API;
-import org.wso2.carbon.apimgt.core.models.APIResource;
-import org.wso2.carbon.apimgt.core.models.APIStatus;
-import org.wso2.carbon.apimgt.core.models.CorsConfiguration;
-import org.wso2.carbon.apimgt.core.models.DedicatedGateway;
-import org.wso2.carbon.apimgt.core.models.DocumentInfo;
-import org.wso2.carbon.apimgt.core.models.Endpoint;
-import org.wso2.carbon.apimgt.core.models.Event;
-import org.wso2.carbon.apimgt.core.models.Label;
-import org.wso2.carbon.apimgt.core.models.LifeCycleEvent;
-import org.wso2.carbon.apimgt.core.models.Provider;
-import org.wso2.carbon.apimgt.core.models.Scope;
-import org.wso2.carbon.apimgt.core.models.Subscription;
-import org.wso2.carbon.apimgt.core.models.SubscriptionValidationData;
-import org.wso2.carbon.apimgt.core.models.UriTemplate;
-import org.wso2.carbon.apimgt.core.models.WSDLArchiveInfo;
-import org.wso2.carbon.apimgt.core.models.WorkflowStatus;
+import org.wso2.carbon.apimgt.core.models.*;
 import org.wso2.carbon.apimgt.core.models.policy.Policy;
 import org.wso2.carbon.apimgt.core.models.policy.ThreatProtectionPolicy;
 import org.wso2.carbon.apimgt.core.streams.EventStream;
@@ -101,10 +88,7 @@ import org.wso2.carbon.lcm.core.impl.LifecycleEventManager;
 import org.wso2.carbon.lcm.core.impl.LifecycleState;
 import org.wso2.carbon.lcm.sql.beans.LifecycleHistoryBean;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.time.Instant;
@@ -2544,18 +2528,50 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
 
         try{
 
-            List<TemplateBuilderDTO> resourceList = new ArrayList<>();
+        createdStream = streamBuilder.build();
+        APIUtils.validateStream(createdStream);
+
+            List<StreamTemplate> streamResourceList = new ArrayList<>();
+
+        //create a .bal file
+            StreamTemplate template = new StreamTemplate();
+            template.setName(createdStream.getName());
+            template.setVersion(createdStream.getVersion());
+            template.setEndpoint(createdStream.getEndpoint());
+            template.setStreamType(createdStream.getStreamType());
+            template.setStreamAuthorization(createdStream.getStreamAuthorization());
+            template.setProducable(createdStream.isProducable());
+            template.setCanProducerAccessDirectly(createdStream.isCanProducerAccessDirectly());
+            template.setCanProducerAccessViaGateway(createdStream.isCanProducerAccessViaGateway());
+            template.setProducerAuthorization(createdStream.getProducerAuthorization());
+            template.setProducerTransport(createdStream.getProducerTransport());
+            template.setProducerMessageType(createdStream.getProducerMessageType());
+            template.setConsumable(createdStream.isConsumable());
+            template.setCanConsumerAccessDirectly(createdStream.isCanConsumerAccessDirectly());
+            template.setCanConsumerAccessViaGateway(createdStream.isCanConsumerAccessViaGateway());
+            template.setConsumerAuthorization(createdStream.getConsumerAuthorization());
+            template.setConsumerTransport(createdStream.getConsumerTransport());
+            template.setConsumerDisplay(createdStream.getConsumerDisplay());
+
+            streamResourceList.add(template);
+
+
             GatewaySourceGenerator gatewaySourceGenerator = getGatewaySourceGenerator();
             StreamConfigContext streamConfigContext = new StreamConfigContext(streamBuilder.build(), config
                     .getGatewayPackageName());
             gatewaySourceGenerator.setStreamConfigContext(streamConfigContext);
-            String gatewayConfig = gatewaySourceGenerator.getConfigStringFromTemplate(resourceList);
+            String gatewayConfig = gatewaySourceGenerator.getStreamConfigStringFromTemplate(streamResourceList);
             if (log.isDebugEnabled()) {
                 log.debug("Stream " + streamBuilder.getName() + "gateway config: " + gatewayConfig);
             }
 
-        createdStream = streamBuilder.build();
-        APIUtils.validateStream(createdStream);
+            streamBuilder.gatewayConfig(gatewayConfig);
+
+
+//
+//            ObjectMapper mapper = new ObjectMapper();
+//            File file = new File("stream.json");
+//            mapper.writeValue(file, createdStream);
 
             gateway.addStream(createdStream);
             if (log.isDebugEnabled()) {
@@ -2583,6 +2599,7 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
             String errorMsg = "Error occurred while creating the Stream - " + streamBuilder.getName();
             log.error(errorMsg);
             throw new APIManagementException(errorMsg, e, e.getErrorHandler());
+
         }
 
         return streamBuilder.getId();

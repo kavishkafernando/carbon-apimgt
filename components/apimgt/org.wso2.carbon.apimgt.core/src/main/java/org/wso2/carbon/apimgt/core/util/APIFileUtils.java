@@ -30,6 +30,7 @@ import org.wso2.carbon.apimgt.core.exception.APIMgtDAOException;
 import org.wso2.carbon.apimgt.core.models.API;
 import org.wso2.carbon.apimgt.core.models.Endpoint;
 import org.wso2.carbon.apimgt.core.models.FileApi;
+import org.wso2.carbon.apimgt.core.streams.FileStream;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -240,6 +241,22 @@ public class APIFileUtils {
         APIFileUtils.writeObjectAsJsonToFile(api, apiFileLocation);
         if (log.isDebugEnabled()) {
             log.debug("Successfully saved API definition for api: " + api.getName() + ", version: " + api.getVersion());
+        }
+    }
+
+    /**
+     * write the given Stream definition to file system
+     *
+     * @param stream            {@link FileStream} object to be exported
+     * @param exportLocation file system location to write the API definition
+     * @throws APIMgtDAOException if an error occurs while writing the API definition
+     */
+    public static void exportStreamDefinitionToFileSystem(FileStream stream, String exportLocation) throws APIMgtDAOException {
+        String streamFileLocation = exportLocation + File.separator + APIMgtConstants.APIFileUtilConstants
+                .API_DEFINITION_FILE_PREFIX + stream.getId() + APIMgtConstants.APIFileUtilConstants.JSON_EXTENSION;
+        APIFileUtils.writeObjectAsJsonToFile(stream, streamFileLocation);
+        if (log.isDebugEnabled()) {
+            log.debug("Successfully saved stream definition for api: " + stream.getName() + ", version: " + stream.getVersion());
         }
     }
 
@@ -458,6 +475,16 @@ public class APIFileUtils {
      */
     public static String getAPIBaseDirectory(String basePath, FileApi api) {
         return basePath + File.separator + api.getProvider() + "-" + api.getName() + "-" + api.getVersion();
+    }
+    /**
+     * Utility method to get stream directory path
+     *
+     * @param basePath path where the stream are saved
+     * @param stream      stream to get details
+     * @return Directory path of the stream
+     */
+    public static String getStreamBaseDirectory(String basePath, FileStream stream) {
+        return basePath + File.separator + stream.getProvider() + "-" + stream.getName() + "-" + stream.getVersion();
     }
 
     /**

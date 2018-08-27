@@ -99,6 +99,54 @@ function getAPIs () (json) {
     }
     return apiList;
 }
+
+function loadStreams () {
+    json streams = getStreams();
+    int index = 0;
+    errors:TypeCastError err;
+    int count;
+    count, err = (int)streams.count;
+    json streamList = streams.list;
+
+    while(index < count){
+        dto:StreamDTO stream = fromJSONToStreamDTO(streamList[index]);
+        //Retrieve API configuration
+        string streamConfig;
+        int status;
+        status, streamConfig = getStreamServiceConfig(stream.id);
+        int maxRetries = 3;
+        int i = 0;
+        while (status == Constants:NOT_FOUND) {
+            apimgtUtil:wait(10000);
+            status, streamConfig = getStreamServiceConfig(stream.id);
+            i = i + 1;
+            if (i > maxRetries) {
+                break;
+            }
+        }
+        retrieveStreamResources(stream.name, stream.version);
+        index = index + 1;
+           }
+
+}
+
+function getStreams () (json) {
+    string apiCoreURL;
+    message request = {};
+    message response = {};
+    json streamList;
+    try{
+        http:ClientConnector client = create http:ClientConnector(getAPICoreURL());
+        response = http:ClientConnector.get(client, "/api/am/publisher/v1.0/stream", request);
+        streamList = messages:getJsonPayload(response);
+        return streamList;
+    }catch (errors:Error e) {
+        system:println("Error occurred while retrieving gateway Streams" + e.msg);
+        throw e;
+    }
+    return streamList;
+}
+
 function getEndpoints () (json) {
     string apiCoreURL;
     message request = {};
@@ -189,7 +237,7 @@ function getStreamServiceConfig (string streamId) (int, string) {
     int status;
     try {
     http:ClientConnector client = create http:ClientConnector(getAPICoreURL());
-    response = http:ClientConnector.get(client, "/api/am/core/v1.0/stream/" + streamId + "/gateway-config", request);
+    response = http:ClientConnector.get(client, "/api/am/publisher/v1.0/stream/" + streamId , request);
     streamConfig = messages:getStringPayload(response);
     status = http:getStatusCode(response);
     } catch (errors:Error e) {
@@ -270,6 +318,11 @@ function getAPICoreURL () (string) {
 function deployService (dto:APIDTO api, string config) {
     string fileName = api.id + ".bal";
     string serviceName = api.name + "_" + strings:replace(api.id, "-", "_");
+    deployment:deployService(fileName, serviceName, config, "org/wso2/carbon/apimgt/gateway");
+}
+function deployStreamService (dto:StreamDTO stream, string config) {
+    string fileName = stream.id + ".bal";
+    string serviceName = stream.name + "_" + strings:replace(stream.id, "-", "_");
     deployment:deployService(fileName, serviceName, config, "org/wso2/carbon/apimgt/gateway");
 }
 function deployFile (string id, string config) {

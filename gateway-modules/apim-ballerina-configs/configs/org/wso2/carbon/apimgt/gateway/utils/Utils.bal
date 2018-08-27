@@ -149,6 +149,22 @@ function retrieveResources (string apiContext, string apiVersion) {
     }
 }
 
+function retrieveStreamResources (string streamName, string streamVersion) {
+    string query = "/api/am/publisher/v1.0/stream/?streamName=" + streamName + "&streamVersion=" + streamVersion;
+    message request = {};
+    http:ClientConnector apiInfoConnector = create http:ClientConnector(getAPICoreURL());
+    messages:setHeader(request, "Content-Type", "application/json");
+    message response = http:ClientConnector.get(apiInfoConnector, query, request);
+    json resources = messages:getJsonPayload(response);
+    int length = jsons:getInt(resources, "$.list.length()");
+    int i = 0;
+    while (i < length) {
+        json resource1 = resources.list[i];
+        holders:putIntoResourceCache(streamName, streamVersion, fromJsonToResourceDto(resource1));
+        i = i + 1;
+    }
+}
+
 
 function retrieveApplications () (boolean) {
     string query = "/api/am/core/v1.0/applications";
@@ -320,12 +336,12 @@ function fromJSONToAPIDTO (json api) (dto:APIDTO) {
 
 }
 
-function fromJSONToStreamDTO (json stream) (dto:StreamDTO) {
+function fromJSONToStreamDTO (json streams) (dto:StreamDTO) {
     dto:StreamDTO StreamDTO = {};
-    StreamDTO.id, err = (string)stream.id;
-    StreamDTO.name, err = (string)stream.name;
-    StreamDTO.version, err = (string)stream.version;
-    StreamDTO.lifeCycleStatus, err = (string)stream.lifeCycleStatus;
+    StreamDTO.id, err = (string)streams.id;
+    StreamDTO.name, err = (string)streams.name;
+    StreamDTO.version, err = (string)streams.version;
+    StreamDTO.lifeCycleStatus, err = (string)streams.lifeCycleStatus;
     return StreamDTO;
 }
 

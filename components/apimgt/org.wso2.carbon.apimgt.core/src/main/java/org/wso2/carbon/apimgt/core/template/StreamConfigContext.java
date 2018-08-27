@@ -37,6 +37,7 @@ public class StreamConfigContext extends ConfigContext{
     @Override
     public VelocityContext getContext() {
         VelocityContext context = new VelocityContext();
+        context.put("name", name);
         context.put("version", version);
         String serviceName = serviceNamePrefix + this.name + "_" + id.replaceAll("-", "_");
         if (serviceName.contains(" ")) {

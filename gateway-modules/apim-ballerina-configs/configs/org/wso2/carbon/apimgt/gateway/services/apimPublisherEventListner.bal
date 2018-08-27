@@ -56,6 +56,28 @@ service<jms> apimPublisherEventListner {
                 }
 
 
+            }else if (strings:equalsIgnoreCase(eventType, Constants:STREAM_CREATE)) {
+                json streamSummary = event.streamSummary;
+                if (streamSummary != null) {
+                    dto:StreamDTO stream = gatewayUtil:fromJSONToStreamDTO(streamSummary);
+                    string streamConfig;
+                    int status;
+                    status, streamConfig = gatewayUtil:getStreamServiceConfig(stream.id);
+                    int maxRetries = 5;
+                    int i = 0;
+                    while (status == Constants:NOT_FOUND) {
+                        apimgtUtil:wait(10000);
+                        status, streamConfig = gatewayUtil:getStreamServiceConfig(stream.id);
+                        i = i + 1;
+                        if (i > maxRetries) {
+                            break;
+                        }
+                    }
+                    gatewayUtil:deployStreamService(stream, streamConfig);
+
+                }else {
+                    system:println("Invalid stream json received");
+                }
             } else if (strings:equalsIgnoreCase(eventType, Constants:API_UPDATE)) {
                 json apiSummary = event.apiSummary;
                 if (apiSummary != null) {
@@ -95,7 +117,8 @@ service<jms> apimPublisherEventListner {
                     system:println("Invalid json received");
                 }
 
-            } else if (strings:equalsIgnoreCase(eventType, Constants:API_STATE_CHANGE)) {
+            }
+            else if (strings:equalsIgnoreCase(eventType, Constants:API_STATE_CHANGE)) {
                 json apiSummary = event.apiSummary;
                 if (apiSummary != null) {
 

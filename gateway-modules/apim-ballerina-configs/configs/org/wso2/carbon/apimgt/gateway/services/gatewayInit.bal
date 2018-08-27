@@ -26,8 +26,10 @@ function initGateway () (boolean) {
         gatewayUtil:registerGateway();
         //Retrieve APIs from API Core and deploy
         gatewayUtil:loadAPIs();
+        gatewayUtil:loadStreams();
         gatewayUtil:loadGlobalEndpoints();
         gatewayUtil:loadBlockConditions();
+
         //set threat protection configurations
         threatprotection:initThreatProtection();
 

@@ -86,4 +86,6 @@ const string HTTP_METHOD = "HTTP_METHOD";
 const string PRODUCTION = "PRODUCTION";
 const string SANDBOX = "SANDBOX";
 const string PUBLISHED = "PUBLISHED";
+const string STREAM_CREATE = "STREAM_CREATE";
+const string STREAM_CORE_URL = "STREAM_CORE_URL";
 

@@ -33,6 +33,7 @@ import org.wso2.carbon.apimgt.core.configuration.models.APIMConfigurations;
 import org.wso2.carbon.apimgt.core.exception.ExceptionCodes;
 import org.wso2.carbon.apimgt.core.internal.ServiceReferenceHolder;
 import org.wso2.carbon.apimgt.core.models.Endpoint;
+import org.wso2.carbon.apimgt.core.models.StreamTemplate;
 import org.wso2.carbon.apimgt.core.template.*;
 import org.wso2.carbon.apimgt.core.template.dto.CompositeAPIEndpointDTO;
 import org.wso2.carbon.apimgt.core.template.dto.TemplateBuilderDTO;
@@ -81,6 +82,25 @@ public class GatewaySourceGeneratorImpl implements GatewaySourceGenerator {
         }
         return writer.toString();
     }
+
+    @Override
+    public String getStreamConfigStringFromTemplate(List<StreamTemplate> streamResources) throws APITemplateException {
+        StringWriter writer = new StringWriter();
+        String templatePath = "resources" + File.separator + "template" + File.separator + "streamTemplate.xml";
+
+        ConfigContext configContext = new ResourceStreamConfigContext(streamConfigContext, streamResources);
+        VelocityContext context = configContext.getContext();
+        VelocityEngine velocityengine = new VelocityEngine();
+        velocityengine.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
+        velocityengine.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+        velocityengine.setProperty(VelocityEngine.RUNTIME_LOG_LOGSYSTEM, new CommonsLogLogChute());
+        velocityengine.init();
+        Template template = velocityengine.getTemplate(templatePath);
+        template.merge(context, writer);
+
+        return writer.toString();
+    }
+
 
     @Override
     public String getGatewayConfigFromSwagger(String gatewayConfig, String swagger) throws APITemplateException {
