@@ -48,7 +48,6 @@ service<jms> apimPublisherEventListner {
                     }
                     //Deploy API service
                     gatewayUtil:deployService(api, apiConfig);
-                    system:println(gatewayUtil:deployService(api, apiConfig));
                     //Update API cache
                     holder:putIntoAPICache(api);
                     gatewayUtil:retrieveResources(api.context, api.version);
@@ -56,40 +55,6 @@ service<jms> apimPublisherEventListner {
                     system:println("Invalid json received");
                 }
 
-
-            } else if (strings:equalsIgnoreCase(eventType, Constants:STREAM_CREATE)){
-                json streamSummary = event.streamSummary;
-                errors:TypeCastError err;
-                string eventType;
-                eventType, err = (string)event[Constants:EVENT_TYPE];
-                system:println("eventType " + eventType);
-                system:println("Stream event is working");
-                if (streamSummary != null) {
-                dto:StreamDTO stream = gatewayUtil:fromJSONToStreamDTO(streamSummary);
-                system:println("Got converted");
-                //Retrieve Stream configuration
-                string streamConfig;
-                int status;
-                status, streamConfig = gatewayUtil:getStreamServiceConfig(stream.id);
-                int maxRetries = 5;
-                int i = 0;
-                while (status == Constants:NOT_FOUND) {
-                    apimgtUtil:wait(10000);
-                    status, streamConfig = gatewayUtil:getStreamServiceConfig(stream.id);
-                    i = i + 1;
-                    if (i > maxRetries) {
-                        break;
-                    }
-                }
-                //Deploy API service
-                gatewayUtil:deployService(stream, streamConfig);
-                system:println(gatewayUtil:deployService(stream, streamConfig));
-                //Update API cache
-                holder:putIntoAPICache(stream);
-                //gatewayUtil:retrieveResources(api.context, stream.version);
-            } else {
-                system:println("Invalid json received");
-            }
 
             } else if (strings:equalsIgnoreCase(eventType, Constants:API_UPDATE)) {
                 json apiSummary = event.apiSummary;
