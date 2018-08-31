@@ -32,4 +32,13 @@ public abstract class StreamApiService {
  ,String ifNoneMatch
  ,String ifModifiedSince
   ,Request request) throws NotFoundException;
+
+    public abstract Response streamIdDedicatedGatewayGet(String streamId
+            ,String ifNoneMatch
+            ,String ifModifiedSince
+            ,Request request) throws NotFoundException;
+    public abstract Response streamIdGatewayConfigGet(String streamId
+            ,String ifNoneMatch
+            ,String ifModifiedSince
+            ,Request request) throws NotFoundException;
 }

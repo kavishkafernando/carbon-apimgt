@@ -3690,6 +3690,62 @@ paths:
             $ref: '#/definitions/Error'
 
 ######################################################
+# Dedicated Gateway API
+######################################################
+  /stream/{streamId}/dedicated-gateway:
+#-----------------------------------------------------
+# Retrieve dedicated Gateway Enabled
+#-----------------------------------------------------
+    get:
+      summary: Get enability of dedicatedGateway
+      description: |
+        This operation can be used to retrieve whether the dedicated gateway is enabled in a certain API.
+      parameters:
+        - $ref: '#/parameters/streamId'
+        - $ref: '#/parameters/If-None-Match'
+        - $ref: '#/parameters/If-Modified-Since'
+      tags:
+        - DedicatedGateway (Individual)
+      responses:
+        200:
+          description: |
+            OK.
+            isEnabled of dedicated Gateway returned
+          schema:
+            $ref: '#/definitions/DedicatedGateway'
+          headers:
+            Content-Type:
+              description: |
+                The content type of the body.
+              type: string
+            ETag:
+              description: |
+                Entity Tag of the response resource.
+                Used by caches, or in conditional requests (Will be supported in future).
+              type: string
+            Last-Modified:
+              description: |
+                Date and time the resource has been modifed the last time.
+                Used by caches, or in conditional requests (Will be supported in future).
+              type: string
+        304:
+          description: |
+            Not Modified.
+            Empty body because the client has already the latest version of the requested resource (Will be supported in future).
+        404:
+          description: |
+            Not Found.
+            Requested Dedicated Gateway does not exist.
+          schema:
+            $ref: '#/definitions/Error'
+        406:
+          description: |
+            Not Acceptable.
+            The requested media type is not supported.
+          schema:
+            $ref: '#/definitions/Error'
+
+######################################################
 # Parameters - required by some of the APIs above
 ######################################################
 parameters:

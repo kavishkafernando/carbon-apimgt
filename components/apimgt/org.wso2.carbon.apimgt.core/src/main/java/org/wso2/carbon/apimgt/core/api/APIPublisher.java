@@ -678,4 +678,13 @@ public interface APIPublisher extends APIManager {
      * @throws APIManagementException If failed to search for apis with given query.
      */
     List<EventStream> searchStreams(Integer limit, Integer offset, String query) throws APIManagementException;
+
+    /**
+     * This method retrieve gateway config in the database
+     *
+     * @param streamId id of the String
+     * @return API gateway config as a string
+     * @throws APIManagementException If failed to get gateway config of the Stream.
+     */
+    String getStreamGatewayConfig(String streamId) throws APIManagementException;
 }

@@ -1,6 +1,7 @@
 package org.wso2.carbon.apimgt.core.dao;
 
 import org.wso2.carbon.apimgt.core.exception.APIMgtDAOException;
+import org.wso2.carbon.apimgt.core.models.DedicatedStreamGateway;
 import org.wso2.carbon.apimgt.core.streams.EventStream;
 
 import java.util.List;
@@ -63,4 +64,23 @@ public interface StreamDAO {
      *
      */
     List<EventStream> getStreams(String user) throws APIMgtDAOException;
+
+    /**
+     * Get Container based Gateway
+     * @param streamId uuid of Stream
+     * @return DedicatedGateway Object
+     * @throws APIMgtDAOException if error occurs while accessing data layer
+     */
+    DedicatedStreamGateway getDedicatedStreamGateway(String streamId) throws APIMgtDAOException;
+
+
+    /**
+     * Get gateway configuration of a given Stream
+     *
+     * @param streamID The UUID of the respective Stream
+     * @return gateway configuration String
+     * @throws APIMgtDAOException if error occurs while accessing data layer
+     *
+     */
+    String getGatewayConfigOfStream(String streamID) throws APIMgtDAOException;
 }

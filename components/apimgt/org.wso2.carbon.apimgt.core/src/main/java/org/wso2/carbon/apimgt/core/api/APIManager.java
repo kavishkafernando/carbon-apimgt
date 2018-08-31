@@ -21,13 +21,7 @@ package org.wso2.carbon.apimgt.core.api;
 
 import org.wso2.carbon.apimgt.core.exception.APIManagementException;
 import org.wso2.carbon.apimgt.core.exception.APIMgtDAOException;
-import org.wso2.carbon.apimgt.core.models.API;
-import org.wso2.carbon.apimgt.core.models.Application;
-import org.wso2.carbon.apimgt.core.models.DedicatedGateway;
-import org.wso2.carbon.apimgt.core.models.DocumentContent;
-import org.wso2.carbon.apimgt.core.models.DocumentInfo;
-import org.wso2.carbon.apimgt.core.models.Label;
-import org.wso2.carbon.apimgt.core.models.Subscription;
+import org.wso2.carbon.apimgt.core.models.*;
 import org.wso2.carbon.apimgt.core.streams.EventStream;
 import org.wso2.carbon.apimgt.core.workflow.Workflow;
 
@@ -344,4 +338,14 @@ public interface APIManager {
      * @throws APIManagementException If failed to check ia Stream exist.
      */
     boolean isStreamExists(String streamId) throws APIManagementException;
+
+    /**
+     * Get Dedicated Gateway of Stream
+     *
+     * @param streamId of the Stream related to the Container Based Gateway
+     * @return Dedicated Gateway Object
+     * @throws APIManagementException if API Manager core level exception occurred
+     *
+     */
+    DedicatedStreamGateway getDedicatedStreamGateway(String streamId) throws APIManagementException;
 }

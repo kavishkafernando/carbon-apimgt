@@ -19,9 +19,6 @@
  */
 package org.wso2.carbon.apimgt.core.impl;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONArray;
@@ -334,6 +331,20 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
         EventStream stream = null;
         stream = super.getStreambyUUID(uuid);
         return stream;
+    }
+
+    @Override
+    public DedicatedStreamGateway getDedicatedStreamGateway(String streamId) throws APIManagementException {
+        DedicatedStreamGateway dedicatedStreamGateway;
+        try {
+            dedicatedStreamGateway = getStreamDAO().getDedicatedStreamGateway(streamId);
+        } catch (APIMgtDAOException e) {
+            throw new APIManagementException("Error occurred while retrieving dedicated Gateway details of Stream with id "
+                    + streamId, e, ExceptionCodes.ERROR_WHILE_RETRIEVING_DEDICATED_CONTAINER_BASED_GATEWAY);
+        }
+
+        return dedicatedStreamGateway;
+
     }
 
     /**
@@ -2528,8 +2539,9 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
 
         try{
 
-        createdStream = streamBuilder.build();
-        APIUtils.validateStream(createdStream);
+
+            createdStream = streamBuilder.build();
+            APIUtils.validateStream(createdStream);
 
             List<StreamTemplate> streamResourceList = new ArrayList<>();
 
@@ -2566,12 +2578,7 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
             }
 
             streamBuilder.gatewayConfig(gatewayConfig);
-
-
-//
-//            ObjectMapper mapper = new ObjectMapper();
-//            File file = new File("stream.json");
-//            mapper.writeValue(file, createdStream);
+            createdStream.setGatewayConfig(gatewayConfig);
 
             gateway.addStream(createdStream);
             if (log.isDebugEnabled()) {
@@ -2602,7 +2609,7 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
 
         }
 
-        return streamBuilder.getId();
+         return streamBuilder.getId();
     }
 
     @Override
@@ -2611,6 +2618,18 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
         String username = getUsername();
         streamResults = getStreamDAO().getStreams(username);
         return streamResults;
+    }
+
+    @Override
+    public String getStreamGatewayConfig(String streamId) throws APIManagementException {
+        try {
+            return getStreamDAO().getGatewayConfigOfStream(streamId);
+
+        } catch (APIMgtDAOException e) {
+            log.error("Couldn't retrieve swagger definition for apiId " + streamId, e);
+            throw new APIManagementException("Couldn't retrieve gateway configuration for apiId " + streamId,
+                    e.getErrorHandler());
+        }
     }
 
     private boolean validateScope(String swagger) throws APIManagementException {

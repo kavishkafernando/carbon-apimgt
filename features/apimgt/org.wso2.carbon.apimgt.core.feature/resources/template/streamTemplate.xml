@@ -4,9 +4,10 @@ import ballerina.lang.messages;
 import ballerina.lang.errors;
 import ballerina.lang.system;
 
-@http:config {basePath:"$streamName"}
+@http:config {basePath:"$name"}
 service<http> $serviceName {
-    #foreach( $endpointEntry in $apiEndpoint.entrySet() )
+    string VERSION = $version;
+    #foreach( $version in $apiEndpoint.entrySet() )
     #if($endpointEntry.key == "production")
     #if($endpointEntry.value.applicableLevel == "API")
     #set( $endpointConfig = '#set( $endpointConfig = ' + $endpointEntry.value.endpointConfig + ' )' )
@@ -24,7 +25,7 @@ service<http> $serviceName {
     #end
     string KEY_TYPE = "KEY_TYPE";
     #foreach($apiResource in $apiResources)
-    #set( $productionEndpoint = $apiEndpoint.get("production"))
+    #set( $version = $apiEndpoint.get("production"))
     #set( $sandboxEndpoint = $apiEndpoint.get("sandbox"))
     ## https://wso2.org/jira/browse/APIMANAGER-5710
     #if(!$StringUtils.isEmpty($apiResource.httpVerb) && (($apiResource.httpVerb == "GET") || ($apiResource.httpVerb == "POST")))

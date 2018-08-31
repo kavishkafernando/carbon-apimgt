@@ -109,6 +109,23 @@ class ApiResourceDAO {
         }
     }
 
+    static void addStreamBinaryResource(Connection connection, String streamID, String resourceID, ResourceCategory category,
+                                  String dataType, InputStream binaryValue) throws SQLException {
+         String query = "INSERT INTO AM_STREAM_RESOURCES (UUID, STREAM_ID, RESOURCE_CATEGORY_ID, " +
+                "DATA_TYPE, RESOURCE_BINARY_VALUE) VALUES (?,?,?,?,?)";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, resourceID);
+            statement.setString(2, streamID);
+            statement.setInt(3, ResourceCategoryDAO.getResourceCategoryID(connection, category));
+            statement.setString(4, dataType);
+            statement.setBinaryStream(5, binaryValue);
+            statement.execute();
+        }
+    }
+
+
+
 
     static String getTextValueForCategory(Connection connection, String apiID,
                                           ResourceCategory resourceCategory) throws SQLException {
@@ -157,6 +174,30 @@ class ApiResourceDAO {
             statement.setString(1, apiID);
             statement.setInt(2, ResourceCategoryDAO.getResourceCategoryID(connection, category));
             statement.setString(3, apiType.toString());
+            statement.execute();
+
+            try (ResultSet rs =  statement.getResultSet()) {
+                if (rs.next()) {
+                    InputStream inputStream = new ByteArrayInputStream(IOUtils.toByteArray(rs.getBinaryStream
+                            ("RESOURCE_BINARY_VALUE")));
+                    return inputStream;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    static InputStream getStreamBinaryValueForCategory(Connection connection, String streamID,
+                                                 ResourceCategory category)
+            throws SQLException, IOException {
+        final String query = "SELECT res.RESOURCE_BINARY_VALUE FROM AM_STREAM_RESOURCES res " +
+                "INNER JOIN AM_STREAM stream ON res.STREAM_ID = stream.UUID " +
+                "WHERE res.STREAM_ID = ? AND res.RESOURCE_CATEGORY_ID = ? ";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, streamID);
+            statement.setInt(2, ResourceCategoryDAO.getResourceCategoryID(connection, category));
             statement.execute();
 
             try (ResultSet rs =  statement.getResultSet()) {

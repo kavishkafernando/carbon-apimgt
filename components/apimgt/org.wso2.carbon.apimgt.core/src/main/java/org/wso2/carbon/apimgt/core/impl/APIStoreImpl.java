@@ -56,28 +56,7 @@ import org.wso2.carbon.apimgt.core.exception.ExceptionCodes;
 import org.wso2.carbon.apimgt.core.exception.GatewayException;
 import org.wso2.carbon.apimgt.core.exception.LabelException;
 import org.wso2.carbon.apimgt.core.exception.WorkflowException;
-import org.wso2.carbon.apimgt.core.models.API;
-import org.wso2.carbon.apimgt.core.models.APIStatus;
-import org.wso2.carbon.apimgt.core.models.AccessTokenInfo;
-import org.wso2.carbon.apimgt.core.models.AccessTokenRequest;
-import org.wso2.carbon.apimgt.core.models.Application;
-import org.wso2.carbon.apimgt.core.models.ApplicationToken;
-import org.wso2.carbon.apimgt.core.models.Comment;
-import org.wso2.carbon.apimgt.core.models.CompositeAPI;
-import org.wso2.carbon.apimgt.core.models.DedicatedGateway;
-import org.wso2.carbon.apimgt.core.models.Event;
-import org.wso2.carbon.apimgt.core.models.Label;
-import org.wso2.carbon.apimgt.core.models.OAuthAppRequest;
-import org.wso2.carbon.apimgt.core.models.OAuthApplicationInfo;
-import org.wso2.carbon.apimgt.core.models.Rating;
-import org.wso2.carbon.apimgt.core.models.Subscription;
-import org.wso2.carbon.apimgt.core.models.SubscriptionResponse;
-import org.wso2.carbon.apimgt.core.models.SubscriptionValidationData;
-import org.wso2.carbon.apimgt.core.models.Tag;
-import org.wso2.carbon.apimgt.core.models.UriTemplate;
-import org.wso2.carbon.apimgt.core.models.User;
-import org.wso2.carbon.apimgt.core.models.WSDLArchiveInfo;
-import org.wso2.carbon.apimgt.core.models.WorkflowStatus;
+import org.wso2.carbon.apimgt.core.models.*;
 import org.wso2.carbon.apimgt.core.models.policy.Policy;
 import org.wso2.carbon.apimgt.core.template.APIConfigContext;
 import org.wso2.carbon.apimgt.core.template.dto.CompositeAPIEndpointDTO;
@@ -1881,5 +1860,10 @@ public class APIStoreImpl extends AbstractAPIManager implements APIStore, APIMOb
                     + apiId, e, ExceptionCodes.ERROR_WHILE_RETRIEVING_DEDICATED_CONTAINER_BASED_GATEWAY);
         }
         return dedicatedGateway;
+    }
+
+    @Override
+    public DedicatedStreamGateway getDedicatedStreamGateway(String streamId) throws APIManagementException {
+        return null;
     }
 }

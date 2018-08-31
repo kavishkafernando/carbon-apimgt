@@ -54,6 +54,10 @@ public class EventStream {
     private List<Transport> consumerTransport;
     private List<Display> consumerDisplay;
 
+
+
+    private String gatewayConfig;
+
     public String getId() {
         return id;
     }
@@ -232,7 +236,13 @@ public class EventStream {
         this.consumerDisplay = consumerDisplay;
     }
 
+    public String getGatewayConfig() {
+        return gatewayConfig;
+    }
 
+    public void setGatewayConfig(String gatewayConfig) {
+        this.gatewayConfig = gatewayConfig;
+    }
 
     private EventStream(StreamBuilder builder) {
 
@@ -258,6 +268,7 @@ public class EventStream {
         consumerAuthorization = builder.consumerAuthorization;
         consumerTransport = builder.consumerTransport;
         consumerDisplay = builder.consumerDisplay;
+        gatewayConfig = builder.gatewayConfig;
     }
 
     public enum Visibility {
@@ -306,8 +317,10 @@ public class EventStream {
         private List<Authorization> consumerAuthorization = new ArrayList<Authorization>();
         private List<Transport> consumerTransport = new ArrayList<Transport>();
         private List<Display> consumerDisplay = new ArrayList<Display>();
-
         private String gatewayConfig;
+
+
+
 
         public String getId() {
             return id;
@@ -487,7 +500,13 @@ public class EventStream {
             this.consumerDisplay = consumerDisplay;
         }
 
+        public String getGatewayConfig() {
+            return gatewayConfig;
+        }
 
+        public void setGatewayConfig(String gatewayConfig) {
+            this.gatewayConfig = gatewayConfig;
+        }
         public StreamBuilder(FileStream stream) {
 
             id = stream.getId();
@@ -512,6 +531,8 @@ public class EventStream {
             consumerAuthorization = stream.getConsumerAuthorization();
             consumerTransport = stream.getConsumerTransport();
             consumerDisplay = stream.getConsumerDisplay();
+            gatewayConfig = stream.getGatewayConfig();
+
         }
 
         public StreamBuilder(String streamId, String name, String provider, String version) {
@@ -545,6 +566,7 @@ public class EventStream {
             this.consumerAuthorization = copy.consumerAuthorization;
             this.consumerTransport = copy.consumerTransport;
             this.consumerDisplay = copy.consumerDisplay;
+            this.gatewayConfig = copy.gatewayConfig;
 
         }
 

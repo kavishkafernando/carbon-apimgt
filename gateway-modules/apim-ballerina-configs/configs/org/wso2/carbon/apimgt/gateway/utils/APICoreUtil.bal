@@ -237,7 +237,7 @@ function getStreamServiceConfig (string streamId) (int, string) {
     int status;
     try {
     http:ClientConnector client = create http:ClientConnector(getAPICoreURL());
-    response = http:ClientConnector.get(client, "/api/am/publisher/v1.0/stream/" + streamId , request);
+    response = http:ClientConnector.get(client, "/api/am/publisher/v1.0/stream/" + streamId + "/gateway-config", request);
     streamConfig = messages:getStringPayload(response);
     status = http:getStatusCode(response);
     } catch (errors:Error e) {

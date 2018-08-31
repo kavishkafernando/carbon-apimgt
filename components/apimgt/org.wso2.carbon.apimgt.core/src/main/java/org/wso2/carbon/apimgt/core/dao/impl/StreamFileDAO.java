@@ -22,6 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.wso2.carbon.apimgt.core.dao.StreamDAO;
 import org.wso2.carbon.apimgt.core.exception.APIMgtDAOException;
+import org.wso2.carbon.apimgt.core.models.DedicatedStreamGateway;
 import org.wso2.carbon.apimgt.core.streams.EventStream;
 import org.wso2.carbon.apimgt.core.streams.FileStream;
 import org.wso2.carbon.apimgt.core.util.APIFileUtils;
@@ -73,6 +74,16 @@ public class StreamFileDAO implements StreamDAO {
 
     @Override
     public List<EventStream> getStreams(String user) throws APIMgtDAOException {
+        return null;
+    }
+
+    @Override
+    public DedicatedStreamGateway getDedicatedStreamGateway(String streamId) throws APIMgtDAOException {
+        return null;
+    }
+
+    @Override
+    public String getGatewayConfigOfStream(String streamID) throws APIMgtDAOException {
         return null;
     }
 }

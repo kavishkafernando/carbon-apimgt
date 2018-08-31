@@ -21,18 +21,22 @@
 package org.wso2.carbon.apimgt.core.dao.impl;
 
 import com.google.gson.Gson;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.wso2.carbon.apimgt.core.dao.ApiType;
 import org.wso2.carbon.apimgt.core.dao.StreamDAO;
 import org.wso2.carbon.apimgt.core.exception.APIMgtDAOException;
 import org.wso2.carbon.apimgt.core.exception.ExceptionCodes;
+import org.wso2.carbon.apimgt.core.models.DedicatedStreamGateway;
+import org.wso2.carbon.apimgt.core.models.ResourceCategory;
 import org.wso2.carbon.apimgt.core.streams.EventStream;
+
+import javax.ws.rs.core.MediaType;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Default implementation of the StreamDAO interface. Uses SQL syntax that is common to H2 and MySQL DBs.
@@ -49,8 +53,8 @@ public class StreamDAOImpl implements StreamDAO {
             "VISIBILITY, LIFECYCLE_STATUS, ENDPOINT, STREAM_TYPE, STREAM_AUTHORIZATION, IS_PRODUCABLE, " +
             "CAN_PRODUCER_ACCESS_DIRECTLY, CAN_PRODUCER_ACCESS_VIA_GATEWAY, PRODUCER_AUTHORIZATION, PRODUCER_TRANSPORT, " +
             "PRODUCER_MESSAGE_TYPE, IS_CONSUMABLE, CAN_CONSUMER_ACCESS_DIRECTLY, CAN_CONSUMER_ACCESS_VIA_GATEWAY, " +
-            "CONSUMER_AUTHORIZATION, CONSUMER_TRANSPORT, CONSUMER_DISPLAY) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?," +
-            "?,?,?)";
+            "CONSUMER_AUTHORIZATION, CONSUMER_TRANSPORT, CONSUMER_DISPLAY, GATEWAY_CONFIG) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?," +
+            "?,?,?,?)";
 
     private static final String STREAM_SELECT = "SELECT UUID, PROVIDER, NAME, VERSION, DESCRIPTION, " +
             "VISIBILITY, LIFECYCLE_STATUS, ENDPOINT, STREAM_TYPE, STREAM_AUTHORIZATION, IS_PRODUCABLE, " +
@@ -97,14 +101,14 @@ public class StreamDAOImpl implements StreamDAO {
     @Override
     public void addStream(EventStream stream) throws APIMgtDAOException {
         try (Connection connection = DAOUtil.getConnection();
-             PreparedStatement statement = connection.prepareStatement(STREAM_INSERT)){
+             PreparedStatement statement = connection.prepareStatement(STREAM_INSERT)) {
             try {
                 connection.setAutoCommit(false);
                 addStreamRelatedInformation(connection, statement, stream);
                 connection.commit();
             } catch (SQLException e) {
                 connection.rollback();
-                throw new APIMgtDAOException("adding Stream" + stream.getProvider() + "-" + stream.getName()  + "-"
+                throw new APIMgtDAOException("adding Stream" + stream.getProvider() + "-" + stream.getName() + "-"
                         + stream.getVersion());
             } finally {
                 connection.setAutoCommit(DAOUtil.isAutoCommit());
@@ -119,7 +123,7 @@ public class StreamDAOImpl implements StreamDAO {
     public EventStream getEventStream(String streamID) throws APIMgtDAOException {
         final String query = STREAM_SELECT + " WHERE UUID = ? ";
         try (Connection connection = DAOUtil.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)){
+             PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, streamID);
 
             EventStream stream = constructStreamFromResultSet(connection, statement);
@@ -127,7 +131,7 @@ public class StreamDAOImpl implements StreamDAO {
                 throw new APIMgtDAOException("Stream with ID " + streamID + " does not exist", ExceptionCodes.STREAM_NOT_FOUND);
             }
             return stream;
-        } catch (SQLException | IOException e){
+        } catch (SQLException | IOException e) {
             throw new APIMgtDAOException(DAOUtil.DAO_ERROR_PREFIX + "getting Stream: " + streamID, e);
         }
 
@@ -137,14 +141,61 @@ public class StreamDAOImpl implements StreamDAO {
     public List<EventStream> getStreams(String user) throws APIMgtDAOException {
         final String query = STREAM_SUMMARY_SELECT + " WHERE PROVIDER = ? ";
         try (Connection connection = DAOUtil.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)){
+             PreparedStatement statement = connection.prepareStatement(query)) {
             int index = 0;
             statement.setString(++index, user);
             return constructStreamSummaryList(connection, statement);
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new APIMgtDAOException(DAOUtil.DAO_ERROR_PREFIX + "getting Streams", e);
         }
     }
+
+    @Override
+    public DedicatedStreamGateway getDedicatedStreamGateway(String streamId) throws APIMgtDAOException {
+        final String query = "SELECT GATEWAY_CONFIG FROM AM_STREAM WHERE UUID = ?";
+        DedicatedStreamGateway dedicatedStreamGateway;
+        try (Connection connection = DAOUtil.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            try {
+                statement.setString(1, streamId);
+                statement.execute();
+                try (ResultSet rs = statement.getResultSet()) {
+                    if (rs.next()) {
+                        dedicatedStreamGateway = new DedicatedStreamGateway();
+                        dedicatedStreamGateway.setStreamId(streamId);
+                        return dedicatedStreamGateway;
+
+                    } else {
+                        throw new APIMgtDAOException("Couldn't Find Dedicated Gateway details ", ExceptionCodes
+                                .DEDICATED_GATEWAY_DETAILS_NOT_FOUND);
+                    }
+                }
+            } catch (SQLException e) {
+                String errorMessage = "Error while retrieving dedicated gateway details of Stream : " + streamId;
+                throw new APIMgtDAOException(errorMessage, e);
+            }
+        } catch (SQLException e1) {
+            String message = "Error while creating database connection/prepared-statement";
+            throw new APIMgtDAOException(message, e1);
+        }
+    }
+
+    @Override
+    public String getGatewayConfigOfStream(String streamID) throws APIMgtDAOException {
+        try (Connection connection = DAOUtil.getConnection()) {
+            String gatewayConfig = getGatewayConfig(connection, streamID);
+
+            if (gatewayConfig == null) {
+                throw new APIMgtDAOException("Gateway config of API: " + streamID + " does not exist",
+                        ExceptionCodes.API_DEFINITION_NOT_FOUND);
+            }
+
+            return gatewayConfig;
+        } catch (SQLException | IOException e) {
+            throw new APIMgtDAOException(DAOUtil.DAO_ERROR_PREFIX + "getting Gateway Config of API: " + streamID, e);
+        }
+    }
+
 
     /**
      * Method for adding Stream related information
@@ -153,9 +204,9 @@ public class StreamDAOImpl implements StreamDAO {
      * @param statement  PreparedStatement
      * @param stream     Stream object
      * @throws SQLException if error occurs while accessing data layer
-     * */
+     */
     private void addStreamRelatedInformation(Connection connection, PreparedStatement statement, final EventStream stream)
-            throws SQLException, APIMgtDAOException{
+            throws SQLException, APIMgtDAOException {
 
         Gson gson = new Gson();
 
@@ -181,6 +232,9 @@ public class StreamDAOImpl implements StreamDAO {
         statement.setString(20, gson.toJson(stream.getConsumerAuthorization()));
         statement.setString(21, gson.toJson(stream.getConsumerTransport()));
         statement.setString(22, gson.toJson(stream.getConsumerDisplay()));
+        statement.setString(23, stream.getGatewayConfig());
+
+        addStreamGatewayConfig(connection, stream.getId(), stream.getGatewayConfig());
 
         boolean rs = statement.execute();
 
@@ -191,7 +245,7 @@ public class StreamDAOImpl implements StreamDAO {
             IOException, APIMgtDAOException {
         Gson gson = new Gson();
         try (ResultSet rs = statement.executeQuery()) {
-            while (rs.next()){
+            while (rs.next()) {
 
                 List<EventStream.Authorization> streamAuthorization = Arrays.asList(gson.fromJson(rs.getString("STREAM_AUTHORIZATION"),
                         EventStream.Authorization[].class));
@@ -207,7 +261,6 @@ public class StreamDAOImpl implements StreamDAO {
                         EventStream.MessageType[].class));
                 List<EventStream.Display> consumerDisplay = Arrays.asList(gson.fromJson(rs.getString("CONSUMER_DISPLAY"),
                         EventStream.Display[].class));
-
 
 
                 return new EventStream.StreamBuilder(rs.getString("UUID"), rs.getString("NAME"), rs.getString("PROVIDER"),
@@ -238,8 +291,8 @@ public class StreamDAOImpl implements StreamDAO {
     private List<EventStream> constructStreamSummaryList(Connection connection, PreparedStatement statement)
             throws SQLException {
         List<EventStream> streamList = new ArrayList<>();
-        try (ResultSet rs = statement.executeQuery()){
-            while (rs.next()){
+        try (ResultSet rs = statement.executeQuery()) {
+            while (rs.next()) {
                 EventStream streamSummary = new EventStream.StreamBuilder(rs.getString("UUID"),
                         rs.getString("NAME"), rs.getString("PROVIDER"),
                         rs.getString("VERSION")).
@@ -251,4 +304,26 @@ public class StreamDAOImpl implements StreamDAO {
         return streamList;
     }
 
+    private void addStreamGatewayConfig(Connection connection, String streamID, String gatewayConfig)
+            throws SQLException {
+        if (gatewayConfig != null && !gatewayConfig.isEmpty()) {
+            ApiResourceDAO
+                    .addStreamBinaryResource(connection, streamID, UUID.randomUUID().toString(), ResourceCategory.GATEWAY_CONFIG,
+                            MediaType.APPLICATION_JSON,
+                            new ByteArrayInputStream(gatewayConfig.getBytes(StandardCharsets.UTF_8)));
+        }
+    }
+
+    private String getGatewayConfig(Connection connection, String streamID) throws SQLException, IOException {
+        InputStream gatewayConfig = ApiResourceDAO
+                .getStreamBinaryValueForCategory(connection, streamID, ResourceCategory.GATEWAY_CONFIG);
+
+        if (gatewayConfig != null) {
+            return IOUtils.toString(gatewayConfig, StandardCharsets.UTF_8);
+        }
+        return null;
+    }
 }
+
+
+

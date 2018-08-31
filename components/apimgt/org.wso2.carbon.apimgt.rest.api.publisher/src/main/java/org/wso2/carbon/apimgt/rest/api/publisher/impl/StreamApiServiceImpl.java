@@ -6,8 +6,10 @@ import org.wso2.carbon.apimgt.core.api.APIPublisher;
 import org.wso2.carbon.apimgt.core.exception.APIManagementException;
 import org.wso2.carbon.apimgt.core.exception.APIMgtResourceNotFoundException;
 import org.wso2.carbon.apimgt.core.exception.ExceptionCodes;
+import org.wso2.carbon.apimgt.core.models.DedicatedStreamGateway;
 import org.wso2.carbon.apimgt.core.streams.EventStream;
 import org.wso2.carbon.apimgt.core.util.APIMgtConstants;
+import org.wso2.carbon.apimgt.core.util.APIUtils;
 import org.wso2.carbon.apimgt.rest.api.common.dto.ErrorDTO;
 import org.wso2.carbon.apimgt.rest.api.common.util.RestApiUtil;
 import org.wso2.carbon.apimgt.rest.api.publisher.*;
@@ -130,5 +132,86 @@ public class StreamApiServiceImpl extends StreamApiService {
             log.error(errorMessage, e);
             return Response.status(e.getErrorHandler().getHttpStatusCode()).entity(errorDTO).build();
         }
+    }
+
+    /**
+     * Retrive Dedicated Gateway of an Stream
+     *
+     * @param streamId             UUID of stream
+     * @param ifNoneMatch           If-None-Match header value
+     * @param ifModifiedSince If-Modified-Since header value
+     * @param request           msf4j request object
+     * @return 200 OK if the opration was successful
+     * @throws NotFoundException when the particular resource does not exist
+     */
+    @Override
+    public Response streamIdDedicatedGatewayGet(String streamId, String ifNoneMatch, String ifModifiedSince, Request request) throws NotFoundException {
+        String username = RestApiUtil.getLoggedInUsername(request);
+        try {
+            APIPublisher apiPublisher = RestAPIPublisherUtil.getApiPublisher(username);
+            if(!apiPublisher.isStreamExists(streamId)){
+                String errorMessage = "API not found : " + streamId;
+                APIMgtResourceNotFoundException e = new APIMgtResourceNotFoundException(errorMessage,
+                        ExceptionCodes.STREAM_NOT_FOUND);
+                HashMap<String, String> paramList = new HashMap<String, String>();
+                paramList.put(APIMgtConstants.StreamExceptionsConstants.STREAM_ID, streamId);
+                ErrorDTO errorDTO = RestApiUtil.getErrorDTO(e.getErrorHandler(), paramList);
+                log.error(errorMessage, e);
+                return Response.status(e.getErrorHandler().getHttpStatusCode()).entity(errorDTO).build();
+            }
+
+           DedicatedStreamGateway dedicatedStreamGateway = apiPublisher.getDedicatedStreamGateway(streamId);
+            if(dedicatedStreamGateway != null){
+                return Response.ok().header(HttpHeaders.ETAG, "\""
+                        + "\"").entity(dedicatedStreamGateway).build();
+            } else {
+                String msg = "Dedicated Gateway not found for " + streamId;
+                APIMgtResourceNotFoundException e = new APIMgtResourceNotFoundException(msg,
+                        ExceptionCodes.DEDICATED_GATEWAY_DETAILS_NOT_FOUND);
+                HashMap<String, String> paramList = new HashMap<String, String>();
+                paramList.put(APIMgtConstants.StreamExceptionsConstants.STREAM_ID, streamId);
+                ErrorDTO errorDTO = RestApiUtil.getErrorDTO(e.getErrorHandler(), paramList);
+                APIUtils.logDebug(msg, log);
+                return Response.status(Response.Status.NOT_FOUND).entity(errorDTO).build();
+
+            }
+        } catch (APIManagementException e) {
+            String errorMessage = "Error while retrieving dedicated gateway of the API : " + streamId;
+            HashMap<String, String> paramList = new HashMap<String, String>();
+            paramList.put(APIMgtConstants.StreamExceptionsConstants.STREAM_ID, streamId);
+            ErrorDTO errorDTO = RestApiUtil.getErrorDTO(e.getErrorHandler(), paramList);
+            log.error(errorMessage, e);
+            return Response.status(e.getErrorHandler().getHttpStatusCode()).entity(errorDTO).build();
+        }
+    }
+
+    /**
+     * Retrieve the gateway configuration of an Stream
+     *
+     * @param streamId           UUID of Stream
+     * @param ifNoneMatch     If-None-Match header value
+     * @param ifModifiedSince If-Modified-Since header value
+     * @param request         msf4j request object
+     * @return gateway configuration
+     * @throws NotFoundException When the particular resource does not exist in the system
+     */
+
+    @Override
+    public Response streamIdGatewayConfigGet(String streamId, String ifNoneMatch, String ifModifiedSince, Request request) throws NotFoundException {
+        String username = RestApiUtil.getLoggedInUsername(request);
+        try {
+            APIPublisher apiPublisher = RestAPIPublisherUtil.getApiPublisher(username);
+            String gatewayConfig = apiPublisher.getStreamGatewayConfig(streamId);
+            return Response.ok().header(HttpHeaders.ETAG, "\"" + "\"").entity(gatewayConfig)
+                    .build();
+        } catch (APIManagementException e) {
+            String errorMessage = "Error while retrieving gateway config of API : " + streamId;
+            HashMap<String, String> paramList = new HashMap<String, String>();
+            paramList.put(APIMgtConstants.StreamExceptionsConstants.STREAM_ID, streamId);
+            ErrorDTO errorDTO = RestApiUtil.getErrorDTO(e.getErrorHandler(), paramList);
+            log.error(errorMessage, e);
+            return Response.status(e.getErrorHandler().getHttpStatusCode()).entity(errorDTO).build();
+        }
+
     }
 }

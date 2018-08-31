@@ -4,6 +4,7 @@ package org.wso2.carbon.apimgt.rest.api.publisher;
 import io.swagger.annotations.ApiParam;
 
 import org.wso2.carbon.apimgt.core.streams.EventStream;
+import org.wso2.carbon.apimgt.rest.api.publisher.dto.DedicatedGatewayDTO;
 import org.wso2.carbon.apimgt.rest.api.publisher.dto.StreamListDTO;
 import org.wso2.carbon.apimgt.rest.api.publisher.factories.StreamApiServiceFactory;
 
@@ -117,4 +118,59 @@ public class StreamApi implements Microservice  {
         
         return delegate.streamStreamIdGet(streamId,ifNoneMatch,ifModifiedSince,request);
     }
+
+    @OPTIONS
+    @GET
+    @Path("/{streamId}/dedicated-gateway")
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "Get enability of dedicatedGateway", notes = "This operation can be used to retrieve whether the dedicated gateway is enabled in a certain stream. ", response = DedicatedGatewayDTO.class, authorizations = {
+            @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
+                    @io.swagger.annotations.AuthorizationScope(scope = "apim:api_view", description = "View Stream")
+            })
+    }, tags={ "DedicatedGateway (Individual)", })
+    @io.swagger.annotations.ApiResponses(value = {
+            @io.swagger.annotations.ApiResponse(code = 200, message = "OK. isEnabled of dedicated Gateway returned ", response = DedicatedGatewayDTO.class),
+
+            @io.swagger.annotations.ApiResponse(code = 304, message = "Not Modified. Empty body because the client has already the latest version of the requested resource (Will be supported in future). ", response = DedicatedGatewayDTO.class),
+
+            @io.swagger.annotations.ApiResponse(code = 404, message = "Not Found. Requested Dedicated Gateway does not exist. ", response = DedicatedGatewayDTO.class),
+
+            @io.swagger.annotations.ApiResponse(code = 406, message = "Not Acceptable. The requested media type is not supported. ", response = DedicatedGatewayDTO.class) })
+    public Response streamIdDedicatedGatewayGet(@ApiParam(value = "**STREAM ID** consisting of the **UUID** of the Stream. The combination of the provider of the Stream, name of the Stream and the version is also accepted as a valid Stream ID. Should be formatted as **provider-name-version**. ",required=true) @PathParam("streamId") String streamId
+            ,@ApiParam(value = "Validator for conditional requests; based on the ETag of the formerly retrieved variant of the resourec. " )@HeaderParam("If-None-Match") String ifNoneMatch
+            ,@ApiParam(value = "Validator for conditional requests; based on Last Modified header of the formerly retrieved variant of the resource. " )@HeaderParam("If-Modified-Since") String ifModifiedSince
+            ,@Context Request request)
+            throws NotFoundException {
+
+        return delegate.streamIdDedicatedGatewayGet(streamId,ifNoneMatch,ifModifiedSince,request);
+    }
+
+    @OPTIONS
+    @GET
+    @Path("/{streamId}/gateway-config")
+    @Consumes({ "application/json", "application/x-www-form-urlencoded", "multipart/form-data" })
+    @Produces({ "application/json" })
+    @io.swagger.annotations.ApiOperation(value = "Get gateway definition", notes = "This operation can be used to retrieve the gateway configuration of an API. ", response = void.class, authorizations = {
+            @io.swagger.annotations.Authorization(value = "OAuth2Security", scopes = {
+                    @io.swagger.annotations.AuthorizationScope(scope = "apim:api_view", description = "View API")
+            })
+    }, tags={ "API (Individual)", })
+    @io.swagger.annotations.ApiResponses(value = {
+            @io.swagger.annotations.ApiResponse(code = 200, message = "OK. Requested gateway configuration of the API is returned ", response = void.class),
+
+            @io.swagger.annotations.ApiResponse(code = 304, message = "Not Modified. Empty body because the client has already the latest version of the requested resource (Will be supported in future). ", response = void.class),
+
+            @io.swagger.annotations.ApiResponse(code = 404, message = "Not Found. Requested API does not exist. ", response = void.class),
+
+            @io.swagger.annotations.ApiResponse(code = 406, message = "Not Acceptable. The requested media type is not supported ", response = void.class) })
+    public Response streamIdGatewayConfigGet(@ApiParam(value = "**API ID** consisting of the **UUID** of the API. The combination of the provider of the API, name of the API and the version is also accepted as a valid API ID. Should be formatted as **provider-name-version**. ",required=true) @PathParam("streamId") String streamId
+            ,@ApiParam(value = "Validator for conditional requests; based on the ETag of the formerly retrieved variant of the resourec. " )@HeaderParam("If-None-Match") String ifNoneMatch
+            ,@ApiParam(value = "Validator for conditional requests; based on Last Modified header of the formerly retrieved variant of the resource. " )@HeaderParam("If-Modified-Since") String ifModifiedSince
+            ,@Context Request request)
+            throws NotFoundException {
+
+        return delegate.streamIdGatewayConfigGet(streamId,ifNoneMatch,ifModifiedSince,request);
+    }
+
 }

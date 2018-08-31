@@ -28,6 +28,17 @@ public class StreamTemplate {
     private List<EventStream.Transport> consumerTransport;
     private List<EventStream.Display> consumerDisplay;
 
+    private String gatewayConfig;
+
+    public String getGatewayConfig() {
+        return gatewayConfig;
+    }
+
+    public void setGatewayConfig(String gatewayConfig) {
+        this.gatewayConfig = gatewayConfig;
+    }
+
+
     public String getName() {
         return name;
     }

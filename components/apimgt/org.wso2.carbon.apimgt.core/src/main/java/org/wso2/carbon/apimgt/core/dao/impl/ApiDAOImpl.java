@@ -2390,6 +2390,8 @@ public class ApiDAOImpl implements ApiDAO {
         }
     }
 
+
+
     private String getGatewayConfig(Connection connection, String apiID) throws SQLException, IOException {
         InputStream gatewayConfig = ApiResourceDAO
                 .getBinaryValueForCategory(connection, apiID, ResourceCategory.GATEWAY_CONFIG, ApiType.STANDARD);
