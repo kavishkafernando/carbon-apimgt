@@ -62,3 +62,79 @@ If you want to build carbon-apimgt from the source code:
            osgi.service; objectClass="org.wso2.msf4j.Microservice"; serviceCount="5"
         </carbon.component>
 
+# APIMGT - Stream Governance POC
+
+This project is about extending the WSO2 API Manager product to support event driven architecture such that it can also provide stream governance. 
+
+##How to test event streams.
+
+1. Build the carbon-apimgt repository
+2. Build the product-apimgt repository (Replace the <carbon.apimt.core> version of the pom.xml with the version of carbon-apimgt)
+3. Run the apimgt server (carbon.sh)
+4. Navigate to /Users/kavishka/Documents/StreamGovernance/product-apim/modules/gateway/target/ , unzip wso2apim-gateway-3.0.0-SNAPSHOT and start the gateway using bin/ballerina run service services.bsz
+5. Generate a token
+    i. Send a POST request to 'https://10.100.1.239:9443/api/identity/oauth2/dcr/v1.0/register' with the following body,
+``` 
+    {
+       "redirect_uris": [
+         "http://localhost"
+       ],
+       "client_name": "name_1",
+       "grant_types": [
+         "password"
+       ]
+     }
+``` 
+.
+    ii. Use the following curl  'curl -k -X POST --header 'Content-Type: application/x-www-form-urlencoded' --basic -u 815f2511-0d40-4596-9e79-ab5cba2b55bb:ac998cb7-9575-4b28-9844-45924c7968282 'https://10.100.1.239:9443/api/auth/oauth2/v1.0/token' -d "grant_type=password&username=admin&password=admin&scope=apim:stream_create"'
+    
+6. Test the following endpoints 
+
+###Post - Create a new event stream
+Send a request to `https://10.100.1.239:9443/api/am/publisher/v1.0/stream` 
+``` 
+{
+	"name": "StreamAPI",
+	"description": "This is a sample Stream API",
+	"version": "3.0.0",
+	"provider": "admin",
+	"lifeCycleStatus": "Public",
+	 "endpoint": "https://localhost:9090/gateway:ws",
+	"streamType": ["http","https"],
+	"streamAuthorization": ["BASICAUTH","OAUTH"],
+	"visibility": "PUBLIC",
+	"isProducable": false,
+	"canProducerAccessDirectly": false,
+	"canProducerAccessViaGateway": false,
+	"producerAuthorization": ["BASICAUTH","OAUTH"],
+	"producerTransport": ["HTTP", "JMS"],
+	"producerMessageType": ["JSON"],
+	"isConsumable": true,
+	"canConsumerAccessDirectly": true,
+	"canConsumerAccessViaGateway": false,
+	"consumerAuthorization": ["BASICAUTH","OAUTH"],
+	"consumerTransport": ["JMS"],
+	"consumerDisplay":["CALLBACK"]
+}
+```
+
+###Get Stream summaries
+Request: https://10.100.1.239:9443/api/am/publisher/v1.0/stream
+
+
+###Get Stream by StreamID
+Request: https://10.100.1.239:9443/api/am/publisher/v1.0/stream/{streamId}
+
+##Gateway 
+
+1. Run the gateway and send a post request to create a stream. It will create a .bal file.
+2. The gateway is exposed as a websocket service.
+3. How to run the gatewayfile can be found 'https://github.com/kavishkafernando/carbon-apimgt/blob/stream/kafka-producer/README.md'
+
+##Implementation
+
+Model: EventStream.java
+Stream Endpoints: StreamApiServiceImpl.java
+Adding to db: StreamDAOImpl.java
+Adding to publisher: PublisherImpl.java
+Gateway code: Gateway module
