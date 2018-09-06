@@ -19,7 +19,6 @@
  */
 package org.wso2.carbon.apimgt.core.streams;
 
-import org.wso2.carbon.apimgt.core.models.Endpoint;
 import java.util.*;
 
 /**
@@ -35,7 +34,7 @@ public class EventStream {
     private String version;
     private String description;
     private String lifeCycleStatus;
-    private Map<String, Endpoint> endpoint;
+    private String endpoint;
     private Set<String> streamType;
     private List<Authorization> streamAuthorization;
     private EventStream.Visibility visibility;
@@ -107,11 +106,11 @@ public class EventStream {
         this.lifeCycleStatus = lifeCycleStatus;
     }
 
-    public Map<String, Endpoint> getEndpoint() {
+    public String getEndpoint() {
         return endpoint;
     }
 
-    public void setEndpoint(Map<String, Endpoint> endpoint) {
+    public void setEndpoint(String endpoint) {
         this.endpoint = endpoint;
     }
 
@@ -299,7 +298,7 @@ public class EventStream {
         private String version;
         private String description;
         private String lifeCycleStatus;
-        private Map<String, Endpoint> endpoint = Collections.EMPTY_MAP;
+        private String endpoint;
         private Set<String> streamType = Collections.emptySet();
         private List<Authorization> streamAuthorization = new ArrayList<Authorization>();
         private EventStream.Visibility visibility = EventStream.Visibility.PUBLIC;
@@ -372,11 +371,11 @@ public class EventStream {
         }
 
 
-        public Map<String, Endpoint> getEndpoint() {
+        public String getEndpoint() {
             return endpoint;
         }
 
-        public void setEndpoint(Map<String, Endpoint> endpoint) {
+        public void setEndpoint(String endpoint) {
             this.endpoint = endpoint;
         }
 
@@ -647,7 +646,7 @@ public class EventStream {
          * @param endpoint the {@code endpoint} to set
          * @return a reference to this StreamBuilder
          */
-        public StreamBuilder endpoint(Map<String, Endpoint> endpoint) {
+        public StreamBuilder endpoint(String endpoint) {
             this.endpoint = endpoint;
             return this;
         }

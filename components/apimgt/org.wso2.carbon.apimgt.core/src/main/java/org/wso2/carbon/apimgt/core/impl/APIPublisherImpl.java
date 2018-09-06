@@ -2525,7 +2525,13 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
                     .SCOPE_NOT_FOUND);
         }
     }
-
+    /**
+     * Adds a new Stream to the system
+     *
+     * @param streamBuilder EventStream model object
+     * @return UUID of the added Stream.
+     * @throws APIManagementException if failed to add Stream
+     */
     @Override
     public String addEventStream(EventStream.StreamBuilder streamBuilder) throws APIManagementException {
         EventStream createdStream;
@@ -2539,13 +2545,10 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
 
         try{
 
-
             createdStream = streamBuilder.build();
             APIUtils.validateStream(createdStream);
 
             List<StreamTemplate> streamResourceList = new ArrayList<>();
-
-        //create a .bal file
             StreamTemplate template = new StreamTemplate();
             template.setName(createdStream.getName());
             template.setVersion(createdStream.getVersion());
@@ -2567,7 +2570,6 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
 
             streamResourceList.add(template);
 
-
             GatewaySourceGenerator gatewaySourceGenerator = getGatewaySourceGenerator();
             StreamConfigContext streamConfigContext = new StreamConfigContext(streamBuilder.build(), config
                     .getGatewayPackageName());
@@ -2580,11 +2582,12 @@ public class APIPublisherImpl extends AbstractAPIManager implements APIPublisher
             streamBuilder.gatewayConfig(gatewayConfig);
             createdStream.setGatewayConfig(gatewayConfig);
 
+        //add stream to gateway
             gateway.addStream(createdStream);
             if (log.isDebugEnabled()) {
                 log.debug("Stream : " + streamBuilder.getName() + " has been identifier published to gateway");
             }
-
+        //add stream to database
         getStreamDAO().addStream(createdStream);
 
         APIUtils.logDebug("Stream " + createdStream.getName() + "-" + createdStream.getVersion() + " was created " +

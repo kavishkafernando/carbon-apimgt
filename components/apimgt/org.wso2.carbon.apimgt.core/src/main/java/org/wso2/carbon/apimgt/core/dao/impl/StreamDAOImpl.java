@@ -88,15 +88,6 @@ public class StreamDAOImpl implements StreamDAO {
         return false;
     }
 
-    @Override
-    public EventStream getStream(String streamID) throws APIMgtDAOException {
-        return null;
-    }
-
-    @Override
-    public boolean isStreamNameExists(String streamName, String providerName) throws APIMgtDAOException {
-        return false;
-    }
 
     @Override
     public void addStream(EventStream stream) throws APIMgtDAOException {
@@ -217,7 +208,7 @@ public class StreamDAOImpl implements StreamDAO {
         statement.setString(5, stream.getDescription());
         statement.setString(6, String.valueOf(stream.getVisibility()));
         statement.setString(7, stream.getLifeCycleStatus());
-        statement.setString(8, String.valueOf(stream.getEndpoint()));
+        statement.setString(8, stream.getEndpoint());
         statement.setString(9, String.valueOf(stream.getStreamType()));
         statement.setString(10, gson.toJson(stream.getStreamAuthorization()));
         statement.setBoolean(11, stream.isProducable());
@@ -267,6 +258,7 @@ public class StreamDAOImpl implements StreamDAO {
                         rs.getString("VERSION")).
                         description(rs.getString("DESCRIPTION")).
                         lifeCycleStatus(rs.getString("LIFECYCLE_STATUS")).
+                        endpoint(rs.getString("ENDPOINT")).
                         streamType(Collections.singleton(rs.getString("STREAM_TYPE"))).
                         streamAuthorization(streamAuthorization).
                         visibility(EventStream.Visibility.valueOf(rs.getString("VISIBILITY"))).

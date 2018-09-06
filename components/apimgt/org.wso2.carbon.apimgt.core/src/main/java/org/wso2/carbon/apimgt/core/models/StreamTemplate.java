@@ -10,7 +10,7 @@ public class StreamTemplate {
 
     private String name;
     private String version;
-    private Map<String, Endpoint> endpoint;
+    private String endpoint;
     private Set<String> streamType;
     private List<EventStream.Authorization> streamAuthorization;
 
@@ -55,11 +55,11 @@ public class StreamTemplate {
         this.version = version;
     }
 
-    public Map<String, Endpoint> getEndpoint() {
+    public String getEndpoint() {
         return endpoint;
     }
 
-    public void setEndpoint(Map<String, Endpoint> endpoint) {
+    public void setEndpoint(String endpoint) {
         this.endpoint = endpoint;
     }
 

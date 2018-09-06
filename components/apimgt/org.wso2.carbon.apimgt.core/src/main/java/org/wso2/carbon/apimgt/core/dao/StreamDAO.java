@@ -15,26 +15,6 @@ public interface StreamDAO {
      */
     boolean isStreamExists(String streamID) throws APIMgtDAOException;
 
-    /**
-     * Retrieve a given instance of an Stream
-     *
-     * @param streamID The UUID that uniquely identifies an Stream
-     * @return valid {@link EventStream} object or throws APIMgtDAOException
-     * @throws APIMgtDAOException if error occurs while accessing data layer
-     *
-     */
-    EventStream getStream(String streamID) throws APIMgtDAOException;
-
-    /**
-     * Checks if a given API which is uniquely identified by the Provider, API Name and Version combination already
-     * exists
-     *
-     * @param streamName Name of Stream
-     * @param providerName Provider of the Stream.
-     * @return true if providerName, apiName, version combination already exists else false
-     * @throws APIMgtDAOException if error occurs while accessing data layer
-     */
-    boolean isStreamNameExists(String streamName, String providerName) throws APIMgtDAOException;
 
     /**
      * Add a new instance of an API

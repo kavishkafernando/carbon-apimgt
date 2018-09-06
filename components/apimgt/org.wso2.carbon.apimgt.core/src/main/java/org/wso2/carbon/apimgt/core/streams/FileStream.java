@@ -15,7 +15,7 @@ public class FileStream {
     private String version;
     private String description;
     private String lifeCycleStatus;
-    private Map<String, Endpoint> endpoint;
+    private String endpoint;
     private Set<String> streamType;
     private List<EventStream.Authorization> streamAuthorization;
     private EventStream.Visibility visibility;
@@ -93,11 +93,11 @@ public class FileStream {
         this.lifeCycleStatus = lifeCycleStatus;
     }
 
-    public Map<String, Endpoint> getEndpoint() {
+    public String getEndpoint() {
         return endpoint;
     }
 
-    public void setEndpoint(Map<String, Endpoint> endpoint) {
+    public void setEndpoint(String endpoint) {
         this.endpoint = endpoint;
     }
 

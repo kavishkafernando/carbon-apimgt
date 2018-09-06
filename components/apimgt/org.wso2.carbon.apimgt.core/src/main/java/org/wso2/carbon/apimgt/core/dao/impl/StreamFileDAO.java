@@ -47,15 +47,6 @@ public class StreamFileDAO implements StreamDAO {
         return false;
     }
 
-    @Override
-    public EventStream getStream(String streamID) throws APIMgtDAOException {
-        return null;
-    }
-
-    @Override
-    public boolean isStreamNameExists(String streamName, String providerName) throws APIMgtDAOException {
-        return false;
-    }
 
     @Override
     public void addStream(EventStream stream) throws APIMgtDAOException {

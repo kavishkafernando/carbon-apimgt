@@ -186,7 +186,7 @@ public class StreamApiServiceImpl extends StreamApiService {
     }
 
     /**
-     * Retrieve the gateway configuration of an Stream
+     * Retrieve the gateway configuration of a Stream
      *
      * @param streamId           UUID of Stream
      * @param ifNoneMatch     If-None-Match header value

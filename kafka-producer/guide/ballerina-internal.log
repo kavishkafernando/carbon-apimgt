@@ -1,0 +1,624 @@
+[2018-09-04 13:37:21,564] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 13:37:21,570] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 13:37:21,586] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 13:37:21,587] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 13:37:21,709] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-04 13:37:54,221] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 13:37:54,227] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 13:37:54,242] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 13:37:54,243] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 13:37:54,325] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-04 13:40:37,637] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 13:40:37,643] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 13:40:37,658] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 13:40:37,658] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 13:40:37,779] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-04 14:13:15,242] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 14:13:15,247] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 14:13:15,283] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 14:13:15,283] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 14:13:15,369] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-04 14:13:15,520] ERROR {org.ballerinalang.net.http.HttpConnectorPortBindingListener} - Error in http endpoint 
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at io.netty.channel.socket.nio.NioServerSocketChannel.doBind(NioServerSocketChannel.java:128)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.bind(AbstractChannel.java:558)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.bind(DefaultChannelPipeline.java:1283)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeBind(AbstractChannelHandlerContext.java:501)
+	at io.netty.channel.AbstractChannelHandlerContext.bind(AbstractChannelHandlerContext.java:486)
+	at io.netty.channel.DefaultChannelPipeline.bind(DefaultChannelPipeline.java:989)
+	at io.netty.channel.AbstractChannel.bind(AbstractChannel.java:254)
+	at io.netty.bootstrap.AbstractBootstrap$2.run(AbstractBootstrap.java:364)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:404)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:463)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:886)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+ 
+[2018-09-04 14:14:48,277] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 14:14:48,283] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 14:14:48,320] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 14:14:48,320] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 14:14:48,417] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-04 15:06:51,482] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 15:06:51,488] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 15:06:51,525] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 15:06:51,525] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 15:06:51,599] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-04 15:26:28,173] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 15:26:28,179] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 15:26:28,217] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 15:26:28,217] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 15:26:28,298] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-04 15:27:11,763] ERROR {org.wso2.transport.http.netty.listener.WebSocketServerHandshakeHandler} - Error during WebSocket server handshake 
+org.ballerinalang.connector.api.BallerinaConnectorException: No Service found to handle the service request
+	at org.ballerinalang.net.http.WebSocketDispatcher.findService(WebSocketDispatcher.java:107)
+	at org.ballerinalang.net.http.WebSocketServerConnectorListener.onHandshake(WebSocketServerConnectorListener.java:64)
+	at org.wso2.transport.http.netty.contractimpl.websocket.DefaultWebSocketConnectorFuture.notifyWebSocketListener(DefaultWebSocketConnectorFuture.java:46)
+	at org.wso2.transport.http.netty.listener.WebSocketServerHandshakeHandler.handleWebSocketHandshake(WebSocketServerHandshakeHandler.java:158)
+	at org.wso2.transport.http.netty.listener.WebSocketServerHandshakeHandler.access$000(WebSocketServerHandshakeHandler.java:55)
+	at org.wso2.transport.http.netty.listener.WebSocketServerHandshakeHandler$1.channelRead0(WebSocketServerHandshakeHandler.java:91)
+	at org.wso2.transport.http.netty.listener.WebSocketServerHandshakeHandler$1.channelRead0(WebSocketServerHandshakeHandler.java:85)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1359)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:935)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:141)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:886)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.ballerinalang.connector.api.BallerinaConnectorException: no Service found to handle the service request: /basic/ws
+	at org.ballerinalang.net.http.WebSocketDispatcher.findService(WebSocketDispatcher.java:96)
+	... 31 more
+ 
+[2018-09-04 15:27:21,400] ERROR {org.wso2.transport.http.netty.listener.WebSocketServerHandshakeHandler} - Error during WebSocket server handshake 
+org.ballerinalang.connector.api.BallerinaConnectorException: No Service found to handle the service request
+	at org.ballerinalang.net.http.WebSocketDispatcher.findService(WebSocketDispatcher.java:107)
+	at org.ballerinalang.net.http.WebSocketServerConnectorListener.onHandshake(WebSocketServerConnectorListener.java:64)
+	at org.wso2.transport.http.netty.contractimpl.websocket.DefaultWebSocketConnectorFuture.notifyWebSocketListener(DefaultWebSocketConnectorFuture.java:46)
+	at org.wso2.transport.http.netty.listener.WebSocketServerHandshakeHandler.handleWebSocketHandshake(WebSocketServerHandshakeHandler.java:158)
+	at org.wso2.transport.http.netty.listener.WebSocketServerHandshakeHandler.access$000(WebSocketServerHandshakeHandler.java:55)
+	at org.wso2.transport.http.netty.listener.WebSocketServerHandshakeHandler$1.channelRead0(WebSocketServerHandshakeHandler.java:91)
+	at org.wso2.transport.http.netty.listener.WebSocketServerHandshakeHandler$1.channelRead0(WebSocketServerHandshakeHandler.java:85)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:105)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:102)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1359)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:935)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:141)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:886)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.ballerinalang.connector.api.BallerinaConnectorException: no Service found to handle the service request: /basic/ws
+	at org.ballerinalang.net.http.WebSocketDispatcher.findService(WebSocketDispatcher.java:96)
+	... 31 more
+ 
+[2018-09-04 15:28:29,916] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 15:28:29,922] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 15:28:29,959] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 15:28:29,959] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 15:28:30,034] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-04 15:29:18,651] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 15:29:18,657] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 15:29:18,695] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 15:29:18,696] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 15:29:18,776] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-04 15:29:54,690] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 15:29:54,696] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 15:29:54,734] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 15:29:54,735] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 15:29:54,817] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-04 15:31:57,545] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 15:31:57,551] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 15:31:57,566] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 15:31:57,566] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 15:37:15,040] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 15:37:15,046] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 15:37:15,060] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-04 15:37:15,061] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-04 15:37:15,179] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 09:29:54,528] ERROR {org.ballerinalang.net.http.HttpConnectorPortBindingListener} - Error in http endpoint 
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at io.netty.channel.socket.nio.NioServerSocketChannel.doBind(NioServerSocketChannel.java:128)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.bind(AbstractChannel.java:558)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.bind(DefaultChannelPipeline.java:1283)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeBind(AbstractChannelHandlerContext.java:501)
+	at io.netty.channel.AbstractChannelHandlerContext.bind(AbstractChannelHandlerContext.java:486)
+	at io.netty.channel.DefaultChannelPipeline.bind(DefaultChannelPipeline.java:989)
+	at io.netty.channel.AbstractChannel.bind(AbstractChannel.java:254)
+	at io.netty.bootstrap.AbstractBootstrap$2.run(AbstractBootstrap.java:364)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:404)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:463)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:886)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+ 
+[2018-09-05 09:30:41,473] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-05 09:30:41,478] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-05 09:30:41,493] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-05 09:30:41,493] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-05 09:30:41,608] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 09:33:30,271] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-05 09:33:30,288] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-05 09:33:30,302] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-05 09:33:30,302] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-05 09:33:30,375] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 09:34:17,579] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-05 09:34:17,584] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-05 09:34:17,597] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-05 09:34:17,597] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-05 09:34:17,671] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 09:36:23,997] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-05 09:36:24,003] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-05 09:36:24,016] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-05 09:36:24,017] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-05 09:36:24,097] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:10,837] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-05 10:35:10,842] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-05 10:35:10,854] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-05 10:35:10,855] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-05 10:35:10,928] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:10,931] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:10,983] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:10,984] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:11,093] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:11,094] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:11,305] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:11,306] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:11,732] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:11,733] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:12,479] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:12,683] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:13,528] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:13,689] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:14,444] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:14,605] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:15,351] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:15,619] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:16,459] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:16,564] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:17,459] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:17,459] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:18,456] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:18,457] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:19,614] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:19,669] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:20,725] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:20,835] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:21,895] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:21,948] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:22,793] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:23,161] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:23,997] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:24,156] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:25,053] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:25,160] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:26,261] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:26,262] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:27,265] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:27,372] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:28,224] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:28,335] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:29,129] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:29,344] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:30,193] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:30,303] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:31,094] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:31,303] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:32,140] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:32,447] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:33,237] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:33,555] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:34,079] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:34,763] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:35,239] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:35,926] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:36,346] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:37,139] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:37,347] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:38,182] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:38,397] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:39,138] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:39,460] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:40,149] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:40,672] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:41,359] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:41,839] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:42,206] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:42,838] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:43,268] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:43,730] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:44,360] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:44,729] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:45,243] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:45,926] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:46,139] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:46,880] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:47,192] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:48,028] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:48,183] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:49,035] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:49,354] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:49,884] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:50,305] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:50,775] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:51,460] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:51,825] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:52,663] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:52,879] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:53,607] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:53,913] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-05 10:35:54,741] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-05 10:35:54,842] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 09:42:18,264] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 09:42:18,275] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 09:42:18,287] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 09:42:18,288] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 09:42:18,389] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 10:56:37,063] ERROR {org.wso2.transport.http.netty.sender.websocket.WebSocketClientHandshakeHandler} - Caught exception 
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at io.netty.buffer.PooledUnsafeDirectByteBuf.setBytes(PooledUnsafeDirectByteBuf.java:288)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1108)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:345)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:126)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:886)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+ 
+[2018-09-06 10:56:37,074] WARN  {io.netty.channel.AbstractChannelHandlerContext} - An exception 'org.ballerinalang.connector.api.BallerinaConnectorException: Error occurred: Connection reset by peer' [enable DEBUG level for full stacktrace] was thrown by a user handler's exceptionCaught() method while handling the following exception: 
+java.io.IOException: Connection reset by peer
+	at sun.nio.ch.FileDispatcherImpl.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(SocketDispatcher.java:39)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(IOUtil.java:223)
+	at sun.nio.ch.IOUtil.read(IOUtil.java:192)
+	at sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:380)
+	at io.netty.buffer.PooledUnsafeDirectByteBuf.setBytes(PooledUnsafeDirectByteBuf.java:288)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1108)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:345)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:126)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:886)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+ 
+[2018-09-06 10:56:37,169] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 10:56:37,170] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 10:56:37,197] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 10:56:37,197] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 10:56:37,208] ERROR {org.ballerinalang.net.http.HttpConnectorPortBindingListener} - Error in http endpoint 
+java.net.BindException: Address already in use
+	at sun.nio.ch.Net.bind0(Native Method)
+	at sun.nio.ch.Net.bind(Net.java:433)
+	at sun.nio.ch.Net.bind(Net.java:425)
+	at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:223)
+	at io.netty.channel.socket.nio.NioServerSocketChannel.doBind(NioServerSocketChannel.java:128)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.bind(AbstractChannel.java:558)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.bind(DefaultChannelPipeline.java:1283)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeBind(AbstractChannelHandlerContext.java:501)
+	at io.netty.channel.AbstractChannelHandlerContext.bind(AbstractChannelHandlerContext.java:486)
+	at io.netty.channel.DefaultChannelPipeline.bind(DefaultChannelPipeline.java:989)
+	at io.netty.channel.AbstractChannel.bind(AbstractChannel.java:254)
+	at io.netty.bootstrap.AbstractBootstrap$2.run(AbstractBootstrap.java:364)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:404)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:463)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:886)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+ 
+[2018-09-06 14:04:12,603] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 14:04:12,611] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 14:04:12,626] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 14:04:12,626] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 14:04:12,732] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 14:54:33,996] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 14:54:34,002] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 14:54:34,039] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 14:54:34,040] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 14:54:34,113] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:15:54,578] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 15:15:54,584] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 15:15:54,621] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 15:15:54,621] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 15:15:54,695] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:20:19,238] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 15:20:19,244] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 15:20:19,283] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 15:20:19,284] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 15:20:19,358] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:35:44,876] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:35:45,039] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:35:45,303] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:35:45,786] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:35:46,480] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:35:47,381] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:35:48,276] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:35:49,167] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:35:50,319] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:00,564] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:01,534] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:02,590] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:03,764] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:04,831] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:06,035] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:06,914] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:08,119] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:09,059] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:09,904] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:10,752] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:11,766] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:12,624] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:13,634] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:14,730] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:15,679] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:16,681] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:17,730] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:18,842] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:19,731] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:20,942] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:22,004] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:23,068] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:23,970] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:25,136] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:26,351] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:27,360] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:28,472] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:29,476] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:30,640] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:31,842] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:32,680] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:33,519] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:34,414] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:35,535] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:36,597] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:37,564] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:38,467] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:39,630] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:40,790] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:41,900] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:42,745] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:43,889] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:44,892] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:45,745] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:46,783] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:47,739] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:48,692] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:49,752] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:50,761] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:51,614] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:52,836] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:53,889] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:54,897] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:55,906] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:57,071] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:58,172] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:36:59,281] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:37:00,235] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:37:01,286] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:37:02,180] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:37:03,125] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:37:04,171] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:37:05,327] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:37:06,220] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:37:07,430] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:37:08,493] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:37:09,694] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:37:10,837] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:37:11,890] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node 0 could not be established. Broker may not be available.  
+[2018-09-06 15:38:28,391] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 15:38:28,397] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 15:38:28,434] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 15:38:28,435] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 15:38:28,508] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:28,511] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:28,565] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:28,622] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:28,679] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:28,736] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:28,901] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:29,010] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:29,278] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:29,384] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:30,233] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:30,341] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:31,229] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:31,436] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:32,228] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:32,547] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:33,125] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:33,703] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:34,075] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:34,811] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:35,237] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:35,863] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:36,183] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:36,695] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:37,324] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:37,583] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:38,219] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:38,802] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:39,117] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:39,795] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:40,263] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:40,681] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:41,256] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:41,839] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:42,421] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:42,795] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:43,428] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:43,962] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:44,431] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:44,914] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:45,556] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:45,768] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:46,781] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:46,939] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:47,839] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:47,895] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:48,958] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:49,062] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:49,797] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:50,278] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:50,651] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:51,279] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:51,802] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:52,171] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:52,970] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:53,133] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:54,094] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:54,095] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:55,150] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:55,256] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:56,000] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:56,217] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:56,866] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:57,236] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:57,885] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:38:58,145] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:58,999] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:38:59,053] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:00,160] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:00,271] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:01,106] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:01,312] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:02,195] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:02,251] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:03,030] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:03,449] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:03,869] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:04,395] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:05,071] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:05,229] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:06,073] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:06,128] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:06,927] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:07,245] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:07,768] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:08,186] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:18,282] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 15:39:18,288] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 15:39:18,326] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'topics' was supplied but isn't a known config.  
+[2018-09-06 15:39:18,326] WARN  {org.apache.kafka.clients.consumer.ConsumerConfig} - The configuration 'pollingInterval' was supplied but isn't a known config.  
+[2018-09-06 15:39:18,401] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:18,404] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:18,457] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:18,511] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:18,567] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:18,624] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:18,834] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:18,887] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:19,304] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:19,305] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:20,003] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:20,214] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:21,170] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:21,171] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:22,120] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:22,121] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:23,119] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:23,223] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:24,323] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:24,428] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:25,425] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:25,428] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:26,311] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:26,469] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:27,313] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:27,581] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:28,317] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:28,475] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:29,253] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:29,522] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:30,320] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:30,373] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:31,278] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:31,333] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:32,181] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:32,396] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:33,077] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:33,451] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:33,931] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:34,563] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:35,144] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:35,468] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:36,211] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:36,427] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:37,224] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:37,648] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:38,177] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:38,644] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:39,008] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:39,644] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:39,963] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:40,476] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:41,146] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:41,305] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:39:42,134] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -1 could not be established. Broker may not be available.  
+[2018-09-06 15:39:42,500] WARN  {org.apache.kafka.clients.NetworkClient} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Connection to node -2 could not be established. Broker may not be available.  
+[2018-09-06 15:45:49,323] WARN  {org.apache.kafka.clients.consumer.internals.ConsumerCoordinator} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Asynchronous auto-commit of offsets {test-1=OffsetAndMetadata{offset=0, metadata=''}, test-0=OffsetAndMetadata{offset=16, metadata=''}} failed: Offset commit failed with a retriable exception. You should retry committing offsets. The underlying error was: null  
+[2018-09-06 15:45:59,531] ERROR {org.apache.kafka.clients.consumer.internals.ConsumerCoordinator} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Offset commit failed on partition test-1 at offset 0: The coordinator is not aware of this member.  
+[2018-09-06 15:45:59,532] WARN  {org.apache.kafka.clients.consumer.internals.ConsumerCoordinator} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Asynchronous auto-commit of offsets {test-1=OffsetAndMetadata{offset=0, metadata=''}, test-0=OffsetAndMetadata{offset=16, metadata=''}} failed: Commit cannot be completed since the group has already rebalanced and assigned the partitions to another member. This means that the time between subsequent calls to poll() was longer than the configured max.poll.interval.ms, which typically implies that the poll loop is spending too much time message processing. You can address this either by increasing the session timeout or by reducing the maximum size of batches returned in poll() with max.poll.records.  
+[2018-09-06 15:45:59,534] WARN  {org.apache.kafka.clients.consumer.internals.ConsumerCoordinator} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Synchronous auto-commit of offsets {test-1=OffsetAndMetadata{offset=0, metadata=''}, test-0=OffsetAndMetadata{offset=16, metadata=''}} failed: Commit cannot be completed since the group has already rebalanced and assigned the partitions to another member. This means that the time between subsequent calls to poll() was longer than the configured max.poll.interval.ms, which typically implies that the poll loop is spending too much time message processing. You can address this either by increasing the session timeout or by reducing the maximum size of batches returned in poll() with max.poll.records.  
+[2018-09-06 15:58:23,391] WARN  {org.apache.kafka.clients.consumer.internals.ConsumerCoordinator} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Asynchronous auto-commit of offsets {test-1=OffsetAndMetadata{offset=0, metadata=''}, test-0=OffsetAndMetadata{offset=16, metadata=''}} failed: Offset commit failed with a retriable exception. You should retry committing offsets. The underlying error was: null  
+[2018-09-06 15:58:23,515] ERROR {org.apache.kafka.clients.consumer.internals.ConsumerCoordinator} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Offset commit failed on partition test-1 at offset 0: The coordinator is not aware of this member.  
+[2018-09-06 15:58:23,516] WARN  {org.apache.kafka.clients.consumer.internals.ConsumerCoordinator} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Asynchronous auto-commit of offsets {test-1=OffsetAndMetadata{offset=0, metadata=''}, test-0=OffsetAndMetadata{offset=16, metadata=''}} failed: Commit cannot be completed since the group has already rebalanced and assigned the partitions to another member. This means that the time between subsequent calls to poll() was longer than the configured max.poll.interval.ms, which typically implies that the poll loop is spending too much time message processing. You can address this either by increasing the session timeout or by reducing the maximum size of batches returned in poll() with max.poll.records.  
+[2018-09-06 15:58:23,517] WARN  {org.apache.kafka.clients.consumer.internals.ConsumerCoordinator} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Synchronous auto-commit of offsets {test-1=OffsetAndMetadata{offset=0, metadata=''}, test-0=OffsetAndMetadata{offset=16, metadata=''}} failed: Commit cannot be completed since the group has already rebalanced and assigned the partitions to another member. This means that the time between subsequent calls to poll() was longer than the configured max.poll.interval.ms, which typically implies that the poll loop is spending too much time message processing. You can address this either by increasing the session timeout or by reducing the maximum size of batches returned in poll() with max.poll.records.  
+[2018-09-06 16:52:34,348] WARN  {org.apache.kafka.clients.consumer.internals.ConsumerCoordinator} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Asynchronous auto-commit of offsets {test-1=OffsetAndMetadata{offset=0, metadata=''}, test-0=OffsetAndMetadata{offset=16, metadata=''}} failed: Offset commit failed with a retriable exception. You should retry committing offsets. The underlying error was: null  
+[2018-09-06 16:52:34,355] WARN  {org.apache.kafka.clients.consumer.internals.ConsumerCoordinator} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Asynchronous auto-commit of offsets {test-1=OffsetAndMetadata{offset=0, metadata=''}, test-0=OffsetAndMetadata{offset=16, metadata=''}} failed: Offset commit failed with a retriable exception. You should retry committing offsets. The underlying error was: null  
+[2018-09-06 16:52:34,716] ERROR {org.apache.kafka.clients.consumer.internals.ConsumerCoordinator} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Offset commit failed on partition test-1 at offset 0: The coordinator is not aware of this member.  
+[2018-09-06 16:52:34,718] WARN  {org.apache.kafka.clients.consumer.internals.ConsumerCoordinator} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Asynchronous auto-commit of offsets {test-1=OffsetAndMetadata{offset=0, metadata=''}, test-0=OffsetAndMetadata{offset=16, metadata=''}} failed: Commit cannot be completed since the group has already rebalanced and assigned the partitions to another member. This means that the time between subsequent calls to poll() was longer than the configured max.poll.interval.ms, which typically implies that the poll loop is spending too much time message processing. You can address this either by increasing the session timeout or by reducing the maximum size of batches returned in poll() with max.poll.records.  
+[2018-09-06 16:52:34,720] WARN  {org.apache.kafka.clients.consumer.internals.ConsumerCoordinator} - [Consumer clientId=consumer-2, groupId=inventorySystemd] Synchronous auto-commit of offsets {test-1=OffsetAndMetadata{offset=0, metadata=''}, test-0=OffsetAndMetadata{offset=16, metadata=''}} failed: Commit cannot be completed since the group has already rebalanced and assigned the partitions to another member. This means that the time between subsequent calls to poll() was longer than the configured max.poll.interval.ms, which typically implies that the poll loop is spending too much time message processing. You can address this either by increasing the session timeout or by reducing the maximum size of batches returned in poll() with max.poll.records.  

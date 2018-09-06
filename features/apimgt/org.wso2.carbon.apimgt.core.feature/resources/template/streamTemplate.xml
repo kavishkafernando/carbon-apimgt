@@ -1,91 +1,53 @@
-package $package;
-import ballerina.net.http;
-import ballerina.lang.messages;
-import ballerina.lang.errors;
-import ballerina.lang.system;
 
-@http:config {basePath:"$name"}
-service<http> $serviceName {
-    string VERSION = $version;
-    #foreach( $version in $apiEndpoint.entrySet() )
-    #if($endpointEntry.key == "production")
-    #if($endpointEntry.value.applicableLevel == "API")
-    #set( $endpointConfig = '#set( $endpointConfig = ' + $endpointEntry.value.endpointConfig + ' )' )
-    #evaluate ($endpointConfig)
-    http:ClientConnector productionEndpoint = create http:ClientConnector("$endpointConfig.get("serviceUrl")");
-    #end
-    #end
-    #if($endpointEntry.key == "sandbox")
-    #if($endpointEntry.value.applicableLevel == "API")
-    #set( $endpointConfig = '#set( $endpointConfig = ' + $endpointEntry.value.endpointConfig + ' )' )
-    #evaluate ($endpointConfig)
-    http:ClientConnector sandBoxEndpoint = create http:ClientConnector("$endpointConfig.get("serviceUrl")");
-    #end
-    #end
-    #end
-    string KEY_TYPE = "KEY_TYPE";
-    #foreach($apiResource in $apiResources)
-    #set( $version = $apiEndpoint.get("production"))
-    #set( $sandboxEndpoint = $apiEndpoint.get("sandbox"))
-    ## https://wso2.org/jira/browse/APIMANAGER-5710
-    #if(!$StringUtils.isEmpty($apiResource.httpVerb) && (($apiResource.httpVerb == "GET") || ($apiResource.httpVerb == "POST")))
-    @http:$apiResource.httpVerb{}
-    #if(!$StringUtils.isEmpty($apiResource.consumes))@Consumes ($apiResource.consumes)#end
-    #if(!$StringUtils.isEmpty($apiResource.produces))@Produces ($apiResource.produces)#end
-    @http:Path{value:"$apiResource.uriTemplate"}
-    resource $apiResource.templateId (message m) {
-    #if($apiResource.productionEndpoint)
-    #set( $productionEndpoint = $apiResource.productionEndpoint)
-    #if($apiResource.productionEndpoint.applicableLevel == "API")
-    #set( $endpointConfig = '#set( $endpointConfig = ' + $apiResource.productionEndpoint.endpointConfig + ' )' )
-    #evaluate ($endpointConfig)
-    http:ClientConnector ${apiResource.templateId}ProductionEndpoint = create http:ClientConnector("$endpointConfig.get("serviceUrl")");
-    #end
-    #else
-    #if($apiEndpoint.get("production") && $apiEndpoint.get("production").applicableLevel == "API")
-    http:ClientConnector ${apiResource.templateId}ProductionEndpoint = productionEndpoint;
-    #end
-    #end
-    #if($apiResource.sandBoxEndpoint)
-    #set( $sandboxEndpoint = $apiResource.sandBoxEndpoint)
-    #if($apiResource.sandBoxEndpoint.applicableLevel == "API")
-    #set( $endpointConfig = '#set( $endpointConfig = ' + $apiResource.sandBoxEndpoint.endpointConfig + ' )' )
-    #evaluate ($endpointConfig)
-    http:ClientConnector ${apiResource.templateId}SandBoxEndpoint = create http:ClientConnector($endpointConfig.get("serviceUrl"));
-    #end
-    #else
-    #if($apiEndpoint.get("sandbox") && $apiEndpoint.get("sandbox").applicableLevel == "API")
-    http:ClientConnector ${apiResource.templateId}SandBoxEndpoint = sandBoxEndpoint;
-    #end
-    #end
-    message response;
-    string endpointType = messages:getProperty(m,KEY_TYPE);
+import ballerina/log;
+import wso2/kafka;
+import ballerina/internal;
+import ballerina/io;
+import ballerina/http;
 
-    try{
-    if (endpointType == "PRODUCTION") {
-    #if($productionEndpoint.applicableLevel == "API")
-    response = http:ClientConnector.execute(${apiResource.templateId}ProductionEndpoint, "$apiResource.httpVerb.toLowerCase()", "", m);
-    #else
-    response = execute_endpoint("${productionEndpoint.name}","$apiResource.httpVerb.toLowerCase()", "", m);
-    #end
-    } else {
-    #if($sandboxEndpoint.applicableLevel == "API")
-    response = http:ClientConnector.execute(${apiResource.templateId}SandBoxEndpoint, "$apiResource.httpVerb.toLowerCase()", "", m);
-    #else
-    response = execute_endpoint("${sandboxEndpoint.name}","$apiResource.httpVerb.toLowerCase()", "", m);
-    #end
-    }
-    } catch (errors:Error e) {
-    system:println(e.msg);
-    //fault:mediate(m, e);
-    response = {};
-    messages:setStringPayload(response, "Internal error occurred");
-    http:setStatusCode (response, 500);
-    reply response;
-    }
+map<http:WebSocketListener> connectionsMap;
 
-    reply response;
-    }
-    #end
-    #end
-    }
+@http:WebSocketServiceConfig {
+    path: "/gateway/ws",
+    subProtocols: ["xml", "json"],
+    idleTimeoutInSeconds: 120
+}
+
+service<http:WebSocketService> basic bind { port: 9091 } {
+     onOpen(endpoint caller) {
+        connectionsMap[caller.id] = caller;
+
+      }
+
+     onClose(endpoint caller, int statusCode, string reason) {
+        _ = connectionsMap.remove(caller.id);
+      }
+}
+
+function broadcast(byte[] text) {
+     endpoint http:WebSocketListener ep;
+     foreach id, con in connectionsMap {
+        ep = con;
+        ep->pushBinary(text) but {
+            error e => log:printError("Error sending message", err = e)
+        };
+     }
+}
+
+endpoint kafka:SimpleConsumer consumer {
+     bootstrapServers: "localhost:9092, localhost:9093",
+     groupId: "inventorySystemd",
+     topics: ["test"],
+     pollingInterval:1000
+};
+
+service<kafka:Consumer> kafkaService bind consumer {
+      onMessage(kafka:ConsumerAction consumerAction, kafka:ConsumerRecord[] records) {
+          foreach entry in records {
+                byte[] serializedMsg = entry.value;
+                string msg = internal:byteArrayToString(serializedMsg, "UTF-8");
+                log:printInfo("Topic: " + entry.topic + "; Received Message: " + msg);
+                broadcast(serializedMsg);
+          }
+       }
+}
