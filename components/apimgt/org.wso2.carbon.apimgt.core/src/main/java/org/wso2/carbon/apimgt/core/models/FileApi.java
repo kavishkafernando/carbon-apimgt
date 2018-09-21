@@ -19,6 +19,7 @@
  */
 package org.wso2.carbon.apimgt.core.models;
 
+import org.json.simple.JSONObject;
 import org.wso2.carbon.apimgt.core.models.policy.Policy;
 import org.wso2.carbon.lcm.core.impl.LifecycleState;
 
@@ -73,6 +74,10 @@ public class FileApi {
     private List<String> userSpecificApiPermissions;
     private int securityScheme;
     private Set<String> threatProtectionPolicies;
+
+
+
+    private JSONObject additionalProperties;
 
     public String getId() {
         return id;
@@ -210,6 +215,14 @@ public class FileApi {
         this.threatProtectionPolicies = threatProtectionPolicies;
     }
 
+    public JSONObject getAdditionalProperties() {
+        return additionalProperties;
+    }
+
+    public void setAdditionalProperties(JSONObject additionalProperties) {
+        this.additionalProperties = additionalProperties;
+    }
+
     public FileApi(API api) {
         id = api.getId();
         provider = api.getProvider();
@@ -261,6 +274,7 @@ public class FileApi {
             this.apiPolicy = api.getApiPolicy().getPolicyName();
         }
         this.threatProtectionPolicies = api.getThreatProtectionPolicies();
+        additionalProperties = api.getAdditionalProperties();
     }
 
     public List<String> getGatewayLabels() {

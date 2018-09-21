@@ -3905,6 +3905,17 @@ definitions:
             type: string
             example: Disabled
           isDefaultVersion:
+            example: technicalowner@wso2.com
+      additionalProperties:
+            type: object
+            additionalProperties:
+                type: string
+            description : Map of custom properties of API
+      corsConfiguration:
+        description: |
+          CORS configuration for the API
+        properties:
+          corsConfigurationEnabled:
             type: boolean
             example: false
           transport:

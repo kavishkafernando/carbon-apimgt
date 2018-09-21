@@ -20,6 +20,7 @@
 
 package org.wso2.carbon.apimgt.core.dao.impl;
 
+import com.google.gson.Gson;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
@@ -742,6 +743,7 @@ public class ApiDAOImpl implements ApiDAO {
             addVisibleRole(connection, apiPrimaryKey, api.getVisibleRoles());
         }
 
+        Gson gson = new Gson();
         addTagsMapping(connection, apiPrimaryKey, api.getTags());
         addLabelMapping(connection, apiPrimaryKey, api.getGatewayLabels(), APIMgtConstants.LABEL_TYPE_GATEWAY);
         addLabelMapping(connection, apiPrimaryKey, api.getStoreLabels(), APIMgtConstants.LABEL_TYPE_STORE);
@@ -753,6 +755,10 @@ public class ApiDAOImpl implements ApiDAO {
         addAPIDefinition(connection, apiPrimaryKey, api.getApiDefinition(), api.getCreatedBy());
         addAPIPermission(connection, api.getPermissionMap(), apiPrimaryKey);
 
+        if (api.getAdditionalProperties() != null) {
+            addAdditionalProperties(connection, gson.toJson(api.getAdditionalProperties()), apiPrimaryKey);
+        }
+
         if (api.getThreatProtectionPolicies() != null) {
             addThreatProtectionPolicies(connection, apiPrimaryKey, api.getThreatProtectionPolicies());
         }
@@ -760,6 +766,8 @@ public class ApiDAOImpl implements ApiDAO {
         if (api.getApiPolicy() != null) {
             addApiPolicy(connection, api.getApiPolicy().getUuid(), apiPrimaryKey);
         }
+
+
     }
 
     /**
@@ -2144,7 +2152,7 @@ public class ApiDAOImpl implements ApiDAO {
                 corsConfiguration.setAllowMethods(DAOUtil.commaSeperatedStringToList(allowMethods));
 
                 String apiPrimaryKey = rs.getString("UUID");
-
+                Gson gson = new Gson();
                 return new API.APIBuilder(rs.getString("PROVIDER"), rs.getString("NAME"), rs.getString("VERSION")).
                         id(apiPrimaryKey).
                         context(rs.getString("CONTEXT")).
@@ -2180,7 +2188,9 @@ public class ApiDAOImpl implements ApiDAO {
                         workflowStatus(rs.getString("LC_WORKFLOW_STATUS")).
                         securityScheme(rs.getInt("SECURITY_SCHEME")).
                         apiPolicy(getApiPolicyByAPIId(connection, apiPrimaryKey)).
-                        threatProtectionPolicies(getThreatProtectionPolicies(connection, apiPrimaryKey)).build();
+                        threatProtectionPolicies(getThreatProtectionPolicies(connection, apiPrimaryKey)).
+                        additionalProperties(gson.fromJson(getAdditionalProperties(connection, apiPrimaryKey),
+                                JSONObject.class)).build();
             }
         }
 
@@ -2748,6 +2758,34 @@ public class ApiDAOImpl implements ApiDAO {
         }
 
         return policies;
+    }
+
+    private void addAdditionalProperties(Connection connection, String additionalProperty, String apiID)
+            throws SQLException {
+        final String query =
+                "INSERT INTO AM_API_ADDITIONAL_PROPERTIES(UUID, ADDITIONAL_PROPERTY) VALUES (?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, apiID);
+            statement.setString(2, additionalProperty);
+            statement.execute();
+        }
+    }
+
+    private String getAdditionalProperties(Connection connection, String apiID) throws SQLException {
+        final String query = "SELECT ADDITIONAL_PROPERTY FROM AM_API_ADDITIONAL_PROPERTIES WHERE UUID = ?";
+
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, apiID);
+            statement.execute();
+
+            try (ResultSet rs = statement.getResultSet()) {
+                if (rs.next()) {
+                    return rs.getString("ADDITIONAL_PROPERTY");
+                }
+
+                throw new IllegalStateException("Additional property for API " + apiID + " does not exist");
+            }
+        }
     }
 
     private boolean checkTableColumnExists(DatabaseMetaData databaseMetaData, String tableName, String columnName)

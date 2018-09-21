@@ -155,6 +155,10 @@ public class MappingUtil {
             apiOperationsDTO.setScopes(uriTemplate.getScopes());
             apidto.addOperationsItem(apiOperationsDTO);
         }
+
+        if (api.getAdditionalProperties() != null) {
+            apidto.setAdditionalProperties(api.getAdditionalProperties());
+        }
         if (api.getApiPolicy() != null) {
             apidto.setApiPolicy(api.getApiPolicy().getPolicyName());
         }
@@ -270,6 +274,10 @@ public class MappingUtil {
                 scopes(apidto.getScopes()).
                 securityScheme(mapSecuritySchemeListToInt(apidto.getSecurityScheme()));
 
+
+        if (apidto.getAdditionalProperties() != null) {
+            apiBuilder.additionalProperties(apidto.getAdditionalProperties());
+        }
         if (apidto.getIsDefaultVersion() != null) {
             apiBuilder.isDefaultVersion(apidto.getIsDefaultVersion());
         }
@@ -298,6 +306,7 @@ public class MappingUtil {
             }
             apiBuilder.threatProtectionPolicies(policyIdSet);
         }
+
         return apiBuilder;
     }
 
