@@ -959,7 +959,7 @@ public class ApisApi implements Microservice  {
         limit=limit==null?Integer.valueOf("25"):limit;
         offset=offset==null?Integer.valueOf("0"):offset;
         expand=expand==null?Boolean.valueOf("false"):expand;
-        
+
         return delegate.apisGet(limit,offset,query,ifNoneMatch,expand,request);
     }
     @OPTIONS

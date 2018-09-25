@@ -20,7 +20,6 @@
 
 package org.wso2.carbon.apimgt.core.dao.impl;
 
-import com.google.gson.Gson;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
@@ -34,19 +33,7 @@ import org.wso2.carbon.apimgt.core.dao.ApiType;
 import org.wso2.carbon.apimgt.core.dao.SearchType;
 import org.wso2.carbon.apimgt.core.exception.APIMgtDAOException;
 import org.wso2.carbon.apimgt.core.exception.ExceptionCodes;
-import org.wso2.carbon.apimgt.core.models.API;
-import org.wso2.carbon.apimgt.core.models.APIStatus;
-import org.wso2.carbon.apimgt.core.models.BusinessInformation;
-import org.wso2.carbon.apimgt.core.models.Comment;
-import org.wso2.carbon.apimgt.core.models.CompositeAPI;
-import org.wso2.carbon.apimgt.core.models.CorsConfiguration;
-import org.wso2.carbon.apimgt.core.models.DedicatedGateway;
-import org.wso2.carbon.apimgt.core.models.DocumentInfo;
-import org.wso2.carbon.apimgt.core.models.Endpoint;
-import org.wso2.carbon.apimgt.core.models.Rating;
-import org.wso2.carbon.apimgt.core.models.ResourceCategory;
-import org.wso2.carbon.apimgt.core.models.Subscription;
-import org.wso2.carbon.apimgt.core.models.UriTemplate;
+import org.wso2.carbon.apimgt.core.models.*;
 import org.wso2.carbon.apimgt.core.models.policy.APIPolicy;
 import org.wso2.carbon.apimgt.core.models.policy.Policy;
 import org.wso2.carbon.apimgt.core.models.policy.SubscriptionPolicy;
@@ -743,7 +730,6 @@ public class ApiDAOImpl implements ApiDAO {
             addVisibleRole(connection, apiPrimaryKey, api.getVisibleRoles());
         }
 
-        Gson gson = new Gson();
         addTagsMapping(connection, apiPrimaryKey, api.getTags());
         addLabelMapping(connection, apiPrimaryKey, api.getGatewayLabels(), APIMgtConstants.LABEL_TYPE_GATEWAY);
         addLabelMapping(connection, apiPrimaryKey, api.getStoreLabels(), APIMgtConstants.LABEL_TYPE_STORE);
@@ -756,7 +742,7 @@ public class ApiDAOImpl implements ApiDAO {
         addAPIPermission(connection, api.getPermissionMap(), apiPrimaryKey);
 
         if (api.getAdditionalProperties() != null) {
-            addAdditionalProperties(connection, gson.toJson(api.getAdditionalProperties()), apiPrimaryKey);
+            addAdditionalProperties(connection, api.getAdditionalProperties(), apiPrimaryKey);
         }
 
         if (api.getThreatProtectionPolicies() != null) {
@@ -2152,7 +2138,6 @@ public class ApiDAOImpl implements ApiDAO {
                 corsConfiguration.setAllowMethods(DAOUtil.commaSeperatedStringToList(allowMethods));
 
                 String apiPrimaryKey = rs.getString("UUID");
-                Gson gson = new Gson();
                 return new API.APIBuilder(rs.getString("PROVIDER"), rs.getString("NAME"), rs.getString("VERSION")).
                         id(apiPrimaryKey).
                         context(rs.getString("CONTEXT")).
@@ -2189,8 +2174,7 @@ public class ApiDAOImpl implements ApiDAO {
                         securityScheme(rs.getInt("SECURITY_SCHEME")).
                         apiPolicy(getApiPolicyByAPIId(connection, apiPrimaryKey)).
                         threatProtectionPolicies(getThreatProtectionPolicies(connection, apiPrimaryKey)).
-                        additionalProperties(gson.fromJson(getAdditionalProperties(connection, apiPrimaryKey),
-                                JSONObject.class)).build();
+                        additionalProperties(getAdditionalProperties(connection, apiPrimaryKey)).build();
             }
         }
 
@@ -2760,27 +2744,27 @@ public class ApiDAOImpl implements ApiDAO {
         return policies;
     }
 
-    private void addAdditionalProperties(Connection connection, String additionalProperty, String apiID)
+    private void addAdditionalProperties(Connection connection, List<AdditionalProperties> additionalProperty, String apiID)
             throws SQLException {
         final String query =
-                "INSERT INTO AM_API_ADDITIONAL_PROPERTIES(UUID, ADDITIONAL_PROPERTY) VALUES (?, ?)";
+                "INSERT INTO AM_API_ADDITIONAL_PROPERTIES(UUID, PROPERTY_NAME, PROPERTY_VALUE) VALUES (?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, apiID);
-            statement.setString(2, additionalProperty);
+            statement.setString(2, String.valueOf(additionalProperty));
             statement.execute();
         }
     }
 
-    private String getAdditionalProperties(Connection connection, String apiID) throws SQLException {
-        final String query = "SELECT ADDITIONAL_PROPERTY FROM AM_API_ADDITIONAL_PROPERTIES WHERE UUID = ?";
+    private List<AdditionalProperties> getAdditionalProperties(Connection connection, String apiID) throws SQLException {
 
+        final String query = "SELECT PROPERTY_NAME, PROPERTY_VALUE  FROM AM_API_ADDITIONAL_PROPERTIES WHERE UUID = ?";
+        List<String> additionalProperties = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, apiID);
             statement.execute();
-
             try (ResultSet rs = statement.getResultSet()) {
-                if (rs.next()) {
-                    return rs.getString("ADDITIONAL_PROPERTY");
+                while (rs.next()) {
+                    additionalProperties.add(rs.getString("PROPERTY_NAME"));
                 }
 
                 throw new IllegalStateException("Additional property for API " + apiID + " does not exist");

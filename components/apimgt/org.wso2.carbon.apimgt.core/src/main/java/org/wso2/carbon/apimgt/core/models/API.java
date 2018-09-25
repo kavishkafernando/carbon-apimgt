@@ -21,7 +21,6 @@
 package org.wso2.carbon.apimgt.core.models;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import org.json.simple.JSONObject;
 import org.wso2.carbon.apimgt.core.models.policy.APIPolicy;
 import org.wso2.carbon.apimgt.core.models.policy.Policy;
 import org.wso2.carbon.apimgt.core.models.policy.SubscriptionPolicy;
@@ -365,13 +364,13 @@ public final class API {
     private int securityScheme;
     private List<String> scopes = new ArrayList<>();
     private Set<String> threatProtectionPolicies;
-    private  JSONObject additionalProperties;
+    private  List<AdditionalProperties> additionalProperties;
 
-    public JSONObject getAdditionalProperties() {
+    public List<AdditionalProperties> getAdditionalProperties() {
         return additionalProperties;
     }
 
-    public void setAdditionalProperties(JSONObject additionalProperties) {
+    public void setAdditionalProperties(List<AdditionalProperties>s) {
         this.additionalProperties = additionalProperties;
     }
 
@@ -555,11 +554,11 @@ public final class API {
         public Set<String> getThreatProtectionPolicies() {
             return threatProtectionPolicies;
         }
-        public JSONObject getAdditionalProperties() {
+        public List<AdditionalProperties> getAdditionalProperties() {
             return additionalProperties;
         }
 
-        public void setAdditionalProperties(JSONObject additionalProperties) {
+        public void setAdditionalProperties(List<AdditionalProperties> additionalProperties) {
             this.additionalProperties = additionalProperties;
         }
 
@@ -601,7 +600,7 @@ public final class API {
         private int securityScheme;
         private List<String> scopes = new ArrayList<>();
         private Set<String> threatProtectionPolicies;
-        private  JSONObject additionalProperties;
+        private  List<AdditionalProperties> additionalProperties;
 
         public APIBuilder(String provider, String name, String version) {
             this.provider = provider;
@@ -1104,7 +1103,7 @@ public final class API {
          * @param additionalProperties the {@code additionalProperties} to set
          * @return a reference to this APIBuilder
          */
-        public APIBuilder additionalProperties(JSONObject additionalProperties) {
+        public APIBuilder additionalProperties(List<AdditionalProperties> additionalProperties) {
             this.additionalProperties = additionalProperties;
             return this;
         }

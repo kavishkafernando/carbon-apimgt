@@ -19,10 +19,8 @@
  */
 package org.wso2.carbon.apimgt.core.models;
 
-import org.json.simple.JSONObject;
 import org.wso2.carbon.apimgt.core.models.policy.Policy;
 import org.wso2.carbon.lcm.core.impl.LifecycleState;
-
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -77,7 +75,7 @@ public class FileApi {
 
 
 
-    private JSONObject additionalProperties;
+    private List<AdditionalProperties> additionalProperties;
 
     public String getId() {
         return id;
@@ -215,11 +213,11 @@ public class FileApi {
         this.threatProtectionPolicies = threatProtectionPolicies;
     }
 
-    public JSONObject getAdditionalProperties() {
+    public List<AdditionalProperties> getAdditionalProperties() {
         return additionalProperties;
     }
 
-    public void setAdditionalProperties(JSONObject additionalProperties) {
+    public void setAdditionalProperties(List<AdditionalProperties> additionalProperties) {
         this.additionalProperties = additionalProperties;
     }
 
