@@ -7,7 +7,7 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import org.wso2.carbon.apimgt.rest.api.publisher.dto.APIInfoDTO;
-import org.wso2.carbon.apimgt.rest.api.publisher.dto.API_additionalPropertiesDTO;
+import org.wso2.carbon.apimgt.rest.api.publisher.dto.API_apiPropertiesDTO;
 import org.wso2.carbon.apimgt.rest.api.publisher.dto.API_businessInformationDTO;
 import org.wso2.carbon.apimgt.rest.api.publisher.dto.API_corsConfigurationDTO;
 import org.wso2.carbon.apimgt.rest.api.publisher.dto.API_endpointDTO;
@@ -119,8 +119,8 @@ public class APIDTO extends APIInfoDTO  {
   @SerializedName("businessInformation")
   private API_businessInformationDTO businessInformation = null;
 
-  @SerializedName("additionalProperties")
-  private List<API_additionalPropertiesDTO> additionalProperties = new ArrayList<API_additionalPropertiesDTO>();
+  @SerializedName("apiProperties")
+  private List<API_apiPropertiesDTO> apiProperties = new ArrayList<API_apiPropertiesDTO>();
 
   @SerializedName("corsConfiguration")
   private API_corsConfigurationDTO corsConfiguration = null;
@@ -578,27 +578,27 @@ public class APIDTO extends APIInfoDTO  {
     this.businessInformation = businessInformation;
   }
 
-  public APIDTO additionalProperties(List<API_additionalPropertiesDTO> additionalProperties) {
-    this.additionalProperties = additionalProperties;
+  public APIDTO apiProperties(List<API_apiPropertiesDTO> apiProperties) {
+    this.apiProperties = apiProperties;
     return this;
   }
 
-  public APIDTO addAdditionalPropertiesItem(API_additionalPropertiesDTO additionalPropertiesItem) {
-    this.additionalProperties.add(additionalPropertiesItem);
+  public APIDTO addApiPropertiesItem(API_apiPropertiesDTO apiPropertiesItem) {
+    this.apiProperties.add(apiPropertiesItem);
     return this;
   }
 
    /**
-   * Get additionalProperties
-   * @return additionalProperties
+   * Get apiProperties
+   * @return apiProperties
   **/
   @ApiModelProperty(value = "")
-  public List<API_additionalPropertiesDTO> getAdditionalProperties() {
-    return additionalProperties;
+  public List<API_apiPropertiesDTO> getApiProperties() {
+    return apiProperties;
   }
 
-  public void setAdditionalProperties(List<API_additionalPropertiesDTO> additionalProperties) {
-    this.additionalProperties = additionalProperties;
+  public void setApiProperties(List<API_apiPropertiesDTO> apiProperties) {
+    this.apiProperties = apiProperties;
   }
 
   public APIDTO corsConfiguration(API_corsConfigurationDTO corsConfiguration) {
@@ -738,7 +738,7 @@ public class APIDTO extends APIInfoDTO  {
         Objects.equals(this.gatewayEnvironments, API.gatewayEnvironments) &&
         Objects.equals(this.sequences, API.sequences) &&
         Objects.equals(this.businessInformation, API.businessInformation) &&
-        Objects.equals(this.additionalProperties, API.additionalProperties) &&
+        Objects.equals(this.apiProperties, API.apiProperties) &&
         Objects.equals(this.corsConfiguration, API.corsConfiguration) &&
         Objects.equals(this.endpoint, API.endpoint) &&
         Objects.equals(this.scopes, API.scopes) &&
@@ -749,7 +749,7 @@ public class APIDTO extends APIInfoDTO  {
 
   @Override
   public int hashCode() {
-    return Objects.hash(wsdlUri, createdTime, apiPolicy, lastUpdatedTime, responseCaching, cacheTimeout, destinationStatsEnabled, isDefaultVersion, transport, tags, hasOwnGateway, gatewayLabels, storeLabels, policies, visibility, visibleRoles, permission, userPermissionsForApi, visibleTenants, gatewayEnvironments, sequences, businessInformation, additionalProperties, corsConfiguration, endpoint, scopes, operations, threatProtectionPolicies, super.hashCode());
+    return Objects.hash(wsdlUri, createdTime, apiPolicy, lastUpdatedTime, responseCaching, cacheTimeout, destinationStatsEnabled, isDefaultVersion, transport, tags, hasOwnGateway, gatewayLabels, storeLabels, policies, visibility, visibleRoles, permission, userPermissionsForApi, visibleTenants, gatewayEnvironments, sequences, businessInformation, apiProperties, corsConfiguration, endpoint, scopes, operations, threatProtectionPolicies, super.hashCode());
   }
 
   @Override
@@ -779,7 +779,7 @@ public class APIDTO extends APIInfoDTO  {
     sb.append("    gatewayEnvironments: ").append(toIndentedString(gatewayEnvironments)).append("\n");
     sb.append("    sequences: ").append(toIndentedString(sequences)).append("\n");
     sb.append("    businessInformation: ").append(toIndentedString(businessInformation)).append("\n");
-    sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
+    sb.append("    apiProperties: ").append(toIndentedString(apiProperties)).append("\n");
     sb.append("    corsConfiguration: ").append(toIndentedString(corsConfiguration)).append("\n");
     sb.append("    endpoint: ").append(toIndentedString(endpoint)).append("\n");
     sb.append("    scopes: ").append(toIndentedString(scopes)).append("\n");

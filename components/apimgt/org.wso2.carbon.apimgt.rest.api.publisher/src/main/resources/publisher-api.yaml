@@ -3994,7 +3994,7 @@ definitions:
               technicalOwnerEmail:
                 type: string
                 example: technicalowner@wso2.com
-          additionalProperties:
+          apiProperties:
             type: array
             items:
               properties:

@@ -92,7 +92,7 @@ public final class API {
         securityScheme = builder.securityScheme;
         scopes = builder.scopes;
         threatProtectionPolicies = builder.threatProtectionPolicies;
-        additionalProperties = builder.additionalProperties;
+        apiProperties = builder.apiProperties;
     }
 
     public Map getPermissionMap() {
@@ -364,14 +364,14 @@ public final class API {
     private int securityScheme;
     private List<String> scopes = new ArrayList<>();
     private Set<String> threatProtectionPolicies;
-    private  List<AdditionalProperties> additionalProperties;
+    private  List<APIProperties> apiProperties;
 
-    public List<AdditionalProperties> getAdditionalProperties() {
-        return additionalProperties;
+    public List<APIProperties> getAPIProperties() {
+        return apiProperties;
     }
 
-    public void setAdditionalProperties(List<AdditionalProperties> additionalProperties) {
-        this.additionalProperties = additionalProperties;
+    public void setAPIProperties(List<APIProperties> apiProperties) {
+        this.apiProperties = apiProperties;
     }
 
     public String getWorkflowStatus() {
@@ -438,7 +438,7 @@ public final class API {
             }
             userSpecificApiPermissions = api.getUserSpecificApiPermissions();
             threatProtectionPolicies = api.getThreatProtectionPolicies();
-            additionalProperties = api.getAdditionalProperties();
+            apiProperties = api.getAPIProperties();
         }
 
         public String getId() {
@@ -552,12 +552,12 @@ public final class API {
         public Set<String> getThreatProtectionPolicies() {
             return threatProtectionPolicies;
         }
-        public List<AdditionalProperties> getAdditionalProperties() {
-            return additionalProperties;
+        public List<APIProperties> getAPIProperties() {
+            return apiProperties;
         }
 
-        public void setAdditionalProperties(List<AdditionalProperties> additionalProperties) {
-            this.additionalProperties = additionalProperties;
+        public void setAPIProperties(List<APIProperties> apiProperties) {
+            this.apiProperties = apiProperties;
         }
 
         private String version;
@@ -598,7 +598,7 @@ public final class API {
         private int securityScheme;
         private List<String> scopes = new ArrayList<>();
         private Set<String> threatProtectionPolicies;
-        private  List<AdditionalProperties> additionalProperties;
+        private  List<APIProperties> apiProperties;
 
         public APIBuilder(String provider, String name, String version) {
             this.provider = provider;
@@ -650,7 +650,7 @@ public final class API {
             this.securityScheme = copy.securityScheme;
             this.scopes = copy.scopes;
             this.threatProtectionPolicies = copy.threatProtectionPolicies;
-            this.additionalProperties = copy.additionalProperties;
+            this.apiProperties = copy.apiProperties;
         }
 
         /**
@@ -1095,14 +1095,14 @@ public final class API {
         }
 
         /**
-         * Sets the {@code additionalProperties} and returns a reference to this APIBuilder so that the methods
+         * Sets the {@code apiProperties} and returns a reference to this APIBuilder so that the methods
          * can be chained together.
          *
-         * @param additionalProperties the {@code additionalProperties} to set
+         * @param apiProperties the {@code apiProperties} to set
          * @return a reference to this APIBuilder
          */
-        public APIBuilder additionalProperties(List<AdditionalProperties> additionalProperties) {
-            this.additionalProperties = additionalProperties;
+        public APIBuilder apiProperties(List<APIProperties> apiProperties) {
+            this.apiProperties = apiProperties;
             return this;
         }
 

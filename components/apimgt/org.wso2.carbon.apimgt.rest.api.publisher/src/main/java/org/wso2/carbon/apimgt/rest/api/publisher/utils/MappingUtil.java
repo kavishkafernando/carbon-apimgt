@@ -29,19 +29,7 @@ import org.slf4j.LoggerFactory;
 import org.wso2.carbon.apimgt.core.api.WorkflowResponse;
 import org.wso2.carbon.apimgt.core.exception.APIManagementException;
 import org.wso2.carbon.apimgt.core.impl.APIManagerFactory;
-import org.wso2.carbon.apimgt.core.models.API;
-import org.wso2.carbon.apimgt.core.models.AdditionalProperties;
-import org.wso2.carbon.apimgt.core.models.Application;
-import org.wso2.carbon.apimgt.core.models.BusinessInformation;
-import org.wso2.carbon.apimgt.core.models.CorsConfiguration;
-import org.wso2.carbon.apimgt.core.models.DedicatedGateway;
-import org.wso2.carbon.apimgt.core.models.DocumentInfo;
-import org.wso2.carbon.apimgt.core.models.Endpoint;
-import org.wso2.carbon.apimgt.core.models.Label;
-import org.wso2.carbon.apimgt.core.models.Scope;
-import org.wso2.carbon.apimgt.core.models.Subscription;
-import org.wso2.carbon.apimgt.core.models.UriTemplate;
-import org.wso2.carbon.apimgt.core.models.WSDLInfo;
+import org.wso2.carbon.apimgt.core.models.*;
 import org.wso2.carbon.apimgt.core.models.policy.APIPolicy;
 import org.wso2.carbon.apimgt.core.models.policy.Policy;
 import org.wso2.carbon.apimgt.core.models.policy.SubscriptionPolicy;
@@ -158,12 +146,15 @@ public class MappingUtil {
             apidto.addOperationsItem(apiOperationsDTO);
         }
 
-        if (api.getAdditionalProperties() != null) {
-            List<API_additionalPropertiesDTO> additionalPropertiesDTOList = new ArrayList<>();
-            for (AdditionalProperties propertiesDTO : api.getAdditionalProperties()) {
-                additionalPropertiesDTOList.add(new API_additionalPropertiesDTO(propertiesDTO.getPropertyKey(), propertiesDTO.getPropertyValue()));
+
+
+        if (api.getAPIProperties() != null) {
+            List<API_apiPropertiesDTO> apiPropertiesDTOList = new ArrayList<>();
+            for (APIProperties propertiesDTO : api.getAPIProperties()) {
+                apiPropertiesDTOList.add(new API_apiPropertiesDTO(propertiesDTO.getPropertyKey(),
+                        propertiesDTO.getPropertyValue()));
             }
-            apidto.setAdditionalProperties(additionalPropertiesDTOList);
+            apidto.setApiProperties(apiPropertiesDTOList);
         }
 
         if (api.getApiPolicy() != null) {
@@ -282,17 +273,17 @@ public class MappingUtil {
                 securityScheme(mapSecuritySchemeListToInt(apidto.getSecurityScheme()));
 
         //additional properties
-        if (apidto.getAdditionalProperties() != null) {
-            List<AdditionalProperties> additionalProperties = new ArrayList<>();
-            //get additional properties for each list element in API_additionalPropertiesDTO
-            for (API_additionalPropertiesDTO propertiesDTO : apidto.getAdditionalProperties()) {
+        if (apidto.getApiProperties() != null) {
+            List<APIProperties> apiProperties = new ArrayList<>();
+            //get additional properties for each list element in API_apiPropertiesDTO
+            for (API_apiPropertiesDTO propertiesDTO : apidto.getApiProperties()) {
                 if (StringUtils.isEmpty(propertiesDTO.getId())) {
                     propertiesDTO.setId(UUID.randomUUID().toString());
                 }
-                additionalProperties.add(new AdditionalProperties(propertiesDTO.getKey(), propertiesDTO.getValue(),
+                apiProperties.add(new APIProperties(propertiesDTO.getKey(), propertiesDTO.getValue(),
                         propertiesDTO.getId()));
             }
-            apiBuilder.additionalProperties(additionalProperties);
+            apiBuilder.apiProperties(apiProperties);
         }
 
         if (apidto.getIsDefaultVersion() != null) {

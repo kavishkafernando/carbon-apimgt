@@ -72,7 +72,7 @@ public class FileApi {
     private List<String> userSpecificApiPermissions;
     private int securityScheme;
     private Set<String> threatProtectionPolicies;
-    private List<AdditionalProperties> additionalProperties;
+    private List<APIProperties> apiProperties;
 
     public String getId() {
         return id;
@@ -210,12 +210,12 @@ public class FileApi {
         this.threatProtectionPolicies = threatProtectionPolicies;
     }
 
-    public List<AdditionalProperties> getAdditionalProperties() {
-        return additionalProperties;
+    public List<APIProperties> getAPIProperties() {
+        return apiProperties;
     }
 
-    public void setAdditionalProperties(List<AdditionalProperties> additionalProperties) {
-        this.additionalProperties = additionalProperties;
+    public void setAPIProperties(List<APIProperties> apiProperties) {
+        this.apiProperties = apiProperties;
     }
 
     public FileApi(API api) {
@@ -269,7 +269,7 @@ public class FileApi {
             this.apiPolicy = api.getApiPolicy().getPolicyName();
         }
         this.threatProtectionPolicies = api.getThreatProtectionPolicies();
-        additionalProperties = api.getAdditionalProperties();
+        apiProperties = api.getAPIProperties();
     }
 
     public List<String> getGatewayLabels() {

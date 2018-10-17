@@ -7,9 +7,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.Objects;
 
 /**
- * API_additionalPropertiesDTO
+ * API_apiPropertiesDTO
  */
-public class API_additionalPropertiesDTO   {
+public class API_apiPropertiesDTO   {
   @SerializedName("key")
   private String key = null;
 
@@ -27,15 +27,9 @@ public class API_additionalPropertiesDTO   {
   }
 
 
-
-    public API_additionalPropertiesDTO(String key, String value) {
-        this.key = key;
-        this.value = value;
-    }
-
-  public API_additionalPropertiesDTO key(String key) {
+  public API_apiPropertiesDTO(String key, String value) {
     this.key = key;
-    return this;
+    this.value = value;
   }
 
    /**
@@ -51,7 +45,7 @@ public class API_additionalPropertiesDTO   {
     this.key = key;
   }
 
-  public API_additionalPropertiesDTO value(String value) {
+  public API_apiPropertiesDTO value(String value) {
     this.value = value;
     return this;
   }
@@ -78,9 +72,9 @@ public class API_additionalPropertiesDTO   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    API_additionalPropertiesDTO apIAdditionalProperties = (API_additionalPropertiesDTO) o;
-    return Objects.equals(this.key, apIAdditionalProperties.key) &&
-        Objects.equals(this.value, apIAdditionalProperties.value);
+    API_apiPropertiesDTO apIApiProperties = (API_apiPropertiesDTO) o;
+    return Objects.equals(this.key, apIApiProperties.key) &&
+        Objects.equals(this.value, apIApiProperties.value);
   }
 
   @Override
@@ -91,7 +85,7 @@ public class API_additionalPropertiesDTO   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class API_additionalPropertiesDTO {\n");
+    sb.append("class API_apiPropertiesDTO {\n");
 
     sb.append("    key: ").append(toIndentedString(key)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");

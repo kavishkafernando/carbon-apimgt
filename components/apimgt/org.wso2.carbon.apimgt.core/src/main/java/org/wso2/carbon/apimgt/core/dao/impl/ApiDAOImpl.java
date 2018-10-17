@@ -35,8 +35,8 @@ import org.wso2.carbon.apimgt.core.dao.SecondarySearchType;
 import org.wso2.carbon.apimgt.core.exception.APIMgtDAOException;
 import org.wso2.carbon.apimgt.core.exception.ExceptionCodes;
 import org.wso2.carbon.apimgt.core.models.API;
+import org.wso2.carbon.apimgt.core.models.APIProperties;
 import org.wso2.carbon.apimgt.core.models.APIStatus;
-import org.wso2.carbon.apimgt.core.models.AdditionalProperties;
 import org.wso2.carbon.apimgt.core.models.BusinessInformation;
 import org.wso2.carbon.apimgt.core.models.Comment;
 import org.wso2.carbon.apimgt.core.models.CompositeAPI;
@@ -757,8 +757,8 @@ public class ApiDAOImpl implements ApiDAO {
         addAPIDefinition(connection, apiPrimaryKey, api.getApiDefinition(), api.getCreatedBy());
         addAPIPermission(connection, api.getPermissionMap(), apiPrimaryKey);
 
-        if (api.getAdditionalProperties() != null) {
-            addAdditionalProperties(connection, api.getAdditionalProperties(), apiPrimaryKey);
+        if (api.getAPIProperties() != null) {
+            addAPIProperties(connection, api.getAPIProperties(), api.getId());
         }
 
         if (api.getThreatProtectionPolicies() != null) {
@@ -2190,7 +2190,7 @@ public class ApiDAOImpl implements ApiDAO {
                         securityScheme(rs.getInt("SECURITY_SCHEME")).
                         apiPolicy(getApiPolicyByAPIId(connection, apiPrimaryKey)).
                         threatProtectionPolicies(getThreatProtectionPolicies(connection, apiPrimaryKey)).
-                        additionalProperties(getAdditionalProperties(connection, apiPrimaryKey)).build();
+                        apiProperties(getAPIProperties(connection, apiPrimaryKey)).build();
             }
         }
 
@@ -2761,21 +2761,21 @@ public class ApiDAOImpl implements ApiDAO {
     }
 
     /**
-     * Add additional properties to the database
+     * Add API properties to the database
      *
      * @param connection SQL Connection
      * @param apiID      ApiId of the API
-     * @param additionalProperties      List<AdditionalProperties>
-     * @throws SQLException If failed to add additional properties
+     * @param apiProperties      List<APIProperties>
+     * @throws SQLException If failed to add API properties
      */
-    private void addAdditionalProperties(Connection connection, List<AdditionalProperties> additionalProperties,
+    private void addAPIProperties(Connection connection, List<APIProperties> apiProperties,
                                          String apiID) throws SQLException {
         final String query =
                 "INSERT INTO AM_API_ADDITIONAL_PROPERTIES(UUID, API_ID, PROPERTY_KEY, PROPERTY_VALUE) " +
                         "VALUES (?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
 
-            for (AdditionalProperties property : additionalProperties) {
+            for (APIProperties property : apiProperties) {
                 statement.setString(1, property.getPropertyId());
                 statement.setString(2, apiID);
                 statement.setString(3, property.getPropertyKey());
@@ -2787,25 +2787,25 @@ public class ApiDAOImpl implements ApiDAO {
     }
 
     /**
-     * Get additional properties from the database
+     * Get API properties from the database
      *
      * @param connection SQL Connection
      * @param apiID      ApiId of the API
-     * @throws SQLException If failed to get additional properties
+     * @throws SQLException If failed to get API properties
      */
-    private List<AdditionalProperties> getAdditionalProperties(Connection connection, String apiID)
+    private List<APIProperties> getAPIProperties(Connection connection, String apiID)
             throws SQLException {
 
         final String query = "SELECT PROPERTY_KEY,PROPERTY_VALUE  FROM AM_API_ADDITIONAL_PROPERTIES" +
                              " WHERE API_ID = ?";
-        List<AdditionalProperties> additionalProperties = new ArrayList<>();
+        List<APIProperties> apiProperties = new ArrayList<>();
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, apiID);
             statement.execute();
             try (ResultSet rs = statement.getResultSet()) {
                 while (rs.next()) {
-                    additionalProperties.add(
-                            new AdditionalProperties(
+                    apiProperties.add(
+                            new APIProperties(
                                     rs.getString("PROPERTY_KEY"),
                                     rs.getString("PROPERTY_VALUE")
                             )
@@ -2813,7 +2813,7 @@ public class ApiDAOImpl implements ApiDAO {
                 }
             }
         }
-        return  additionalProperties;
+        return  apiProperties;
     }
 
     private boolean checkTableColumnExists(DatabaseMetaData databaseMetaData, String tableName, String columnName)

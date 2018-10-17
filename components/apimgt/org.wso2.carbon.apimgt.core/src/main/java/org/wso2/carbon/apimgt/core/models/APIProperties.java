@@ -22,18 +22,18 @@ package org.wso2.carbon.apimgt.core.models;
  * Additional properties specific information
  */
 
-public class AdditionalProperties {
+public class APIProperties {
 
     private  String propertyKey;
     private  String propertyValue;
     private  String propertyId;
 
-    public AdditionalProperties(String propertyKey, String propertyValue) {
+    public APIProperties(String propertyKey, String propertyValue) {
         this.propertyKey = propertyKey;
         this.propertyValue = propertyValue;
     }
 
-    public AdditionalProperties(String propertyKey, String propertyValue, String propertyId) {
+    public APIProperties(String propertyKey, String propertyValue, String propertyId) {
         this.propertyKey = propertyKey;
         this.propertyValue = propertyValue;
         this.propertyId = propertyId;
