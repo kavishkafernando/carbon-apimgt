@@ -34,8 +34,6 @@ import { Progress } from 'AppComponents/Shared';
 import Api from 'AppData/api';
 import Alert from 'AppComponents/Shared/Alert';
 import Button from '@material-ui/core/Button';
-import { FormattedMessage } from 'react-intl';
-
 import APIPropertyField from './APIPropertyField';
 import BusinessPlans from './BusinessPlans';
 import AdditionalProperty from './AdditionalProperty';
@@ -275,9 +273,11 @@ class Overview extends Component {
 
         return (
             <Grid container spacing={0} direction='column' justify='flex-start' alignItems='stretch'>
-                <CardActions justify='flex-end'>
-                    <Button variant='contained' color='primary'>Edit</Button>
-                </CardActions>
+                <Grid item container direction='row' justify='flex-end'>
+                    <CardActions justify='flex-end'>
+                        <Button variant='contained' color='primary' justify='flex-right'>Edit</Button>
+                    </CardActions>
+                </Grid>
                 <Grid item container direction='row' justify='flex-end'>
                     <span>Last Updated : {moment(api.lastUpdatedTime).fromNow()}</span>
                 </Grid>
