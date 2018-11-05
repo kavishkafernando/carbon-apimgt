@@ -109,6 +109,8 @@ class Overview extends Component {
         this.handleInput = this.handleInput.bind(this);
         this.handleAddAdditionalProperties = this.handleAddAdditionalProperties.bind(this);
         this.handleDeleteAdditionalProperties = this.handleDeleteAdditionalProperties.bind(this);
+        this.handleAdditionalPropertiesChange = this.handleAdditionalPropertiesChange.bind(this);
+        this.handledditionalPropertiesUpdate = this.handledditionalPropertiesUpdate.bind(this);
     }
 
     downloadWSDL() {
@@ -199,6 +201,34 @@ class Overview extends Component {
             });
     }
 
+    handleAdditionalPropertiesChange(event) {
+        const api = new Api();
+        const { id } = this.props.api;
+        const currentAPI = this.state.api;
+        const promisedApi = api.get(id);
+        promisedApi
+            .then((getResponse) => {
+                const apiData = getResponse.body;
+                apiData.additionalProperties = event.target.value;
+                this.setState({ api: apiData });
+                const promisedUpdate = api.update(apiData);
+                promisedUpdate
+                    .then((updateResponse) => {
+                        this.setState({ api: updateResponse.body });
+                    })
+                    .catch((errorResponse) => {
+                        console.error(errorResponse);
+                        Alert.error('Error occured while updating additional properties');
+                        this.setState({ api: getResponse.body });
+                    });
+            })
+            .catch((errorResponse) => {
+                console.error(errorResponse);
+                Alert.error('Error occurred while retrieving API');
+                this.setState({ api: currentAPI });
+            });
+    }
+
     /**
      * Handle adding Additional properties
      */
@@ -212,14 +242,33 @@ class Overview extends Component {
     }
 
     /**
+     * sadasd.
+     */
+    handledditionalPropertiesUpdate(index, key, value) {
+        const { additionalProperties } = this.state;
+
+        additionalProperties[index] = {
+            key,
+            value,
+        };
+
+        console.log(additionalProperties);
+
+        this.setState({
+            additionalProperties,
+        });
+    }
+
+    /**
      * Handle delete Additional properties
      *
      * @param {AdditionalProperty} key AdditionalProperty
      */
-    handleDeleteAdditionalProperties(key) {
+    handleDeleteAdditionalProperties(index) {
         const { additionalProperties } = this.state;
+        additionalProperties.splice(index, 1);
         this.setState({
-            additionalProperties: additionalProperties.filter(property => property.key !== key),
+            additionalProperties,
         });
     }
 
@@ -421,10 +470,12 @@ class Overview extends Component {
                             <Divider />
                         </Grid>
                         { additionalProperties
-                            .map(property => (<AdditionalProperty
+                            .map((property, index) => (<AdditionalProperty
                                 property={property}
                                 isEditable={isEditable}
+                                onUpdate={this.handledditionalPropertiesUpdate}
                                 onDelete={this.handleDeleteAdditionalProperties}
+                                index={index}
                             />))
                         }
                         <IconButton
@@ -446,7 +497,7 @@ class Overview extends Component {
 
 
 Overview.defaultProps = {
-    isEditable: false,
+    isEditable: true,
 };
 
 Overview.propTypes = {

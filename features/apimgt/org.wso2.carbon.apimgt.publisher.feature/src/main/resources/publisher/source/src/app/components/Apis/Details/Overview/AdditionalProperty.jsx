@@ -26,7 +26,9 @@ import React from 'react';
 /**
  * @class AdditionalProperty
  */
-const AdditionalProperty = ({ isEditable, property, onDelete }) => {
+const AdditionalProperty = ({
+    isEditable, property, onDelete, onUpdate, index,
+}) => {
     return (
         <Grid item lg={5}>
             <TextField
@@ -36,9 +38,10 @@ const AdditionalProperty = ({ isEditable, property, onDelete }) => {
                 }}
                 id='api-property-key'
                 label={isEditable && 'key'}
-                defaultValue={property.key}
+                value={property.key}
                 placeholder='My Property'
                 margin='normal'
+                onChange={value => onUpdate(index, value.target.value, '')}
                 InputProps={{
                     readOnly: !isEditable,
                 }}
@@ -50,7 +53,7 @@ const AdditionalProperty = ({ isEditable, property, onDelete }) => {
                 }}
                 id='api-property-value'
                 label={isEditable && 'value'}
-                defaultValue={property.value}
+                value={property.value}
                 placeholder='Property Value'
                 margin='normal'
                 InputProps={{
@@ -60,7 +63,7 @@ const AdditionalProperty = ({ isEditable, property, onDelete }) => {
             <IconButton
                 id='delete'
                 aria-label='Remove'
-                onClick={() => { onDelete(property.key); }}
+                onClick={() => { onDelete(index); }}
             >
                 <DeleteIcon />
             </IconButton>
