@@ -50,7 +50,7 @@ const styles = (theme) => ({
     leftLInk: {
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(1),
-        paddingLeft: theme.spacing(1),
+        paddingLeft: theme.spacing(3),
         paddingRight: theme.spacing(1),
         fontSize: theme.typography.caption.fontSize,
         cursor: 'pointer',
@@ -78,7 +78,7 @@ const styles = (theme) => ({
  * @param {*} props
  * @returns
  */
-function LeftMenuItem(props) {
+function LeftMenuItemSecondary(props) {
     const [selected, setSelected] = useState(false);
 
     const {
@@ -118,11 +118,12 @@ function LeftMenuItem(props) {
             to={to}
             style={{ backgroundColor: selected ? theme.palette.background.appBarSelected : '' }}
         >
-            {// If the icon pro ( which is comming from the React Material library )
-            // is coming we add css class and render.
-            // If leftMenu='no icon' at the theme object we hide the icon. Also we add static classes to
-            // allow customers theme
-            // the product without compiling.
+            {
+                // If the icon pro ( which is comming from the React Material library )
+                // is coming we add css class and render.
+                // If leftMenu='no icon' at the theme object we hide the icon. Also we add static classes to
+                // allow customers theme
+                // the product without compiling.
                 Icon ? (
                     React.cloneElement(Icon, {
                         className: classNames(
@@ -134,21 +135,21 @@ function LeftMenuItem(props) {
                         ),
                     })
                 ) : (
-                // We can also add custom icons
-                    <CustomIcon
-                        strokeColor={strokeColor}
-                        width={iconSize}
-                        height={iconSize}
-                        icon={text}
-                        className={classNames(
-                            classes.leftLInk,
-                            {
-                                [classes.noIcon]: leftMenu === 'no icon',
-                            },
-                            'leftLink_Icon',
-                        )}
-                    />
-                )
+                        // We can also add custom icons
+                        <CustomIcon
+                            strokeColor={strokeColor}
+                            width={iconSize}
+                            height={iconSize}
+                            icon={text}
+                            className={classNames(
+                                classes.leftLInk,
+                                {
+                                    [classes.noIcon]: leftMenu === 'no icon',
+                                },
+                                'leftLink_Icon',
+                            )}
+                        />
+                    )
             }
             <Typography
                 className={classNames(
@@ -165,10 +166,10 @@ function LeftMenuItem(props) {
         </Link>
     );
 }
-LeftMenuItem.defaultProps = {
+LeftMenuItemSecondary.defaultProps = {
     route: null,
 };
-LeftMenuItem.propTypes = {
+LeftMenuItemSecondary.propTypes = {
     classes: PropTypes.shape({
         divider: PropTypes.string,
         leftLInk: PropTypes.string,
@@ -202,4 +203,4 @@ LeftMenuItem.propTypes = {
         location: PropTypes.string.isRequired,
     }).isRequired,
 };
-export default withRouter(withStyles(styles, { withTheme: true })(LeftMenuItem));
+export default withRouter(withStyles(styles, { withTheme: true })(LeftMenuItemSecondary));
