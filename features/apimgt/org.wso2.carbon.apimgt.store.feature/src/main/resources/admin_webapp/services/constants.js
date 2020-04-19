@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2020, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
  *
  * WSO2 Inc. licenses this file to you under the Apache License,
  * Version 2.0 (the "License"); you may not use this file except
@@ -16,4 +16,24 @@
  * under the License.
  */
 
-export const LOGIN_SCOPE = "internal_login";
+export const SETTINGS_REST_API_URL_SUFFIX = "/api/am/admin/v1/settings";
+
+export const DCR_URL_SUFFIX = "/client-registration/v0.16/register";
+
+export const AUTHORIZE_ENDPOINT_SUFFIX = "/oauth2/authorize";
+
+export const OIDC_LOGOUT_ENDPOINT_SUFFIX = "/oidc/logout";
+
+export const TOKEN_URL_SUFFIX = "/oauth2/token";
+
+export const REVOKE_URL_SUFFIX = "/oauth2/revoke";
+
+export const LOGIN_CALLBACK_URL_SUFFIX = "/services/auth/callback/login";
+
+export const LOGOUT_CALLBACK_URL_SUFFIX = "/services/auth/callback/logout";
+
+export const ADMIN_CLIENT_APP_NAME_OLD = "admin_admin";
+
+export const ADMIN_CLIENT_APP_NAME = "apim_admin";
+
+export const SUPER_TENANT_DOMAIN = "carbon.super";
